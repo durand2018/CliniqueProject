@@ -1,4 +1,4 @@
-package fr.eni.clinique.ihm.Clients;
+package fr.eni.clinique.ihm.client;
 
 import java.util.List;
 
