@@ -23,16 +23,18 @@ public class EcranAjoutClient extends JFrame{
 
 	private void initIHM() {
 		panelAjoutClt = new JPanel();
+		panelBtn = new JPanel();
+		PanelClient panClt = new PanelClient();
+		
 		panelAjoutClt.setOpaque(true);
 		panelAjoutClt.setLayout(new BorderLayout());
 		
-//		panelBtn.setLayout(new FlowLayout(FlowLayout.RIGHT));
-//		panelBtn.add(btnValider);
-//		panelBtn.add(btnAnnuler);
-		PanelClient panClt = new PanelClient();
+		panelBtn.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		panelBtn.add(getBtnValider());
+		panelBtn.add(getBtnAnnuler());
 		
-//		panelAjoutClt.add(panelBtn);
-		panelAjoutClt.add(panClt);
+		panelAjoutClt.add(panelBtn, BorderLayout.NORTH);
+		panelAjoutClt.add(panClt.initIHM(), BorderLayout.CENTER);
 		
 		this.setContentPane(panelAjoutClt);
 		
@@ -43,7 +45,7 @@ public class EcranAjoutClient extends JFrame{
 	public JButton getBtnValider() {
 		if(btnValider == null){
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/valider_rond.png")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/saveBlanc.jpg")));
 			btnValider = new JButton(image);
 		}
 		return btnValider;
@@ -53,7 +55,7 @@ public class EcranAjoutClient extends JFrame{
 	public JButton getBtnAnnuler() {
 		if(btnAnnuler == null){
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annuler_rond.png")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annulerBlanc.jpg")));
 			btnAnnuler = new JButton(image);
 		}
 		return btnAnnuler;

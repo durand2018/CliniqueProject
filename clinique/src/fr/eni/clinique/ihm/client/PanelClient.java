@@ -1,6 +1,7 @@
 package fr.eni.clinique.ihm.client;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -27,7 +28,7 @@ public class PanelClient extends JFrame {
 	}
 
 
-	private void initIHM() {
+	public Component initIHM() {
 		// creation panel
 		panelClt = new JPanel();
 		panelClt.setOpaque(true);
@@ -114,7 +115,8 @@ public class PanelClient extends JFrame {
 		panelClt.add(getJtRemarque(), gbc);
 		
 		
-		this.setContentPane(panelClt);
+		return panelClt;
+		
 	}
 
 

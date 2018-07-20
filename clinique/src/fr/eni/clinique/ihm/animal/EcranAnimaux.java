@@ -130,18 +130,11 @@ public class EcranAnimaux extends JFrame {
 		gbc.gridwidth = 3;
 		panelFields.add(getJtTatoo(), gbc);
 
-		// panels
-		gbcp.gridx = 0;
-		gbcp.gridy = 0;
+		// panels finaux
+		
 		panelFinal.add(panelBtn, BorderLayout.NORTH);
-		gbcp.gridx = 0;
-		gbcp.gridy = 1;
 		panelIterm.add(panelClt, BorderLayout.NORTH);
-		gbcp.gridx = 0;
-		gbcp.gridy = 1;
 		panelIterm.add(panelFields, BorderLayout.CENTER);
-		gbcp.gridx = 0;
-		gbcp.gridy = 2;
 		panelFinal.add(panelIterm, BorderLayout.CENTER);
 
 		this.setContentPane(panelFinal);
@@ -235,7 +228,7 @@ public class EcranAnimaux extends JFrame {
 	public JButton getBtnValider() {
 		if (btnValider == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/aim.png")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/saveBlanc.jpg")));
 			btnValider = new JButton(image);
 		}
 		return btnValider;
@@ -244,7 +237,7 @@ public class EcranAnimaux extends JFrame {
 	public JButton getBtnAnnuler() {
 		if (btnAnnuler == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/Forward24.gif")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annulerBlanc.jpg")));
 			btnAnnuler = new JButton(image);
 		}
 		return btnAnnuler;
