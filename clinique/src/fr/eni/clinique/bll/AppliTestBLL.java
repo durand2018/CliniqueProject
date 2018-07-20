@@ -40,28 +40,29 @@ public class AppliTestBLL {
 		// }
 
 		/////////////////////////////////////////////////////////////////////////// Animal
-		Animaux a1 = new Animaux("NomAnimal", "M", "Couleur", "Levrier", "Chien", 8, "KVBHJK464", false);
-		Animaux a2 = new Animaux("Lunette", "F", "Miroir", "Siamois", "Chat", 2, "KVB59464", false);
+//		Animaux a1 = new Animaux("NomAnimal", "M", "Couleur", "Levrier", "Chien", 8, "KVBHJK464", false);
+//		Animaux a2 = new Animaux("Lunette", "F", "Miroir", "Siamois", "Chat", 2, "KVB59464", false);
 		AnimalMger amger = null;
 		try {
 
 			amger = AnimalMger.getInstance();
 			// Ajout animal
-			amger.addAnimaux(a1);
-			amger.addAnimaux(a2);
-			afficherAnimal(amger.getList());
+//			amger.addAnimaux(a1);
+//			amger.addAnimaux(a2);
+//			afficherAnimal(amger.getList());
 			// Modif animal
-			System.out.println("\n Modification d'un animal :");
-			System.out.println("Animal avant :" + a1.toString());
-			a1.setNomAnimal("Bibou");
-			a1.setCouleur("Vert corridore");
-			a1.setSexe("F");
-			amger.updateAnimal(a1);
-			System.out.println("Animal après :" + a1.toString());
-			amger.removeAnimal(1);
-			System.out.println("\n Suppression d'un animal :" + a1);
-			System.out.println("\n Liste après suppression :");
-			afficherAnimal(amger.getList());
+//			System.out.println("\n Modification d'un animal :");
+//			System.out.println("Animal avant :" + a1.toString());
+//			a1.setNomAnimal("Bibou");
+//			a1.setCouleur("Vert corridore");
+//			a1.setSexe("F");
+//			amger.updateAnimal(a1);
+//			System.out.println("Animal après :" + a1.toString());
+//			amger.removeAnimal(1);
+//			System.out.println("\n Suppression d'un animal :" + a1);
+//			System.out.println("\n Liste après suppression :");
+			afficherAnimal(amger.selectAnimalByClient(2));
+			
 
 		} catch (BLLException e) {
 			e.printStackTrace();

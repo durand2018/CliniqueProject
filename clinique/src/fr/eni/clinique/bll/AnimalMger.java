@@ -94,4 +94,13 @@ public class AnimalMger {
 			throw new BLLException(sb.toString());
 		}
 	}
+	
+	public List<Animaux> selectAnimalByClient(int codeClient) throws BLLException {
+		try {
+			liste = daoAnimal.selectAnimalByClient(codeClient);
+		} catch (DALException e) {
+			throw new BLLException("Erreur dans la sélection.", e);
+		}
+		return liste;
+	}
 }

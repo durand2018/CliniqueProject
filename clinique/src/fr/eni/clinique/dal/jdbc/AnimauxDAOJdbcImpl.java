@@ -24,7 +24,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 	private static final String sqlUpdate = "update Animaux set NomAnimal=?,Sexe=?,Couleur=?,Race=?,Espece=?,CodeClient=?,"
 			+ "Tatouage=?,Antecedents=?,Archive=? where CodeAnimal = ?";
 	private static final String sqlDelete = "delete from Animaux where CodeAnimal=?";
-	private static final String sqlAnimalByClient = "SELECT CodeAnimal, NomAnimal, Sexe, Couleur, Race, Espece, ani.CodeClient, Tatouage, Antecedents, ani.Archive FROM Clients clt	JOIN Animaux ani on (clt.CodeClient = ani.CodeClient) WHERE ani.CodeClient = ?";
+	private static final String sqlAnimalByClient = "SELECT CodeAnimal, NomAnimal, Sexe, Couleur, Race, Espece, CodeClient, Tatouage, Antecedents, Archive FROM Animaux WHERE CodeClient = ?";
 
 	// Constructeur vide
 	public AnimauxDAOJdbcImpl() {
@@ -240,7 +240,6 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 		PreparedStatement rqt = null;
 		ResultSet rs = null;
 		Animaux ani = null;
-//		 Clients clt = null;
 		List<Animaux> lesAnimaux = new ArrayList<>();
 		try {
 			// Lancement connexion
@@ -249,12 +248,9 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			rqt = cnx.prepareStatement(sqlAnimalByClient);
 			rqt.setInt(1, CodeClient);
 			// Execution Select
-			rqt.executeUpdate();
+			rs = rqt.executeQuery();
 			// transfert infos BDD dans la liste
 			while (rs.next()) {
-//				 clt = new Clients();
-//				 clt.setNomClient(rs.getString("NomClient"));
-//				 clt.setPrenomClient(rs.getString("PrenomClient"));
 				ani = new Animaux();
 				ani.setCodeAnimal(rs.getInt("CodeAnimal"));
 				ani.setNomAnimal(rs.getString("NomAnimal"));
