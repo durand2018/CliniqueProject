@@ -24,8 +24,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 	private static final String sqlUpdate = "update Animaux set NomAnimal=?,Sexe=?,Couleur=?,Race=?,Espece=?,CodeClient=?,"
 			+ "Tatouage=?,Antecedents=?,Archive=? where CodeAnimal = ?";
 	private static final String sqlDelete = "delete from Animaux where CodeAnimal=?";
-	private static final String sqlAnimalByClient = "SELECT * FROM Clients clt	JOIN Animaux ani "
-			+ "on (clt.CodeClient = ani.CodeClient) WHERE clt.CodeClient = ?";
+	private static final String sqlAnimalByClient = "SELECT CodeAnimal, NomAnimal, Sexe, Couleur, Race, Espece, ani.CodeClient, Tatouage, Antecedents, ani.Archive FROM Clients clt	JOIN Animaux ani on (clt.CodeClient = ani.CodeClient) WHERE ani.CodeClient = ?";
 
 	// Constructeur vide
 	public AnimauxDAOJdbcImpl() {
@@ -241,7 +240,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 		PreparedStatement rqt = null;
 		ResultSet rs = null;
 		Animaux ani = null;
-		// Clients clt = null;
+//		 Clients clt = null;
 		List<Animaux> lesAnimaux = new ArrayList<>();
 		try {
 			// Lancement connexion
@@ -253,25 +252,25 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			rqt.executeUpdate();
 			// transfert infos BDD dans la liste
 			while (rs.next()) {
-				// clt = new Clients();
-				// clt.setNomClient(rs.getNString("NomClient"));
-				// clt.setPrenomClient(rs.getNString("PrenomClient"));
+//				 clt = new Clients();
+//				 clt.setNomClient(rs.getString("NomClient"));
+//				 clt.setPrenomClient(rs.getString("PrenomClient"));
 				ani = new Animaux();
 				ani.setCodeAnimal(rs.getInt("CodeAnimal"));
-				ani.setNomAnimal(rs.getString("nomAnimal"));
-				ani.setSexe(rs.getString("sexe"));
+				ani.setNomAnimal(rs.getString("NomAnimal"));
+				ani.setSexe(rs.getString("Sexe"));
 				ani.setCouleur(rs.getString("Couleur"));
-				ani.setRace(rs.getString("race"));
+				ani.setRace(rs.getString("Race"));
 				ani.setEspece(rs.getString("Espece"));
 				ani.setCodeClient(rs.getInt("CodeClient"));
-				ani.setTatouage(rs.getString("tatouage"));
+				ani.setTatouage(rs.getString("Tatouage"));
 				ani.setAntecedents(rs.getString("Antecedents"));
 				ani.setArchive(rs.getBoolean("Archive"));
 				lesAnimaux.add(ani);
 			}
 			return lesAnimaux;
 		} catch (SQLException e) {
-			throw new DALException("select all animals failed ! - ", e);
+			throw new DALException("select animals by customer failed ! - ", e);
 		} finally {
 			JdbcTools.closeConnection();
 		}

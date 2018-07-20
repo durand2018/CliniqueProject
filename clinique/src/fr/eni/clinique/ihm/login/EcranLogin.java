@@ -33,7 +33,7 @@ public class EcranLogin extends JFrame {
 	private JPanel panel;
 	public String codeRole;
 
-	
+
 
 	public EcranLogin() {
 		super("Connexion");

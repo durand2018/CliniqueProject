@@ -1,6 +1,7 @@
 package fr.eni.clinique.ihm.gestionpersonnel;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,11 +9,13 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import fr.eni.clinique.bll.BLLException;
@@ -28,9 +31,9 @@ public class EcranAjoutPers extends JFrame {
 	private JLabel jlMdp;
 	private JTextField jtMdp;
 	private JLabel jlRole;
-	private JTextField jtRole;
 	private JButton btnValider;
 	private JPanel panel;
+	private JPanel panelbtn;
 	private Personnels p;
 
 	private String Nom;
@@ -38,6 +41,12 @@ public class EcranAjoutPers extends JFrame {
 	private String Role;
 	private String MDP;
 	protected LoginMger mgr;
+
+	private JRadioButton rdbtnVET;
+	private JRadioButton rdbtnSEC;
+	private JRadioButton rdbtnADM;
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+
 	public EcranAjoutPers() {
 
 		super("Ajouter Personnel");
@@ -57,6 +66,11 @@ public class EcranAjoutPers extends JFrame {
 		panel.setOpaque(true);
 
 		panel.setLayout(new GridBagLayout());
+
+		panelbtn = new JPanel();
+		panelbtn.setOpaque(true);
+		panelbtn.setLayout(new FlowLayout());
+
 		GridBagConstraints gbc = new GridBagConstraints();
 
 		// ligne 1
@@ -80,16 +94,24 @@ public class EcranAjoutPers extends JFrame {
 		gbc.gridx = 1;
 		gbc.anchor = GridBagConstraints.WEST;
 		panel.add(getJtPNom(), gbc);
+		panelbtn.add(getJlRole());
 
-		// ligne 3
-		gbc.gridx = 0;
-		gbc.gridy = 2;
-		gbc.anchor = GridBagConstraints.EAST;
-		panel.add(getJlRole(), gbc);
+		// bouton VET
+		
+		panelbtn.add(getRdbtnVET());
+		buttonGroup_1.add(rdbtnVET);
 
-		gbc.gridx = 1;
-		gbc.anchor = GridBagConstraints.EAST;
-		panel.add(getJtRole(), gbc);
+		// bouton SEC
+
+		panelbtn.add(getRdbtnSEC());
+		buttonGroup_1.add(rdbtnSEC);
+
+		// bouton ADM
+		panelbtn.add(getRdbtnADM());
+		buttonGroup_1.add(rdbtnADM);
+
+
+		panel.add(panelbtn);
 
 		// ligne 4
 		gbc.gridx = 0;
@@ -109,7 +131,6 @@ public class EcranAjoutPers extends JFrame {
 		gbc.fill = GridBagConstraints.WEST;
 
 		panel.add(getBtnValider(), gbc);
-
 		this.setContentPane(panel);
 
 	}
@@ -164,11 +185,32 @@ public class EcranAjoutPers extends JFrame {
 		return jlRole;
 	}
 
-	public JTextField getJtRole() {
-		if (jtRole == null) {
-			jtRole = new JTextField(20);
+	// public JTextField getJtRole() {
+	// if (jtRole == null) {
+	// jtRole = new JTextField(20);
+	// }
+	// return jtRole;
+	// }
+
+	public JRadioButton getRdbtnVET() {
+		if (rdbtnVET == null) {
+			rdbtnVET = new JRadioButton("VET");
 		}
-		return jtRole;
+		return rdbtnVET;
+	}
+
+	public JRadioButton getRdbtnSEC() {
+		if (rdbtnSEC == null) {
+			rdbtnSEC = new JRadioButton("SEC");
+		}
+		return rdbtnSEC;
+	}
+
+	public JRadioButton getRdbtnADM() {
+		if (rdbtnADM == null) {
+			rdbtnADM = new JRadioButton("ADM");
+		}
+		return rdbtnADM;
 	}
 
 	// ajouter les données saisie a la base de donnée
@@ -182,27 +224,31 @@ public class EcranAjoutPers extends JFrame {
 					// recupertation des valeur dans des variable
 					Nom = jtNom.getText();
 					Prenom = jtPNom.getText();
-					Role = jtRole.getText();
+					if (rdbtnSEC.isSelected()) {
+						Role = "SEC";
+					} else if (rdbtnADM.isSelected()) {
+						Role = "ADM";
+					} else {
+						Role = "VET";
+					}
+
 					MDP = jtMdp.getText();
-					Personnels p = new Personnels(Nom,Prenom,MDP,Role,false);
-					
+					Personnels p = new Personnels(Nom, Prenom, MDP, Role, false);
+
 					try {
 						mgr.addPersonnel(p);
 					} catch (BLLException e1) {
 						// TODO Auto-generated catch block
 						System.err.println("probleme ajout dans EcranAjouPers");
 					}
-				 
-					
+
 					dispose();
-					
-					
+
 					// afficher ecran de gestion a jour apres validation
 					EcranGestion EcranGestion = new EcranGestion();
 					EcranGestion.setSize(new Dimension(1000, 500));
 					EcranGestion.setVisible(true);
 					EcranGestion.pack();
-					EcranGestion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 					// test console
 					System.out.println("Ajout d'de personnel");
