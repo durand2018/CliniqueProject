@@ -22,7 +22,7 @@ public class TestGestion {
 				EcranGestion.setSize(new Dimension(1000,500));
 				EcranGestion.setVisible(true);
 				EcranGestion.pack();
-				EcranGestion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				
 				}
 		
 			});

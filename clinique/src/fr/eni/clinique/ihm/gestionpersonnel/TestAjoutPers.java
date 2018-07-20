@@ -19,7 +19,7 @@ public class TestAjoutPers {
 				ecranAjout.setSize(new Dimension(800,600));
 				ecranAjout.setVisible(true);
 				
-				ecranAjout.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				
 				
 				}
 			});

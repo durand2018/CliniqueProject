@@ -99,7 +99,8 @@ public class EcranGestion extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 
 					EcranAjoutPers EcranAjout = new EcranAjoutPers();
-					EcranAjout.setSize(new Dimension(800, 600));
+					EcranAjout.setSize(new Dimension(400, 300));
+					pack();
 					dispose();
 					EcranAjout.setVisible(true);
 				}
@@ -124,17 +125,26 @@ public class EcranGestion extends JFrame {
 
 					try {
 						mgr.removePersonnel(i);
+						
+						
+						
 						dispose();
-
 						EcranGestion EcranGestion = new EcranGestion();
 						EcranGestion.setSize(new Dimension(800, 300));
 						EcranGestion.setVisible(true);
 						EcranGestion.pack();
 						
 					} catch (BLLException e1) {
-						// TODO Auto-generated catch block
+						
+//---------------ne marche pas 	
+						if(0==0){
+							JOptionPane.showMessageDialog(null, "sectionnez un membre du personnel","suppression d'un client",JOptionPane.WARNING_MESSAGE);
+							return;
+						}
 						System.err.println("probleme EcranGestion personnel non supprimé ");
 						System.err.println("ou probleme errreur  base de donnée ");
+						
+//----------------------------
 					}
 
 				}

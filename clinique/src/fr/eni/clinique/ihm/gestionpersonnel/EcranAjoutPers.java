@@ -1,5 +1,6 @@
 package fr.eni.clinique.ihm.gestionpersonnel;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -69,32 +70,33 @@ public class EcranAjoutPers extends JFrame {
 
 		panelbtn = new JPanel();
 		panelbtn.setOpaque(true);
-		panelbtn.setLayout(new FlowLayout());
-
+		panelbtn.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 
+		
+		
 		// ligne 1
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		gbc.anchor = GridBagConstraints.EAST;
+		gbc.anchor = GridBagConstraints.WEST;
 		gbc.insets = new Insets(2, 2, 2, 2);
 		panel.add(getJlNom(), gbc);
 
 		gbc.gridx = 1;
-		gbc.anchor = GridBagConstraints.EAST;
 		panel.add(getJtNom(), gbc);
 
 		// ligne 2
 		gbc.gridx = 0;
 		gbc.gridy = 1;
-		gbc.anchor = GridBagConstraints.EAST;
-
 		panel.add(getJlPNom(), gbc);
 
 		gbc.gridx = 1;
-		gbc.anchor = GridBagConstraints.WEST;
 		panel.add(getJtPNom(), gbc);
-		panelbtn.add(getJlRole());
+		
+		// ligne 3
+		gbc.gridx = 0;
+		gbc.gridy = 2;
+		panel.add(getJlRole(),gbc);
 
 		// bouton VET
 		
@@ -110,25 +112,23 @@ public class EcranAjoutPers extends JFrame {
 		panelbtn.add(getRdbtnADM());
 		buttonGroup_1.add(rdbtnADM);
 
-
-		panel.add(panelbtn);
+		gbc.gridx = 1;
+		gbc.gridy = 2;
+		gbc.fill=GridBagConstraints.HORIZONTAL;
+		panel.add(panelbtn,gbc);
 
 		// ligne 4
 		gbc.gridx = 0;
 		gbc.gridy = 3;
-		gbc.anchor = GridBagConstraints.EAST;
 		panel.add(getJlMdp(), gbc);
 
 		gbc.gridx = 1;
-		gbc.anchor = GridBagConstraints.EAST;
 		panel.add(getJtMdp(), gbc);
 
 		// ligne 5
-		gbc.gridx = 0;
+		gbc.gridx = 1;
 		gbc.gridy = 4;
-		gbc.gridwidth = 2;
-		gbc.gridheight = 3;
-		gbc.fill = GridBagConstraints.WEST;
+		gbc.fill = GridBagConstraints.EAST;
 
 		panel.add(getBtnValider(), gbc);
 		this.setContentPane(panel);
