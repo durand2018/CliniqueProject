@@ -15,9 +15,8 @@ public class EcranAjoutClient extends JFrame{
 	private JPanel panelAjoutClt, panelBtn;
 	
 	public EcranAjoutClient() {
-		super();
+		super("Ajouter Client");
 		initIHM();
-		
 	}
 
 
@@ -37,9 +36,6 @@ public class EcranAjoutClient extends JFrame{
 		panelAjoutClt.add(panClt.initIHM(), BorderLayout.CENTER);
 		
 		this.setContentPane(panelAjoutClt);
-		
-		
-		
 	}
 	
 	public JButton getBtnValider() {

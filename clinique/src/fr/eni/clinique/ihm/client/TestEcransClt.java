@@ -13,7 +13,8 @@ public class TestEcransClt {
 			
 			@Override
 			public void run (){
-				EcranAjoutClient ecranclt = new EcranAjoutClient ();
+//				EcranAjoutClient ecranclt = new EcranAjoutClient ();
+				EcranClients ecranclt = new EcranClients();
 				ecranclt.setSize(new Dimension(500,500));
 				ecranclt.setVisible(true);
 				

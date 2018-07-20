@@ -24,7 +24,6 @@ public class PanelClient extends JFrame {
 	public PanelClient()  {
 		super();
 		initIHM();
-		
 	}
 
 
@@ -40,6 +39,7 @@ public class PanelClient extends JFrame {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.insets = new Insets(5, 5, 5, 5);
 		//Ligne 1
+		gbc.anchor = GridBagConstraints.WEST;
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		panelClt.add(getJlCodeClt(), gbc);
