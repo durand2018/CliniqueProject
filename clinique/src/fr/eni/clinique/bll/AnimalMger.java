@@ -3,6 +3,7 @@ package fr.eni.clinique.bll;
 import java.util.List;
 
 import fr.eni.clinique.bo.Animaux;
+import fr.eni.clinique.bo.Races;
 import fr.eni.clinique.dal.AnimauxDAO;
 import fr.eni.clinique.dal.DALException;
 import fr.eni.clinique.dal.DAOFactory;
@@ -11,14 +12,16 @@ public class AnimalMger {
 
 	private static AnimalMger instance = null;
 	private AnimauxDAO daoAnimal = DAOFactory.getAnimauxDAO();
-	private List<Animaux> liste;
+	private List<Animaux> listeAni;
+	private List<Races> listeEscpece;
+	private List<Races> listeRace;
 
 	private AnimalMger() throws BLLException {
 		super();
 		try {
-			liste = daoAnimal.selectAll();
+			listeAni = daoAnimal.selectAll();
 		} catch (DALException e) {
-			throw new BLLException("Erreur dans la liste des animaux.", e);
+			throw new BLLException("Erreur dans la listeAni des animaux.", e);
 		}
 	}
 
@@ -31,11 +34,11 @@ public class AnimalMger {
 
 	public List<Animaux> getList() throws BLLException {
 		try {
-			liste = daoAnimal.selectAll();
+			listeAni = daoAnimal.selectAll();
 		} catch (DALException e) {
-			throw new BLLException("Erreur dans la liste des animaux.", e);
+			throw new BLLException("Erreur dans la listeAni des animaux.", e);
 		}
-		return liste;
+		return listeAni;
 	}
 
 	public void addAnimaux(Animaux a) throws BLLException {
@@ -61,14 +64,14 @@ public class AnimalMger {
 
 	public void removeAnimal(int codeAnimal) throws BLLException {
 		try {
-			daoAnimal.delete(liste.get(codeAnimal).getCodeAnimal());
+			daoAnimal.delete(listeAni.get(codeAnimal).getCodeAnimal());
 		} catch (DALException e) {
 			throw new BLLException("Echec suppression animal " + codeAnimal, e);
 		}
 	}
 
 	public Animaux getAnimal(int codeAnimal) {
-		return liste.get(codeAnimal);
+		return listeAni.get(codeAnimal);
 	}
 
 	public void validerAnimal(Animaux a) throws BLLException {
@@ -94,13 +97,32 @@ public class AnimalMger {
 			throw new BLLException(sb.toString());
 		}
 	}
-	
+
 	public List<Animaux> selectAnimalByClient(int codeClient) throws BLLException {
 		try {
-			liste = daoAnimal.selectAnimalByClient(codeClient);
+			listeAni = daoAnimal.selectAnimalByClient(codeClient);
 		} catch (DALException e) {
 			throw new BLLException("Erreur dans la sélection.", e);
 		}
-		return liste;
+		return listeAni;
 	}
+
+	public List<Races> selectEspece() throws BLLException {
+		try {
+			listeEscpece = daoAnimal.selectEspece();
+		} catch (DALException e) {
+			throw new BLLException("Erreur dans la sélection.", e);
+		}
+		return listeEscpece;
+	}
+
+	public List<Races> selectRace() throws BLLException {
+		try {
+			listeRace = daoAnimal.selectRace();
+		} catch (DALException e) {
+			throw new BLLException("Erreur dans la sélection.", e);
+		}
+		return listeRace;
+	}
+
 }

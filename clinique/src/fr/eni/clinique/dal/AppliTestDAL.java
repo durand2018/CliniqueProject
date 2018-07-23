@@ -5,6 +5,7 @@ import java.util.List;
 import fr.eni.clinique.bo.Animaux;
 import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.bo.Personnels;
+import fr.eni.clinique.bo.Races;
 
 public class AppliTestDAL {
 
@@ -111,10 +112,10 @@ public class AppliTestDAL {
 //			Animaux a = AnimauxDAO.selectByCode(a2.getCodeAnimal());
 //			System.out.println("\n Sélection d'un animal par code : " + a.toString());
 			
-			// Sélection d'un Animal
-			List<Animaux> AnimalList = AnimauxDAO.selectAnimalByClient(2);
-			System.out.println("\n Sélection d'un animal par code : " );
-			afficherAnimaux(AnimalList);
+			// Sélection d'une espece
+			List<Races> EspeceList = AnimauxDAO.selectEspece();
+			System.out.println("\n Sélection des espèces : " );
+			afficherEspece(EspeceList);
 
 			// Sélection de tout le Animal
 			List<Animaux> Animaux = AnimauxDAO.selectAll();
@@ -156,6 +157,14 @@ public class AppliTestDAL {
 		StringBuffer sb = new StringBuffer();
 		for (Animaux art : Animaux) {
 			sb.append(art.toString());
+			sb.append("\n");
+		}
+		System.out.println(sb.toString());
+	}
+	private static void afficherEspece(List<Races> Espece) {
+		StringBuffer sb = new StringBuffer();
+		for (Races spc : Espece) {
+			sb.append(spc.toString());
 			sb.append("\n");
 		}
 		System.out.println(sb.toString());

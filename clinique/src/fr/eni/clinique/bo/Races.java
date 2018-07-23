@@ -7,6 +7,13 @@ public class Races {
 	
 	
 	
+	public Races() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public Races(String race, String espece) {
 		super();
 		this.Race = race;

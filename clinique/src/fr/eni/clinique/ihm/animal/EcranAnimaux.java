@@ -8,6 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,6 +18,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fr.eni.clinique.bll.AnimalMger;
+import fr.eni.clinique.bll.BLLException;
+import fr.eni.clinique.bo.Races;
+
 @SuppressWarnings("serial")
 public class EcranAnimaux extends JFrame {
 
@@ -24,11 +29,26 @@ public class EcranAnimaux extends JFrame {
 	private JLabel jlClient, jlCode, jlName, jlColor, jlSpecies, jlRace, jlTatoo;
 	private JTextField jtClient, jtCode, jtName, jtColor, jtTatoo;
 	private JButton btnValider, btnAnnuler;
-	private JComboBox<String> jcombSexe, jcombSpicies, jcombRace;
+	private JComboBox<String> jcombSexe, jcombSpicies, jcombRaces;
+	private AnimalMger mgr;
 
 	public EcranAnimaux() {
-		super();
+		super("Animaux");
+		try {
+			mgr = AnimalMger.getInstance();
+		} catch (BLLException e) {
+			e.printStackTrace();
+			System.out.println("Aucun animal à afficher !");
+		}
+
 		initIHM();
+		jtCode.setText(Integer.toString(mgr.getAnimal(0).getCodeAnimal()));
+		jtName.setText(mgr.getAnimal(0).getNomAnimal());
+		jtColor.setText(mgr.getAnimal(0).getCouleur());
+		jcombSexe.setToolTipText(mgr.getAnimal(0).getSexe());
+		jcombSpicies.setToolTipText(mgr.getAnimal(0).getEspece());
+		jcombRaces.setToolTipText(mgr.getAnimal(0).getRace());
+		jtTatoo.setText(mgr.getAnimal(0).getTatouage());
 	}
 
 	private void initIHM() {
@@ -119,7 +139,7 @@ public class EcranAnimaux extends JFrame {
 		panelFields.add(getJlRace(), gbc);
 
 		gbc.gridx = 4;
-		panelFields.add(getJcombRace(), gbc);
+		panelFields.add(getJcombRaces(), gbc);
 
 		// ligne 5
 		gbc.gridx = 0;
@@ -131,7 +151,7 @@ public class EcranAnimaux extends JFrame {
 		panelFields.add(getJtTatoo(), gbc);
 
 		// panels finaux
-		
+
 		panelFinal.add(panelBtn, BorderLayout.NORTH);
 		panelIterm.add(panelClt, BorderLayout.NORTH);
 		panelIterm.add(panelFields, BorderLayout.CENTER);
@@ -228,7 +248,7 @@ public class EcranAnimaux extends JFrame {
 	public JButton getBtnValider() {
 		if (btnValider == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/saveBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/valider_rond.jpg")));
 			btnValider = new JButton(image);
 		}
 		return btnValider;
@@ -255,18 +275,47 @@ public class EcranAnimaux extends JFrame {
 	public JComboBox<String> getJcombSpicies() {
 		jcombSpicies = new JComboBox<String>();
 		jcombSpicies.setPreferredSize(new Dimension(150, 20));
-		jcombSpicies.addItem("test1");
-		jcombSpicies.addItem("test2");
+		Iterator<Races> itR;
+
+		try {
+			itR = mgr.selectEspece().iterator();
+			Races ra;
+			while (itR.hasNext()) {
+				ra = itR.next();
+				jcombSpicies.addItem(ra.getEspece());
+			}
+		} catch (BLLException e) {
+			e.printStackTrace();
+		}
 
 		return jcombSpicies;
 	}
 
-	public JComboBox<String> getJcombRace() {
-		jcombRace = new JComboBox<String>();
-		jcombRace.setPreferredSize(new Dimension(150, 20));
-		jcombRace.addItem("test1");
-		jcombRace.addItem("test2");
-		return jcombRace;
+	public JComboBox<String> getJcombRaces() {
+		jcombRaces = new JComboBox<String>();
+		jcombRaces.setPreferredSize(new Dimension(150, 20));
+		Iterator<Races> itR;
+
+		try {
+			itR = mgr.selectRace().iterator();
+			Races ra;
+			while (itR.hasNext()) {
+				ra = itR.next();
+				jcombRaces.addItem(ra.getRace());
+			}
+		} catch (BLLException e) {
+			e.printStackTrace();
+		}
+
+		return jcombRaces;
 	}
+
+	// public JComboBox<String> getJcombRace() {
+	// jcombRace = new JComboBox<String>();
+	// jcombRace.setPreferredSize(new Dimension(150, 20));
+	// jcombRace.addItem("test1");
+	// jcombRace.addItem("test2");
+	// return jcombRace;
+	// }
 
 }

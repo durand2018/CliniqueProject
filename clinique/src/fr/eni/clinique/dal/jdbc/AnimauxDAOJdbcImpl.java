@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.clinique.bo.Animaux;
-import fr.eni.clinique.bo.Clients;
+import fr.eni.clinique.bo.Races;
 import fr.eni.clinique.dal.AnimauxDAO;
 import fr.eni.clinique.dal.DALException;
 
@@ -25,6 +25,8 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			+ "Tatouage=?,Antecedents=?,Archive=? where CodeAnimal = ?";
 	private static final String sqlDelete = "delete from Animaux where CodeAnimal=?";
 	private static final String sqlAnimalByClient = "SELECT CodeAnimal, NomAnimal, Sexe, Couleur, Race, Espece, CodeClient, Tatouage, Antecedents, Archive FROM Animaux WHERE CodeClient = ?";
+	private static final String sqlEspece = "SELECT DISTINCT Espece FROM Races ORDER BY Espece";
+	private static final String sqlRace = "SELECT Race FROM Races WHERE Espece = ? ORDER BY Race";
 
 	// Constructeur vide
 	public AnimauxDAOJdbcImpl() {
@@ -270,6 +272,64 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 		} finally {
 			JdbcTools.closeConnection();
 		}
+	}
+
+	public List<Races> selectEspece() throws DALException {
+		Connection cnx = null;
+		Statement rqt = null;
+		ResultSet rs = null;
+		Races rc = null;
+		List<Races> lesEspeces = new ArrayList<>();
+		try {
+			// Lancement connexion
+			cnx = JdbcTools.getConnection();
+			// Preparation Select sans argument sur la BDD
+			rqt = cnx.createStatement();
+			// Execution Select
+			rs = rqt.executeQuery(sqlEspece);
+			// transfert infos BDD dans la liste
+			while (rs.next()) {
+				rc = new Races();
+				rc.setEspece(rs.getString("Espece"));
+
+				lesEspeces.add(rc);
+			}
+			return lesEspeces;
+		} catch (SQLException e) {
+			throw new DALException("select spicies failed ! - ", e);
+		} finally {
+			JdbcTools.closeConnection();
+		}
+
+	}
+
+	public List<Races> selectRace() throws DALException {
+		Connection cnx = null;
+		Statement rqt = null;
+		ResultSet rs = null;
+		Races rc = null;
+		List<Races> lesRaces = new ArrayList<>();
+		try {
+			// Lancement connexion
+			cnx = JdbcTools.getConnection();
+			// Preparation Select sans argument sur la BDD
+			rqt = cnx.createStatement();
+			// Execution Select
+			rs = rqt.executeQuery(sqlRace);
+			// transfert infos BDD dans la liste
+			while (rs.next()) {
+				rc = new Races();
+				rc.setRace(rs.getString("Race"));
+
+				lesRaces.add(rc);
+			}
+			return lesRaces;
+		} catch (SQLException e) {
+			throw new DALException("select races failed ! - ", e);
+		} finally {
+			JdbcTools.closeConnection();
+		}
+
 	}
 
 }
