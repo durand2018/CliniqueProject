@@ -3,7 +3,7 @@ package fr.eni.clinique.dal;
 import java.util.List;
 
 import fr.eni.clinique.bo.Animaux;
-import fr.eni.clinique.bo.Races;
+import fr.eni.clinique.bo.Race;
 
 public interface AnimauxDAO {
 
@@ -15,9 +15,9 @@ public interface AnimauxDAO {
 
 	public List<Animaux> selectAnimalByClient(int code) throws DALException;
 
-	public List<Races> selectEspece() throws DALException;
+	public List<Race> selectEspece() throws DALException;
 
-	public List<Races> selectRace() throws DALException;
+	public List<Race> selectRaceByEspece(String race) throws DALException;
 
 	public void update(Animaux data) throws DALException;
 

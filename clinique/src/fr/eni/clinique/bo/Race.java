@@ -1,20 +1,20 @@
 package fr.eni.clinique.bo;
 
-public class Races {
+public class Race {
 	
 	private String Race;
 	private String Espece;
 	
 	
 	
-	public Races() {
+	public Race() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
 
-	public Races(String race, String espece) {
+	public Race(String race, String espece) {
 		super();
 		this.Race = race;
 		this.Espece = espece;

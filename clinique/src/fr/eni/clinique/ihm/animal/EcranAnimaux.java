@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 
 import fr.eni.clinique.bll.AnimalMger;
 import fr.eni.clinique.bll.BLLException;
-import fr.eni.clinique.bo.Races;
+import fr.eni.clinique.bo.Race;
 
 @SuppressWarnings("serial")
 public class EcranAnimaux extends JFrame {
@@ -275,11 +275,11 @@ public class EcranAnimaux extends JFrame {
 	public JComboBox<String> getJcombSpicies() {
 		jcombSpicies = new JComboBox<String>();
 		jcombSpicies.setPreferredSize(new Dimension(150, 20));
-		Iterator<Races> itR;
+		Iterator<Race> itR;
 
 		try {
 			itR = mgr.selectEspece().iterator();
-			Races ra;
+			Race ra;
 			while (itR.hasNext()) {
 				ra = itR.next();
 				jcombSpicies.addItem(ra.getEspece());
@@ -294,11 +294,12 @@ public class EcranAnimaux extends JFrame {
 	public JComboBox<String> getJcombRaces() {
 		jcombRaces = new JComboBox<String>();
 		jcombRaces.setPreferredSize(new Dimension(150, 20));
-		Iterator<Races> itR;
+		Iterator<Race> itR;
+		String espece = null;
 
 		try {
-			itR = mgr.selectRace().iterator();
-			Races ra;
+			itR = mgr.selectRaceByEspece(espece).iterator();
+			Race ra;
 			while (itR.hasNext()) {
 				ra = itR.next();
 				jcombRaces.addItem(ra.getRace());

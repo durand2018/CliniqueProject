@@ -9,24 +9,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.clinique.bo.Animaux;
-import fr.eni.clinique.bo.Races;
+import fr.eni.clinique.bo.Race;
 import fr.eni.clinique.dal.AnimauxDAO;
 import fr.eni.clinique.dal.DALException;
 
 public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 
 	// requêtes SQL
-	private static final String sqlInsert = "insert into Animaux(NomAnimal,Sexe,Couleur,Race,Espece,CodeClient,Tatouage,"
+	private static final String SQL_INSERT = "insert into Animaux(NomAnimal,Sexe,Couleur,Race,Espece,CodeClient,Tatouage,"
 			+ "Archive) values(?,?,?,?,?,?,?,?)";
-	private static final String sqlSelectByCode = "select * from Animaux where CodeAnimal = ?";
-	private static final String sqlSelectAll = "select * from Animaux";
-	private static final String sqlSelectAllNoArchive = "select * from Animaux where Archive = 0";
-	private static final String sqlUpdate = "update Animaux set NomAnimal=?,Sexe=?,Couleur=?,Race=?,Espece=?,CodeClient=?,"
+	private static final String SQL_SELECT_BY_CODE = "select * from Animaux where CodeAnimal = ?";
+	private static final String SQL_SELECT_ALL = "select * from Animaux";
+	private static final String SQL_SELECT_ALL_NO_ARCHIVE = "select * from Animaux where Archive = 0";
+	private static final String SQL_UPDATE = "update Animaux set NomAnimal=?,Sexe=?,Couleur=?,Race=?,Espece=?,CodeClient=?,"
 			+ "Tatouage=?,Antecedents=?,Archive=? where CodeAnimal = ?";
-	private static final String sqlDelete = "delete from Animaux where CodeAnimal=?";
-	private static final String sqlAnimalByClient = "SELECT CodeAnimal, NomAnimal, Sexe, Couleur, Race, Espece, CodeClient, Tatouage, Antecedents, Archive FROM Animaux WHERE CodeClient = ?";
-	private static final String sqlEspece = "SELECT DISTINCT Espece FROM Races ORDER BY Espece";
-	private static final String sqlRace = "SELECT Race FROM Races WHERE Espece = ? ORDER BY Race";
+	private static final String SQL_DELETE = "delete from Animaux where CodeAnimal=?";
+	private static final String SQL_ANIMAL_BY_CLIENT = "SELECT CodeAnimal, NomAnimal, Sexe, Couleur, Race, Espece, CodeClient, Tatouage, Antecedents, Archive FROM Animaux WHERE CodeClient = ?";
+	private static final String SQL_ESPECE = "SELECT DISTINCT Espece FROM Races ORDER BY Espece";
+	private static final String SQL_SELECT_RACE_BY_ESPECE = "SELECT Race FROM Races WHERE Espece like ? ORDER BY Race;";
 
 	// Constructeur vide
 	public AnimauxDAOJdbcImpl() {
@@ -44,7 +44,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			// Lancement connexion
 			cnx = JdbcTools.getConnection();
 			// Lancement Select sur la BDD
-			rqt = cnx.prepareStatement(sqlSelectByCode);
+			rqt = cnx.prepareStatement(SQL_SELECT_BY_CODE);
 			rqt.setInt(1, code);
 			// Execution Select
 			rs = rqt.executeQuery();
@@ -84,7 +84,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			// Preparation Select sans argument sur la BDD
 			rqt = cnx.createStatement();
 			// Execution Select
-			rs = rqt.executeQuery(sqlSelectAll);
+			rs = rqt.executeQuery(SQL_SELECT_ALL);
 			// transfert infos BDD dans la liste
 			while (rs.next()) {
 				ani = new Animaux();
@@ -121,7 +121,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			// Preparation Select sans argument sur la BDD
 			rqt = cnx.createStatement();
 			// Execution Select
-			rs = rqt.executeQuery(sqlSelectAllNoArchive);
+			rs = rqt.executeQuery(SQL_SELECT_ALL_NO_ARCHIVE);
 			// transfert infos BDD dans la liste
 			while (rs.next()) {
 				ani = new Animaux();
@@ -154,7 +154,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			// Lancement connexion
 			cnx = JdbcTools.getConnection();
 			// Lancement Select sur la BDD
-			rqt = cnx.prepareStatement(sqlUpdate);
+			rqt = cnx.prepareStatement(SQL_UPDATE);
 			rqt.setString(1, data.getNomAnimal());
 			rqt.setString(2, data.getSexe());
 			rqt.setString(3, data.getCouleur());
@@ -182,7 +182,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			// Lancement connexion
 			cnx = JdbcTools.getConnection();
 			// Lancement Select sur la BDD
-			rqt = cnx.prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
+			rqt = cnx.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
 			String nomAni = data.getNomAnimal();
 			String sexe = data.getSexe();
 			String couleur = data.getCouleur();
@@ -226,7 +226,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			// Lancement connexion
 			cnx = JdbcTools.getConnection();
 			// Lancement Select sur la BDD
-			rqt = cnx.prepareStatement(sqlDelete);
+			rqt = cnx.prepareStatement(SQL_DELETE);
 			rqt.setInt(1, code);
 			// Execution Select
 			rqt.executeUpdate();
@@ -247,7 +247,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			// Lancement connexion
 			cnx = JdbcTools.getConnection();
 			// Preparation Select sans argument sur la BDD
-			rqt = cnx.prepareStatement(sqlAnimalByClient);
+			rqt = cnx.prepareStatement(SQL_ANIMAL_BY_CLIENT);
 			rqt.setInt(1, CodeClient);
 			// Execution Select
 			rs = rqt.executeQuery();
@@ -274,22 +274,22 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 		}
 	}
 
-	public List<Races> selectEspece() throws DALException {
+	public List<Race> selectEspece() throws DALException {
 		Connection cnx = null;
 		Statement rqt = null;
 		ResultSet rs = null;
-		Races rc = null;
-		List<Races> lesEspeces = new ArrayList<>();
+		Race rc = null;
+		List<Race> lesEspeces = new ArrayList<>();
 		try {
 			// Lancement connexion
 			cnx = JdbcTools.getConnection();
 			// Preparation Select sans argument sur la BDD
 			rqt = cnx.createStatement();
 			// Execution Select
-			rs = rqt.executeQuery(sqlEspece);
+			rs = rqt.executeQuery(SQL_ESPECE);
 			// transfert infos BDD dans la liste
 			while (rs.next()) {
-				rc = new Races();
+				rc = new Race();
 				rc.setEspece(rs.getString("Espece"));
 
 				lesEspeces.add(rc);
@@ -303,33 +303,34 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 
 	}
 
-	public List<Races> selectRace() throws DALException {
+	public List<Race> selectRaceByEspece(String espece) throws DALException {
 		Connection cnx = null;
-		Statement rqt = null;
+		PreparedStatement rqt = null;
 		ResultSet rs = null;
-		Races rc = null;
-		List<Races> lesRaces = new ArrayList<>();
+		Race race = null;
+		List<Race> lesRaces = new ArrayList<>();
 		try {
 			// Lancement connexion
 			cnx = JdbcTools.getConnection();
-			// Preparation Select sans argument sur la BDD
-			rqt = cnx.createStatement();
+			// Lancement Select sur la BDD
+			rqt = cnx.prepareStatement(SQL_SELECT_RACE_BY_ESPECE);
+			rqt.setString(1, espece);
 			// Execution Select
-			rs = rqt.executeQuery(sqlRace);
-			// transfert infos BDD dans la liste
+			rs = rqt.executeQuery();
+			// transfert info BDD dans l'instance de race si une ligne
+			// sélectionnée
 			while (rs.next()) {
-				rc = new Races();
-				rc.setRace(rs.getString("Race"));
+				race = new Race();
+				race.setRace(rs.getString("Race"));
 
-				lesRaces.add(rc);
+				lesRaces.add(race);
 			}
 			return lesRaces;
 		} catch (SQLException e) {
-			throw new DALException("select races failed ! - ", e);
+			throw new DALException("Cette race ne peut être affefctée ! - " + espece, e);
 		} finally {
 			JdbcTools.closeConnection();
 		}
-
 	}
 
 }
