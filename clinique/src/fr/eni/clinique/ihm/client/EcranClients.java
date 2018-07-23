@@ -10,9 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import fr.eni.clinique.ihm.animal.PanelAnimalByClt;
+
 public class EcranClients extends JFrame {
 	private JButton btnValider, btnAnnuler, btnAjouter, btnSupprimer, btnRechercher;
-	private JPanel panelClt, panelBtn, panelAni;
+	private JPanel panelClt, panelBtn, panelAni, panelBas;
 	
 	public EcranClients(){
 		super("Clients");
@@ -23,7 +25,9 @@ public class EcranClients extends JFrame {
 		panelClt = new JPanel();
 		panelBtn = new JPanel();
 		panelAni = new JPanel();
+		panelBas = new JPanel();
 		PanelClient panClt = new PanelClient();
+		PanelAnimalByClt panAni = new PanelAnimalByClt();
 		
 		panelBtn.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panelBtn.add(getBtnRechercher());
@@ -37,6 +41,7 @@ public class EcranClients extends JFrame {
 		panelClt.setBackground(Color.gray);
 		panelClt.add(panelBtn, BorderLayout.NORTH);
 		panelClt.add(panClt.initIHM(), BorderLayout.CENTER);
+//		panelClt.add(panAni.initIHM(),BorderLayout.SOUTH);
 		
 		this.setContentPane(panelClt);
 	}

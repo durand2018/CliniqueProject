@@ -9,10 +9,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class PanelAnimalByClt extends JFrame {
 	private JButton btnAjouter, btnSupprimer, btnEditer;
 	private JPanel panelBtn, panelAni;
+	private JTextArea tabProvisoire;
 
 	public PanelAnimalByClt(){
 		super();
@@ -32,7 +34,7 @@ public class PanelAnimalByClt extends JFrame {
 		panelBtn.add(getBtnEditer());
 		
 		panelAni.add(panelBtn,BorderLayout.SOUTH);
-		panelAni.add(panelAni,BorderLayout.CENTER);
+		panelAni.add(getTabProvisoire(),BorderLayout.CENTER);
 		
 		return panelAni;
 		
@@ -59,10 +61,19 @@ public class PanelAnimalByClt extends JFrame {
 	public JButton getBtnEditer() {
 		if(btnEditer == null){
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/eteindreBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/imprimerBlanc.jpg")));
 			btnEditer = new JButton(image);
 		}
 		return btnEditer;
 	}
+
+	public JTextArea getTabProvisoire() {
+		if (tabProvisoire == null){
+			tabProvisoire = new JTextArea(50,80);
+		}
+		return tabProvisoire;
+	}
+
+	
 
 }

@@ -16,11 +16,11 @@ public class EcranAjoutClient extends JFrame{
 	
 	public EcranAjoutClient() {
 		super("Ajouter Client");
-		initIHM();
+		initIHMAjoutClt();
 	}
 
 
-	private void initIHM() {
+	private void initIHMAjoutClt() {
 		panelAjoutClt = new JPanel();
 		panelBtn = new JPanel();
 		PanelClient panClt = new PanelClient();

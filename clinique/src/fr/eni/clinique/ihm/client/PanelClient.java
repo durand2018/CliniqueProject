@@ -10,15 +10,18 @@ import java.awt.Insets;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class PanelClient extends JFrame {
 	private JLabel jlCodeClt, jlNomClt, jlPrenomClt, jlAdresse, jlCodePostal, jlVille, jlNumTel,
 	jlAssurance, jlEmail, jlRemarque;
 	private JTextField jtCodeClt, jtNomClt, jtPrenomClt, jtAdresse1, jtAdresse2, jtCodePostal, jtVille, jtNumTel,
-	jtAssurance, jtEmail, jtRemarque;
+	jtAssurance, jtEmail;
+	private JTextArea jtRemarque;
+	private JScrollPane defil;
 	private JPanel panelClt;
-	
 	
 	
 	public PanelClient()  {
@@ -113,8 +116,13 @@ public class PanelClient extends JFrame {
 		panelClt.add(getJlRemarque(), gbc);
 		gbc.gridx = 1;
 		panelClt.add(getJtRemarque(), gbc);
+
+		//Mise en place scroll sur Case Remarque - ne fonctionne pas !
+//		defil = new JScrollPane(jtRemarque);
+//		panelClt.add(getDefil());
 		
-		
+		getJtRemarque().setLineWrap(true);
+				
 		return panelClt;
 		
 	}
@@ -280,16 +288,20 @@ public class PanelClient extends JFrame {
 	}
 
 
-	public JTextField getJtRemarque() {
+	public JTextArea getJtRemarque() {
 		if(jtRemarque == null){
-			jtRemarque = new JTextField(20);
+			jtRemarque = new JTextArea(5,20);
+//			defil = new JScrollPane(jtRemarque);
+			jtRemarque.setWrapStyleWord(true);
 		}
 		return jtRemarque;
 	}
-
-
 	
-	
-	
+//	public JScrollPane getDefil(){
+//		if(defil == null){
+//			defil = new JScrollPane(getJtRemarque());
+//		}
+//		return defil;
+//	}
 	
 }
