@@ -172,7 +172,7 @@ public class EcranLogin extends JFrame {
 								userExist = true;
 								userMdp = p.getMotPasse();
 								codeRole = p.getRole();
-								System.out.println(getCodeRole()+"Ecranlogin");
+								System.out.println(getCodeRole()+"  Ecranlogin");
 							}
 						}
 						if (userExist == false) {
@@ -193,6 +193,7 @@ public class EcranLogin extends JFrame {
 									JOptionPane.INFORMATION_MESSAGE);
 						}
 					} catch (BLLException e1) {
+						
 						System.out.println("Erreur connexion");
 					}
 				}

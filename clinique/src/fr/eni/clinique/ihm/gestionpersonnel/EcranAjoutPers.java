@@ -14,6 +14,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -73,8 +74,6 @@ public class EcranAjoutPers extends JFrame {
 		panelbtn.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 
-		
-		
 		// ligne 1
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -92,14 +91,14 @@ public class EcranAjoutPers extends JFrame {
 
 		gbc.gridx = 1;
 		panel.add(getJtPNom(), gbc);
-		
+
 		// ligne 3
 		gbc.gridx = 0;
 		gbc.gridy = 2;
-		panel.add(getJlRole(),gbc);
+		panel.add(getJlRole(), gbc);
 
 		// bouton VET
-		
+
 		panelbtn.add(getRdbtnVET());
 		buttonGroup_1.add(rdbtnVET);
 
@@ -114,8 +113,8 @@ public class EcranAjoutPers extends JFrame {
 
 		gbc.gridx = 1;
 		gbc.gridy = 2;
-		gbc.fill=GridBagConstraints.HORIZONTAL;
-		panel.add(panelbtn,gbc);
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		panel.add(panelbtn, gbc);
 
 		// ligne 4
 		gbc.gridx = 0;
@@ -238,8 +237,22 @@ public class EcranAjoutPers extends JFrame {
 					try {
 						mgr.addPersonnel(p);
 					} catch (BLLException e1) {
-						// TODO Auto-generated catch block
-						System.err.println("probleme ajout dans EcranAjouPers");
+						try {
+							mgr.validerPersonnel(p);
+						} catch (BLLException e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						}
+
+						if (Nom.length() > 30 || Prenom.length() > 30) {
+							JOptionPane.showMessageDialog(panel, "trop de caractère", "ajout personnel",
+									JOptionPane.INFORMATION_MESSAGE);
+
+						} else if (MDP.length() > 20) {
+							JOptionPane.showMessageDialog(panel, "MDP trop long ", "ajout personnel",
+									JOptionPane.INFORMATION_MESSAGE);
+						}
+
 					}
 
 					dispose();
@@ -251,7 +264,7 @@ public class EcranAjoutPers extends JFrame {
 					EcranGestion.pack();
 
 					// test console
-					System.out.println("Ajout d'de personnel");
+					System.out.println("Ajout de personnel");
 					System.out.println(Nom);
 					System.out.println(Prenom);
 					System.out.println(Role);

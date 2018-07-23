@@ -121,12 +121,14 @@ public class EcranGestion extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					int i = tableau.getSelectedRow();
-
+					int i = 0;
+					 i = tableau.getSelectedRow();
+					if(i==-1){
+						JOptionPane.showMessageDialog(null, "sectionnez un membre du personnel","suppression d'un client",JOptionPane.WARNING_MESSAGE);
+						return;
+					}
 					try {
 						mgr.removePersonnel(i);
-						
-						
 						
 						dispose();
 						EcranGestion EcranGestion = new EcranGestion();
@@ -136,15 +138,10 @@ public class EcranGestion extends JFrame {
 						
 					} catch (BLLException e1) {
 						
-//---------------ne marche pas 	
-						if(0==0){
-							JOptionPane.showMessageDialog(null, "sectionnez un membre du personnel","suppression d'un client",JOptionPane.WARNING_MESSAGE);
-							return;
-						}
 						System.err.println("probleme EcranGestion personnel non supprimé ");
 						System.err.println("ou probleme errreur  base de donnée ");
 						
-//----------------------------
+
 					}
 
 				}
@@ -163,15 +160,28 @@ public class EcranGestion extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					String mdp;
 					mdp = JOptionPane.showInputDialog("saisir le nouveau mot de passe");
+
+
+					int i = 0;
+					 i = tableau.getSelectedRow();
+					if(i==-1){
+						JOptionPane.showMessageDialog(null, "sectionnez un membre du personnel","réinitialisation mot de passe",JOptionPane.WARNING_MESSAGE);
+						return;
+					}
 					if( mdp.isEmpty()){
 						System.out.println("hey mdp = 0");
-						JOptionPane.showMessageDialog(null, "echec réinitialisation", "entrez un mot de passe!bon dieu..",
+						JOptionPane.showMessageDialog(null, "entrez un mot de passe!", "echec réinitialisation",
 								JOptionPane.ERROR_MESSAGE);
 					}
-					int i = tableau.getSelectedRow();
+					
 					try {
 						Personnels p = new Personnels();
-						p = mgr.getPersonnel(i);
+						try {
+							p = mgr.getPersonnel(i);
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						p.setMotPasse(mdp);
 						mgr.updatePersonnel(p);
 						dispose();

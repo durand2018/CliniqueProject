@@ -3,6 +3,8 @@ package fr.eni.clinique.bll;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import fr.eni.clinique.bo.Personnels;
 import fr.eni.clinique.dal.DALException;
 import fr.eni.clinique.dal.DAOFactory;
@@ -39,9 +41,11 @@ public class LoginMger {
 		return liste;
 	}
 	
+// try catch ne fonctionnent pas **********************************************************
 	public void addPersonnel(Personnels p) throws BLLException{
+		
 		if (p.getCodePers()!=0){
-			throw new BLLException("Membre de personnel déjà enregistré");
+			throw new BLLException("Membre du personnel déjà enregistré");
 		}
 		validerPersonnel(p);
 		try{
@@ -76,6 +80,7 @@ public class LoginMger {
 	public void validerPersonnel(Personnels p) throws BLLException {
 		boolean test = true;
 		StringBuffer sb = new StringBuffer();
+		
 		if (p.getNom().equals(null) ||p.getNom().trim().isEmpty()){
 			test=false;
 		sb.append("Nom non renseigné \n");
@@ -90,6 +95,8 @@ public class LoginMger {
 		}
 		if (test==false)
 		{
+		JOptionPane.showMessageDialog(null, "Remplissez les champs", "ajout personnel",
+					JOptionPane.INFORMATION_MESSAGE);
 		throw new BLLException(sb.toString());
 		}
 	}

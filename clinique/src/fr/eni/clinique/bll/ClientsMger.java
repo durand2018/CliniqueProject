@@ -2,6 +2,8 @@ package fr.eni.clinique.bll;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.bo.Personnels;
 import fr.eni.clinique.dal.ClientsDAO;
@@ -67,6 +69,7 @@ public class ClientsMger {
 			daoClients.delete(getClients(numeroLigne).getCodeClient());
 		} catch (DALException e){
 			throw new BLLException("Echec delete client "+ numeroLigne, e);
+			
 		}
 	}
 	public Clients getClients(int codeClient){
