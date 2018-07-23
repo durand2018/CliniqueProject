@@ -20,7 +20,6 @@ public class TestAjoutPers {
 				ecranAjout.setVisible(true);
 				ecranAjout.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
-				
 				}
 			});
 		
