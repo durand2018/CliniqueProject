@@ -1,10 +1,10 @@
 package fr.eni.clinique.bll;
 
-import java.util.List;
+//import java.util.List;
 
-import fr.eni.clinique.bo.Animaux;
+//import fr.eni.clinique.bo.Animaux;
 import fr.eni.clinique.bo.Clients;
-import fr.eni.clinique.bo.Personnels;
+//import fr.eni.clinique.bo.Personnels;
 
 public class AppliTestBLL {
 

@@ -2,21 +2,18 @@ package fr.eni.clinique.bll;
 
 import java.util.List;
 
-import javax.swing.JOptionPane;
 
 import fr.eni.clinique.bo.Clients;
-import fr.eni.clinique.bo.Personnels;
 import fr.eni.clinique.dal.ClientsDAO;
 import fr.eni.clinique.dal.DALException;
 import fr.eni.clinique.dal.DAOFactory;
-import fr.eni.clinique.dal.PersonnelDAO;
 
 public class ClientsMger {
 	private static ClientsMger instance = null;
 	private ClientsDAO daoClients = DAOFactory.getClientsDAO();
 	private List<Clients> liste;
 
-	private ClientsMger() throws BLLException {
+	public ClientsMger() throws BLLException {
 		super();
 		try {
 			liste = daoClients.selectAll();

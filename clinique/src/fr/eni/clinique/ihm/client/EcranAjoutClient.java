@@ -1,6 +1,7 @@
 package fr.eni.clinique.ihm.client;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -71,9 +72,16 @@ public class EcranAjoutClient extends JFrame{
 					System.out.println(cltAffiche);
 					try {
 						// Sauvegarde un nouveau client dans la BDD
+						mger = new ClientsMger();
 						mger.addClients(cltAffiche);
 						// Ferme l'écran
 						dispose();
+						EcranClients ecranClt = new EcranClients();
+						PanelClient panClt = new PanelClient();
+						ecranClt.setSize(new Dimension(1000,600));
+						ecranClt.setVisible(true);
+						panClt.RemplirPanelClt(2);
+						ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					} catch (BLLException e1) {
 						JOptionPane.showConfirmDialog(EcranAjoutClient.this, "Une erreur est survenue lors de l'Ajout");
 						e1.printStackTrace();

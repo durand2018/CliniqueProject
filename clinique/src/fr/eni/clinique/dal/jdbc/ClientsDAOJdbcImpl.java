@@ -223,7 +223,6 @@ public class ClientsDAOJdbcImpl implements ClientsDAO {
 		} finally {
 			JdbcTools.closeConnection();
 		}
-		// TODO Auto-generated method stub
 
 	}
 
