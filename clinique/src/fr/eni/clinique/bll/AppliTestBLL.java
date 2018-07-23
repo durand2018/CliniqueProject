@@ -1,10 +1,14 @@
 package fr.eni.clinique.bll;
 
-import java.util.List;
-
 import fr.eni.clinique.bo.Animaux;
+
+//import java.util.List;
+
+//import fr.eni.clinique.bo.Animaux;
 import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.bo.Personnels;
+import fr.eni.clinique.bo.Race;
+
 
 public class AppliTestBLL {
 
@@ -41,12 +45,12 @@ public class AppliTestBLL {
 		// }
 
 		/////////////////////////////////////////////////////////////////////////// Animal
-//		Animaux a1 = new Animaux("NomAnimal", "M", "Couleur", "Levrier", "Chien", 8, "KVBHJK464", false);
-//		Animaux a2 = new Animaux("Lunette", "F", "Miroir", "Siamois", "Chat", 2, "KVB59464", false);
-//		AnimalMger amger = null;
-//		try {
-//
-//			amger = AnimalMger.getInstance();
+		Animaux a1 = new Animaux("NomAnimal", "M", "Couleur", "Levrier", "Chien", 8, "KVBHJK464", false);
+		Animaux a2 = new Animaux("Lunette", "F", "Miroir", "Siamois", "Chat", 2, "KVB59464", false);
+		AnimalMger amger = null;
+		try {
+
+			amger = AnimalMger.getInstance();
 			// Ajout animal
 //			amger.addAnimaux(a1);
 //			amger.addAnimaux(a2);
@@ -63,12 +67,12 @@ public class AppliTestBLL {
 //			System.out.println("\n Suppression d'un animal :" + a1);
 //			System.out.println("\n Liste après suppression :");
 //			afficherAnimal(amger.selectAnimalByClient(2));
-//			
-//
-//		} catch (BLLException e) {
-//			e.printStackTrace();
-//		}
-//	}
+//			afficherAnimalRace(amger.selectEspece());
+
+		} catch (BLLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	///////////////////////////////////////////////////////////////////////////
 	// Afficher animal
@@ -80,31 +84,43 @@ public class AppliTestBLL {
 //		}
 //		System.out.println(sb.toString());
 //	}
-	/////////////////////////////////////////////////////////////////////////// Afficher
-	// personnel
-	// private static void afficherPersonnel(List<Personnels> perso) {
-	// StringBuffer sb = new StringBuffer();
-	// for (Personnels a : perso) {
-	// sb.append(a.toString());
-	// sb.append("\n");
-	// }
-	// System.out.println(sb.toString());
-	//
-	// }
-	
-	/////////////////////////////////////////////////////////////////////////// Client 
-	Clients c1 = new Clients("Truc","Alain","19 Once ","","91934","SEMARE","01 95 86 03 09","MMA","dededudu@yahouuuu.fr","Attention à bien le faire payer en liquide car il est interdit bancaire. ",false);
-	Clients c2 = new Clients("MET", "Val", "1 rue des ET", "La Base", "44440", "RIAIL", "02 15 48 15 49","AXA","vmet@sfr.fr","", false);
-	ClientsMger cmger = null;
-	try {
-
-		cmger = ClientsMger.getInstance();
-		// Ajout clients
-		cmger.addClients(c1);
-		cmger.addClients(c2);
-
-	} catch (BLLException e) {
-		e.printStackTrace();
+//	private static void afficherAnimalRace(List<Race> anirace) {
+		StringBuffer sb = new StringBuffer();
+		for (Race r : anirace) {
+			sb.append(r.toString());
+			sb.append("\n");
+		}
+		System.out.println(sb.toString());
 	}
 }
-}
+/////////////////////////////////////////////////////////////////////////// Afficher
+// personnel
+// private static void afficherPersonnel(List<Personnels> perso) {
+// StringBuffer sb = new StringBuffer();
+// for (Personnels a : perso) {
+// sb.append(a.toString());
+// sb.append("\n");
+// }
+// System.out.println(sb.toString());
+//
+// }
+
+/////////////////////////////////////////////////////////////////////////// Client
+// Clients c1 = new Clients("Truc","Alain","19 Once
+// ","","91934","SEMARE","01 95 86 03
+// 09","MMA","dededudu@yahouuuu.fr","Attention à bien le faire payer en
+// liquide car il est interdit bancaire. ",false);
+// Clients c2 = new Clients("MET", "Val", "1 rue des ET", "La Base",
+// "44440", "RIAIL", "02 15 48 15 49","AXA","vmet@sfr.fr","", false);
+// ClientsMger cmger = null;
+// try {
+//
+// cmger = ClientsMger.getInstance();
+// // Ajout clients
+// cmger.addClients(c1);
+// cmger.addClients(c2);
+//
+// } catch (BLLException e) {
+// e.printStackTrace();
+// }
+// }}

@@ -3,7 +3,7 @@ package fr.eni.clinique.bll;
 import java.util.List;
 
 import fr.eni.clinique.bo.Animaux;
-import fr.eni.clinique.bo.Races;
+import fr.eni.clinique.bo.Race;
 import fr.eni.clinique.dal.AnimauxDAO;
 import fr.eni.clinique.dal.DALException;
 import fr.eni.clinique.dal.DAOFactory;
@@ -13,8 +13,8 @@ public class AnimalMger {
 	private static AnimalMger instance = null;
 	private AnimauxDAO daoAnimal = DAOFactory.getAnimauxDAO();
 	private List<Animaux> listeAni;
-	private List<Races> listeEscpece;
-	private List<Races> listeRace;
+	private List<Race> listeEscpece;
+	private List<Race> listeRace;
 
 	private AnimalMger() throws BLLException {
 		super();
@@ -107,7 +107,7 @@ public class AnimalMger {
 		return listeAni;
 	}
 
-	public List<Races> selectEspece() throws BLLException {
+	public List<Race> selectEspece() throws BLLException {
 		try {
 			listeEscpece = daoAnimal.selectEspece();
 		} catch (DALException e) {
@@ -116,9 +116,9 @@ public class AnimalMger {
 		return listeEscpece;
 	}
 
-	public List<Races> selectRace() throws BLLException {
+	public List<Race> selectRaceByEspece(String espece) throws BLLException {
 		try {
-			listeRace = daoAnimal.selectRace();
+			listeRace = daoAnimal.selectRaceByEspece(espece);
 		} catch (DALException e) {
 			throw new BLLException("Erreur dans la sélection.", e);
 		}

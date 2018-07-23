@@ -15,8 +15,8 @@ import javax.swing.JTextField;
 
 import fr.eni.clinique.bo.Clients;
 
-//import fr.eni.clinique.bll.BLLException;
-//import fr.eni.clinique.bll.ClientsMger;
+import fr.eni.clinique.bll.BLLException;
+import fr.eni.clinique.bll.ClientsMger;
 
 @SuppressWarnings("serial")
 public class PanelClient extends JFrame {
@@ -27,33 +27,13 @@ public class PanelClient extends JFrame {
 	private JTextArea jtRemarque;
 //	private JScrollPane defil;
 	private JPanel panelClt;
-//	private ClientsMger mgr = null;
-//	private Integer numEnreg;
+	private ClientsMger mgr = null;
+	private Integer numEnreg;
 	
 	
 	public PanelClient()  {
 		super();
-		
-//		try {
-//			//Chargement du catalogue des clients
-//			mgr = ClientsMger.getInstance();
-//		} catch (BLLException e) {
-//			System.out.println("Aucun client à afficher");
-//			System.exit(1);
-//		}
 		initIHM();
-//		numEnreg = 0;
-//		jtCodeClt.setText(Integer.toString((mgr.getClients(numEnreg).getCodeClient())));
-//		jtNomClt.setText(mgr.getClients(numEnreg).getNomClient());
-//		jtPrenomClt.setText(mgr.getClients(numEnreg).getPrenomClient());
-//		jtAdresse1.setText(mgr.getClients(numEnreg).getAdresse1());
-//		jtAdresse2.setText(mgr.getClients(numEnreg).getAdresse2());
-//		jtCodePostal.setText(mgr.getClients(numEnreg).getCodePostal());
-//		jtVille.setText(mgr.getClients(numEnreg).getVille());
-//		jtNumTel.setText(mgr.getClients(numEnreg).getNumTel());
-//		jtAssurance.setText(mgr.getClients(numEnreg).getAssurance());
-//		jtEmail.setText(mgr.getClients(numEnreg).getEmail());
-//		jtRemarque.setText(mgr.getClients(numEnreg).getRemarque());
 	}
 
 
@@ -155,6 +135,29 @@ public class PanelClient extends JFrame {
 	}
 
 
+	public void RemplirPanelClt(int CodeClt){
+		try {
+			//Chargement du catalogue des clients
+			mgr = ClientsMger.getInstance();
+		} catch (BLLException e) {
+			System.out.println("Aucun client à afficher");
+			System.exit(1);
+		}
+		numEnreg = 0;
+		jtCodeClt.setText(Integer.toString((mgr.getClients(numEnreg).getCodeClient())));
+		jtNomClt.setText(mgr.getClients(numEnreg).getNomClient());
+		jtPrenomClt.setText(mgr.getClients(numEnreg).getPrenomClient());
+		jtAdresse1.setText(mgr.getClients(numEnreg).getAdresse1());
+		jtAdresse2.setText(mgr.getClients(numEnreg).getAdresse2());
+		jtCodePostal.setText(mgr.getClients(numEnreg).getCodePostal());
+		jtVille.setText(mgr.getClients(numEnreg).getVille());
+		jtNumTel.setText(mgr.getClients(numEnreg).getNumTel());
+		jtAssurance.setText(mgr.getClients(numEnreg).getAssurance());
+		jtEmail.setText(mgr.getClients(numEnreg).getEmail());
+		jtRemarque.setText(mgr.getClients(numEnreg).getRemarque());
+	}
+
+	
 	public JLabel getJlCodeClt() {
 		if(jlCodeClt == null){
 			jlCodeClt = new JLabel("Code ");
@@ -347,6 +350,7 @@ public class PanelClient extends JFrame {
 		cltCourant.setAssurance(getJtAssurance().getText());
 		cltCourant.setEmail(getJtEmail().getText());
 		cltCourant.setRemarque(getJtRemarque().getText());
+		cltCourant.setArchive(false);
 		System.out.println(cltCourant);
 		return cltCourant;
 		

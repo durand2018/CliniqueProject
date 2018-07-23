@@ -5,7 +5,7 @@ import java.util.List;
 import fr.eni.clinique.bo.Animaux;
 import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.bo.Personnels;
-import fr.eni.clinique.bo.Races;
+import fr.eni.clinique.bo.Race;
 
 public class AppliTestDAL {
 
@@ -96,75 +96,96 @@ public class AppliTestDAL {
 		// Déclaration et instanciation de la DAO animaux)
 		AnimauxDAO AnimauxDAO = DAOFactory.getAnimauxDAO();
 
-//		// Instanciation du jeu d'essai
-//		Animaux a1 = new Animaux("MEDA", "F", "Verte", "Levrier", "Chien", 9, "KVB464", false);
-//		Animaux a2 = new Animaux("MEDOU", "M", "Bleu", "Siamois", "Chat", 3, "KVBHJK464", true);
-//
-//		System.out.println("Ajout animal... ");
+		// // Instanciation du jeu d'essai
+		// Animaux a1 = new Animaux("MEDA", "F", "Verte", "Levrier", "Chien", 9,
+		// "KVB464", false);
+		// Animaux a2 = new Animaux("MEDOU", "M", "Bleu", "Siamois", "Chat", 3,
+		// "KVBHJK464", true);
+		//
+		// System.out.println("Ajout animal... ");
 		try {
-//			// Ajout d'un Animal
-//			AnimauxDAO.insert(a1);
-//			System.out.println("Animal ajouté : " + a1.toString());
-//			AnimauxDAO.insert(a2);
-//			System.out.println("Animal ajouté : " + a2.toString());
+			// // Ajout d'un Animal
+			// AnimauxDAO.insert(a1);
+			// System.out.println("Animal ajouté : " + a1.toString());
+			// AnimauxDAO.insert(a2);
+			// System.out.println("Animal ajouté : " + a2.toString());
 
-//			// Sélection d'un Animal
-//			Animaux a = AnimauxDAO.selectByCode(a2.getCodeAnimal());
-//			System.out.println("\n Sélection d'un animal par code : " + a.toString());
-			
+			// // Sélection d'un Animal
+			// Animaux a = AnimauxDAO.selectByCode(a2.getCodeAnimal());
+			// System.out.println("\n Sélection d'un animal par code : " +
+			// a.toString());
+
 			// Sélection d'une espece
-			List<Races> EspeceList = AnimauxDAO.selectEspece();
-			System.out.println("\n Sélection des espèces : " );
+			List<Race> EspeceList = AnimauxDAO.selectEspece();
+			System.out.println("\n Sélection des especes : ");
 			afficherEspece(EspeceList);
 
-			// Sélection de tout le Animal
-			List<Animaux> Animaux = AnimauxDAO.selectAll();
-			System.out.println("\n Sélection de tous les animaux : ");
+			// Sélection d'une race
+			List<Race> RaceList = AnimauxDAO.selectRaceByEspece("Chien");
+			System.out.println("\n Sélection des races : ");
+			afficherRace(RaceList);
 
-			afficherAnimaux(Animaux);
+			// Sélection de tout le Animal
+			// List<Animaux> Animaux = AnimauxDAO.selectAll();
+			// System.out.println("\n Sélection de tous les animaux : ");
+			//
+			// afficherAnimaux(Animaux);
 
 			// Sélection des animaux non archivé
-//			List<Animaux> AnimauxActif = AnimauxDAO.selectAllNoArchive();
-//			System.out.println("\n Sélection des animaux actuel : ");
-//			afficherAnimaux(AnimauxActif);
+			// List<Animaux> AnimauxActif = AnimauxDAO.selectAllNoArchive();
+			// System.out.println("\n Sélection des animaux actuel : ");
+			// afficherAnimaux(AnimauxActif);
 
-//			// Modification d'un Animal
-//			System.out.println("\nModification animal : ");
-//			System.out.println("Animal avant modification : " + a1.toString());
-//			a1.setNomAnimal("ABRICOT");
-//			a2.setCouleur("Rouge");
-//			a2.setRace("Levrier");
-//			AnimauxDAO.update(a1);
-//			AnimauxDAO.update(a2);
-//			System.out.println("Animal apres modification : " + a1.toString());
-//			System.out.println("Animal apres modification : " + a2.toString());
-//			//
-//			//
-//			// Suppression d'un Animal
-//			System.out.println("\n Suppression d'un Animall : " + a2.toString());
-//			AnimauxDAO.delete(a2.getCodeAnimal());
-//			Animaux = AnimauxDAO.selectAll();
-//			System.out.println("Liste des animaux après suppression : ");
-//			afficherAnimaux(Animaux);
-//			System.out.println("---------------------------------------------------------------");
+			// // Modification d'un Animal
+			// System.out.println("\nModification animal : ");
+			// System.out.println("Animal avant modification : " +
+			// a1.toString());
+			// a1.setNomAnimal("ABRICOT");
+			// a2.setCouleur("Rouge");
+			// a2.setRace("Levrier");
+			// AnimauxDAO.update(a1);
+			// AnimauxDAO.update(a2);
+			// System.out.println("Animal apres modification : " +
+			// a1.toString());
+			// System.out.println("Animal apres modification : " +
+			// a2.toString());
+			// //
+			// //
+			// // Suppression d'un Animal
+			// System.out.println("\n Suppression d'un Animall : " +
+			// a2.toString());
+			// AnimauxDAO.delete(a2.getCodeAnimal());
+			// Animaux = AnimauxDAO.selectAll();
+			// System.out.println("Liste des animaux après suppression : ");
+			// afficherAnimaux(Animaux);
+			// System.out.println("---------------------------------------------------------------");
 
 		} catch (DALException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private static void afficherAnimaux(List<Animaux> Animaux) {
+	// private static void afficherAnimaux(List<Animaux> Animaux) {
+	// StringBuffer sb = new StringBuffer();
+	// for (Animaux art : Animaux) {
+	// sb.append(art.toString());
+	// sb.append("\n");
+	// }
+	// System.out.println(sb.toString());
+	// }
+	private static void afficherEspece(List<Race> Espece) {
 		StringBuffer sb = new StringBuffer();
-		for (Animaux art : Animaux) {
-			sb.append(art.toString());
+		for (Race spc : Espece) {
+			sb.append(spc.toString());
 			sb.append("\n");
 		}
 		System.out.println(sb.toString());
 	}
-	private static void afficherEspece(List<Races> Espece) {
+
+	private static void afficherRace(List<Race> Race) {
 		StringBuffer sb = new StringBuffer();
-		for (Races spc : Espece) {
-			sb.append(spc.toString());
+		for (Race rce : Race) {
+			sb.append(rce.toString());
 			sb.append("\n");
 		}
 		System.out.println(sb.toString());
