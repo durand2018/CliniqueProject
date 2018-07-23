@@ -2,17 +2,28 @@ package fr.eni.clinique.ihm.client;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import fr.eni.clinique.bll.BLLException;
+import fr.eni.clinique.bll.ClientsMger;
+import fr.eni.clinique.bo.Clients;
+
+@SuppressWarnings("serial")
 public class EcranAjoutClient extends JFrame{
+	private PanelClient panClt;
+	
 	private JButton btnValider, btnAnnuler;
 	private JPanel panelAjoutClt, panelBtn;
+	
+	private ClientsMger mger;
 	
 	public EcranAjoutClient() {
 		super("Ajouter Client");
@@ -23,7 +34,7 @@ public class EcranAjoutClient extends JFrame{
 	private void initIHMAjoutClt() {
 		panelAjoutClt = new JPanel();
 		panelBtn = new JPanel();
-		PanelClient panClt = new PanelClient();
+		
 		
 		panelAjoutClt.setOpaque(true);
 		panelAjoutClt.setLayout(new BorderLayout());
@@ -33,9 +44,16 @@ public class EcranAjoutClient extends JFrame{
 		panelBtn.add(getBtnAnnuler());
 		
 		panelAjoutClt.add(panelBtn, BorderLayout.NORTH);
-		panelAjoutClt.add(panClt.initIHM(), BorderLayout.CENTER);
+		panelAjoutClt.add(getPanClt().initIHM(), BorderLayout.CENTER);
 		
 		this.setContentPane(panelAjoutClt);
+	}
+	
+	public PanelClient getPanClt() {
+		if (panClt == null){
+			panClt = new PanelClient();
+		}
+		return panClt;
 	}
 	
 	public JButton getBtnValider() {
@@ -43,6 +61,25 @@ public class EcranAjoutClient extends JFrame{
 			ImageIcon image = new ImageIcon(
 					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/saveBlanc.jpg")));
 			btnValider = new JButton(image);
+			
+			btnValider.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// Récupère le client affiché
+					Clients cltAffiche = getPanClt().getClient();
+					System.out.println(cltAffiche);
+					try {
+						// Sauvegarde un nouveau client dans la BDD
+						mger.addClients(cltAffiche);
+						// Ferme l'écran
+						dispose();
+					} catch (BLLException e1) {
+						JOptionPane.showConfirmDialog(EcranAjoutClient.this, "Une erreur est survenue lors de l'Ajout");
+						e1.printStackTrace();
+					}
+				}
+			});
 		}
 		return btnValider;
 	}
@@ -53,6 +90,14 @@ public class EcranAjoutClient extends JFrame{
 			ImageIcon image = new ImageIcon(
 					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annulerBlanc.jpg")));
 			btnAnnuler = new JButton(image);
+			
+			btnAnnuler.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
 		}
 		return btnAnnuler;
 	}

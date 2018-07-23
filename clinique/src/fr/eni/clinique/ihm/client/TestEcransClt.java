@@ -13,15 +13,16 @@ public class TestEcransClt {
 			
 			@Override
 			public void run (){
-				EcranAjoutClient ecranAjclt = new EcranAjoutClient ();
-				ecranAjclt.setSize(new Dimension(500,600));
-				ecranAjclt.setVisible(true);
+//				EcranAjoutClient ecranAjclt = new EcranAjoutClient ();
+//				ecranAjclt.setSize(new Dimension(500,600));
+//				ecranAjclt.setVisible(true);
+//				ecranAjclt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
-//				EcranClients ecranClt = new EcranClients();
-//				ecranClt.setSize(new Dimension(500,600));
-//				ecranClt.setVisible(true);
+				EcranClients ecranClt = new EcranClients();
+				ecranClt.setSize(new Dimension(1000,600));
+				ecranClt.setVisible(true);
+				ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
-				ecranAjclt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			});
 		}

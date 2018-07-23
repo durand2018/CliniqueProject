@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 
 public class PanelAnimalByClt extends JFrame {
@@ -24,6 +25,7 @@ public class PanelAnimalByClt extends JFrame {
 	public Component initIHM() { 
 		panelAni = new JPanel();
 		panelBtn = new JPanel();
+		JTable tabAni = new JTable(new ModeleTableAnimaux());
 		
 		panelAni.setOpaque(true);
 		panelAni.setLayout(new BorderLayout());
@@ -34,7 +36,7 @@ public class PanelAnimalByClt extends JFrame {
 		panelBtn.add(getBtnEditer());
 		
 		panelAni.add(panelBtn,BorderLayout.SOUTH);
-		panelAni.add(getTabProvisoire(),BorderLayout.CENTER);
+		panelAni.add(tabAni,BorderLayout.CENTER);
 		
 		return panelAni;
 		
@@ -67,12 +69,7 @@ public class PanelAnimalByClt extends JFrame {
 		return btnEditer;
 	}
 
-	public JTextArea getTabProvisoire() {
-		if (tabProvisoire == null){
-			tabProvisoire = new JTextArea(50,80);
-		}
-		return tabProvisoire;
-	}
+	
 
 	
 

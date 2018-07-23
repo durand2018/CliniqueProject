@@ -2,19 +2,27 @@ package fr.eni.clinique.ihm.client;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+//import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import fr.eni.clinique.ihm.animal.PanelAnimalByClt;
 
+@SuppressWarnings("serial")
 public class EcranClients extends JFrame {
+//	private JLabel logo;
 	private JButton btnValider, btnAnnuler, btnAjouter, btnSupprimer, btnRechercher;
-	private JPanel panelClt, panelBtn, panelAni, panelBas;
+	private JPanel panelClt, panelBtn, panelBas;
 	
 	public EcranClients(){
 		super("Clients");
@@ -24,12 +32,12 @@ public class EcranClients extends JFrame {
 	private void initIHM(){
 		panelClt = new JPanel();
 		panelBtn = new JPanel();
-		panelAni = new JPanel();
 		panelBas = new JPanel();
 		PanelClient panClt = new PanelClient();
 		PanelAnimalByClt panAni = new PanelAnimalByClt();
 		
 		panelBtn.setLayout(new FlowLayout(FlowLayout.LEFT));
+//		panelBtn.add(getLogo());
 		panelBtn.add(getBtnRechercher());
 		panelBtn.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelBtn.add(getBtnAjouter());
@@ -38,10 +46,18 @@ public class EcranClients extends JFrame {
 		panelBtn.add(getBtnValider());
 		panelBtn.add(getBtnAnnuler());
 		
+		panelBas.setLayout(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		panelBas.add(panClt.initIHM());
+		gbc.gridx = 1;
+		panelBas.add(panAni.initIHM());
+		
 		panelClt.setBackground(Color.gray);
 		panelClt.add(panelBtn, BorderLayout.NORTH);
-		panelClt.add(panClt.initIHM(), BorderLayout.CENTER);
-//		panelClt.add(panAni.initIHM(),BorderLayout.SOUTH);
+		panelClt.add(panelBas, BorderLayout.CENTER);
+		
 		
 		this.setContentPane(panelClt);
 	}
@@ -60,6 +76,14 @@ public class EcranClients extends JFrame {
 			ImageIcon image = new ImageIcon(
 					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annulerBlanc.jpg")));
 			btnAnnuler = new JButton(image);
+			
+			btnAnnuler.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
 		}
 		return btnAnnuler;
 	}
@@ -69,6 +93,18 @@ public class EcranClients extends JFrame {
 			ImageIcon image = new ImageIcon(
 					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ajouterBlanc.jpg")));
 			btnAjouter = new JButton(image);
+			
+			btnAjouter.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// Ouvre Ecran AjoutClient
+					EcranAjoutClient ecranAjclt = new EcranAjoutClient ();
+					ecranAjclt.setSize(new Dimension(500,600));
+					ecranAjclt.setVisible(true);
+					ecranAjclt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				}
+			});
 		}
 		return btnAjouter;
 	}
@@ -90,6 +126,17 @@ public class EcranClients extends JFrame {
 		}
 		return btnRechercher;
 	}
+
+//	public JLabel getLogo() {
+//		if(logo == null){
+//			ImageIcon image = new ImageIcon(
+//					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png")));
+//			logo.setIcon(image);
+//		}
+//		return logo;
+//	}
+
+	
 	
 	
 	

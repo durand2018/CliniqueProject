@@ -2,7 +2,6 @@ package fr.eni.clinique.ihm.client;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -10,23 +9,51 @@ import java.awt.Insets;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+//import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import fr.eni.clinique.bo.Clients;
+
+//import fr.eni.clinique.bll.BLLException;
+//import fr.eni.clinique.bll.ClientsMger;
+
+@SuppressWarnings("serial")
 public class PanelClient extends JFrame {
 	private JLabel jlCodeClt, jlNomClt, jlPrenomClt, jlAdresse, jlCodePostal, jlVille, jlNumTel,
 	jlAssurance, jlEmail, jlRemarque;
 	private JTextField jtCodeClt, jtNomClt, jtPrenomClt, jtAdresse1, jtAdresse2, jtCodePostal, jtVille, jtNumTel,
 	jtAssurance, jtEmail;
 	private JTextArea jtRemarque;
-	private JScrollPane defil;
+//	private JScrollPane defil;
 	private JPanel panelClt;
+//	private ClientsMger mgr = null;
+//	private Integer numEnreg;
 	
 	
 	public PanelClient()  {
 		super();
+		
+//		try {
+//			//Chargement du catalogue des clients
+//			mgr = ClientsMger.getInstance();
+//		} catch (BLLException e) {
+//			System.out.println("Aucun client à afficher");
+//			System.exit(1);
+//		}
 		initIHM();
+//		numEnreg = 0;
+//		jtCodeClt.setText(Integer.toString((mgr.getClients(numEnreg).getCodeClient())));
+//		jtNomClt.setText(mgr.getClients(numEnreg).getNomClient());
+//		jtPrenomClt.setText(mgr.getClients(numEnreg).getPrenomClient());
+//		jtAdresse1.setText(mgr.getClients(numEnreg).getAdresse1());
+//		jtAdresse2.setText(mgr.getClients(numEnreg).getAdresse2());
+//		jtCodePostal.setText(mgr.getClients(numEnreg).getCodePostal());
+//		jtVille.setText(mgr.getClients(numEnreg).getVille());
+//		jtNumTel.setText(mgr.getClients(numEnreg).getNumTel());
+//		jtAssurance.setText(mgr.getClients(numEnreg).getAssurance());
+//		jtEmail.setText(mgr.getClients(numEnreg).getEmail());
+//		jtRemarque.setText(mgr.getClients(numEnreg).getRemarque());
 	}
 
 
@@ -43,11 +70,11 @@ public class PanelClient extends JFrame {
 		gbc.insets = new Insets(5, 5, 5, 5);
 		//Ligne 1
 		gbc.anchor = GridBagConstraints.WEST;
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		panelClt.add(getJlCodeClt(), gbc);
-		gbc.gridx = 1;
-		panelClt.add(getJtCodeClt(), gbc);
+//		gbc.gridx = 0;
+//		gbc.gridy = 0;
+//		panelClt.add(getJlCodeClt(), gbc);
+//		gbc.gridx = 1;
+//		panelClt.add(getJtCodeClt(), gbc);
 		
 		//Ligne 2
 		gbc.gridx = 0;
@@ -303,5 +330,26 @@ public class PanelClient extends JFrame {
 //		}
 //		return defil;
 //	}
+	
+	/**
+	 * Fonction en charge de récupérer les infos du formulaire Clients
+	 * @return un client
+	 */
+	public Clients getClient(){
+		Clients cltCourant = new Clients();
+		cltCourant.setNomClient(getJtNomClt().getText());
+		cltCourant.setPrenomClient(getJtPrenomClt().getText());
+		cltCourant.setAdresse1(getJtAdresse1().getText());
+		cltCourant.setAdresse2(getJtAdresse2().getText());
+		cltCourant.setCodePostal(getJtCodePostal().getText());
+		cltCourant.setVille(getJtVille().getText());
+		cltCourant.setNumTel(getJtNumTel().getText());
+		cltCourant.setAssurance(getJtAssurance().getText());
+		cltCourant.setEmail(getJtEmail().getText());
+		cltCourant.setRemarque(getJtRemarque().getText());
+		System.out.println(cltCourant);
+		return cltCourant;
+		
+	}
 	
 }
