@@ -1,11 +1,14 @@
 package fr.eni.clinique.bll;
 
-import java.util.List;
-
 import fr.eni.clinique.bo.Animaux;
+
+//import java.util.List;
+
+//import fr.eni.clinique.bo.Animaux;
 import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.bo.Personnels;
 import fr.eni.clinique.bo.Race;
+
 
 public class AppliTestBLL {
 
@@ -64,7 +67,7 @@ public class AppliTestBLL {
 //			System.out.println("\n Suppression d'un animal :" + a1);
 //			System.out.println("\n Liste après suppression :");
 //			afficherAnimal(amger.selectAnimalByClient(2));
-			afficherAnimalRace(amger.selectEspece());
+//			afficherAnimalRace(amger.selectEspece());
 
 		} catch (BLLException e) {
 			e.printStackTrace();
@@ -81,7 +84,7 @@ public class AppliTestBLL {
 //		}
 //		System.out.println(sb.toString());
 //	}
-	private static void afficherAnimalRace(List<Race> anirace) {
+//	private static void afficherAnimalRace(List<Race> anirace) {
 		StringBuffer sb = new StringBuffer();
 		for (Race r : anirace) {
 			sb.append(r.toString());
