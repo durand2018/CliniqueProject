@@ -26,6 +26,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 	private static final String SQL_DELETE = "delete from Animaux where CodeAnimal=?";
 	private static final String SQL_ANIMAL_BY_CLIENT = "SELECT CodeAnimal, NomAnimal, Sexe, Couleur, Race, Espece, CodeClient, Tatouage, Antecedents, Archive FROM Animaux WHERE CodeClient = ?";
 	private static final String SQL_ESPECE = "SELECT DISTINCT Espece FROM Races ORDER BY Espece";
+	private static final String SQL_RACE = "SELECT DISTINCT Race FROM Races ORDER BY Race";
 	private static final String SQL_SELECT_RACE_BY_ESPECE = "SELECT Race FROM Races WHERE Espece like ? ORDER BY Race;";
 
 	// Constructeur vide
@@ -328,6 +329,40 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			return lesRaces;
 		} catch (SQLException e) {
 			throw new DALException("Cette race ne peut être affefctée ! - " + espece, e);
+		} finally {
+			JdbcTools.closeConnection();
+		}
+	}
+
+	/**
+	 * {@inheritedDoc}
+	 * 
+	 * @see fr.eni.clinique.dal.AnimauxDAO#selectRace()
+	 */
+	@Override
+	public List<Race> selectRace() throws DALException {
+		Connection cnx = null;
+		Statement rqt = null;
+		ResultSet rs = null;
+		Race rc = null;
+		List<Race> lesRaces = new ArrayList<>();
+		try {
+			// Lancement connexion
+			cnx = JdbcTools.getConnection();
+			// Preparation Select sans argument sur la BDD
+			rqt = cnx.createStatement();
+			// Execution Select
+			rs = rqt.executeQuery(SQL_RACE);
+			// transfert infos BDD dans la liste
+			while (rs.next()) {
+				rc = new Race();
+				rc.setRace(rs.getString("Race"));
+
+				lesRaces.add(rc);
+			}
+			return lesRaces;
+		} catch (SQLException e) {
+			throw new DALException("selection de la race invalide ! - ", e);
 		} finally {
 			JdbcTools.closeConnection();
 		}
