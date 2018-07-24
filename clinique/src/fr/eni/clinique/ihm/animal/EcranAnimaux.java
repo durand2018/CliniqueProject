@@ -7,7 +7,10 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.ItemSelectable;
 import java.awt.Toolkit;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Iterator;
 
 import javax.swing.ImageIcon;
@@ -17,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.plaf.basic.BasicComboBoxUI.ItemHandler;
 
 import fr.eni.clinique.bll.AnimalMger;
 import fr.eni.clinique.bll.BLLException;
@@ -298,11 +302,15 @@ public class EcranAnimaux extends JFrame {
 		String espece = null;
 
 		try {
-			itR = mgr.selectRaceByEspece(espece).iterator();
+			itR = mgr.selectRaceByEspece().iterator();
 			Race ra;
 			while (itR.hasNext()) {
 				ra = itR.next();
+				int i= 0;
 				jcombRaces.addItem(ra.getRace());
+				//System.out.println(itR.toString());
+				System.out.println(jcombRaces.getItemAt(i));
+				
 			}
 		} catch (BLLException e) {
 			e.printStackTrace();
@@ -314,8 +322,7 @@ public class EcranAnimaux extends JFrame {
 	// public JComboBox<String> getJcombRace() {
 	// jcombRace = new JComboBox<String>();
 	// jcombRace.setPreferredSize(new Dimension(150, 20));
-	// jcombRace.addItem("test1");
-	// jcombRace.addItem("test2");
+	
 	// return jcombRace;
 	// }
 
