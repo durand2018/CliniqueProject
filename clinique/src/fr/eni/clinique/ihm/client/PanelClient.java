@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,8 +28,7 @@ public class PanelClient extends JFrame {
 	private JTextArea jtRemarque;
 	private JScrollPane defil;
 	private JPanel panelClt;
-	private ClientsMger mgr = null;
-	private Integer numEnreg;
+//	private ClientsMger mgr = null;
 	
 	
 	public PanelClient()  {
@@ -36,6 +36,11 @@ public class PanelClient extends JFrame {
 		initIHM();
 	}
 
+	public PanelClient(Clients c)  {
+		super();
+		initIHM();
+		RemplirPanelClt(c);
+	}
 
 	public Component initIHM() {
 		// creation panel
@@ -131,30 +136,25 @@ public class PanelClient extends JFrame {
 		
 	}
 
-
-	public void RemplirPanelClt(int CodeClt){
-		try {
-			//Chargement du catalogue des clients
-			mgr = ClientsMger.getInstance();
-		} catch (BLLException e) {
-			System.out.println("Aucun client à afficher");
-			System.exit(1);
-		}
-		numEnreg = CodeClt-1;
-		jtCodeClt.setText(Integer.toString((mgr.getClients(numEnreg).getCodeClient())));
-		jtNomClt.setText(mgr.getClients(numEnreg).getNomClient());
-		jtPrenomClt.setText(mgr.getClients(numEnreg).getPrenomClient());
-		jtAdresse1.setText(mgr.getClients(numEnreg).getAdresse1());
-		jtAdresse2.setText(mgr.getClients(numEnreg).getAdresse2());
-		jtCodePostal.setText(mgr.getClients(numEnreg).getCodePostal());
-		jtVille.setText(mgr.getClients(numEnreg).getVille());
-		jtNumTel.setText(mgr.getClients(numEnreg).getNumTel());
-		jtAssurance.setText(mgr.getClients(numEnreg).getAssurance());
-		jtEmail.setText(mgr.getClients(numEnreg).getEmail());
-		jtRemarque.setText(mgr.getClients(numEnreg).getRemarque());
+	/**
+	 * Fonction en charge de remplir le panel CLient avec données d'un client 
+	 * @param c un client
+	 */
+	public void RemplirPanelClt(Clients c){
+		jtNomClt.setText(c.getNomClient());
+		jtPrenomClt.setText(c.getPrenomClient());
+		jtAdresse1.setText(c.getAdresse1());
+		jtAdresse2.setText(c.getAdresse2());
+		jtCodePostal.setText(c.getCodePostal());
+		jtVille.setText(c.getVille());
+		jtNumTel.setText(c.getNumTel());
+		jtAssurance.setText(c.getAssurance());
+		jtEmail.setText(c.getEmail());
+		jtRemarque.setText(c.getRemarque());
 	}
 
 	
+
 	public JLabel getJlCodeClt() {
 		if(jlCodeClt == null){
 			jlCodeClt = new JLabel("Code ");

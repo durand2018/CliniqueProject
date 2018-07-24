@@ -1,8 +1,6 @@
 package fr.eni.clinique.bll;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JOptionPane;
 
 import fr.eni.clinique.bo.Personnels;
@@ -41,11 +39,20 @@ public class LoginMger {
 		return liste;
 	}
 	
+	public List<Personnels> getListePnonArchive() throws BLLException {
+		try {
+			liste = daoPersonnel.selectAllNoArchive();
+		} catch (DALException e) {
+			throw new BLLException("Erreur liste personnel", e);
+		}
+		return liste;
+	}
+	
 // try catch ne fonctionnent pas **********************************************************
 	public void addPersonnel(Personnels p) throws BLLException{
 		
 		if (p.getCodePers()!=0){
-			throw new BLLException("Membre du personnel déjà enregistré");
+			throw new BLLException("Membre du personnel dï¿½jï¿½ enregistrï¿½");
 		}
 		validerPersonnel(p);
 		try{
@@ -83,11 +90,11 @@ public class LoginMger {
 		
 		if (p.getNom().equals(null) ||p.getNom().trim().isEmpty()){
 			test=false;
-		sb.append("Nom non renseigné \n");
+		sb.append("Nom non renseignï¿½ \n");
 		}
 		if (p.getPrenom().equals(null) ||p.getPrenom().trim().isEmpty()){
 			test=false;
-		sb.append("Prénom non renseigné \n");
+		sb.append("Prï¿½nom non renseignï¿½ \n");
 		}
 		if (p.getMotPasse().equals(null) ){
 			test=false;

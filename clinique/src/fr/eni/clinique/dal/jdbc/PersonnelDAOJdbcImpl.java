@@ -20,7 +20,7 @@ public class PersonnelDAOJdbcImpl implements PersonnelDAO {
 	private static final String sqlSelectAll = "select * from Personnels";
 	private static final String sqlSelectAllNoArchive = "select * from Personnels where Archive = 0";
 	private static final String sqlUpdate = "update Personnels set Nom=?,Prenom=?,MotPasse=?,Role=?,Archive=? where CodePers=?" ;
-	private static final String sqlDelete = "delete from Personnels where CodePers=?";
+	private static final String sqlDelete = "update Personnels set Archive=1 where CodePers=?";
 
 	public PersonnelDAOJdbcImpl() {
 		super();
@@ -173,7 +173,7 @@ public class PersonnelDAOJdbcImpl implements PersonnelDAO {
 			//Execution Select
 			int nbRows = rqt.executeUpdate();
 			if (nbRows == 1) {
-				//Récupération identifiant généré par la BDD
+				//Rï¿½cupï¿½ration identifiant gï¿½nï¿½rï¿½ par la BDD
 				ResultSet rs = rqt.getGeneratedKeys();
 				if (rs.next()) {
 					int cle = rs.getInt(1);
@@ -181,12 +181,16 @@ public class PersonnelDAOJdbcImpl implements PersonnelDAO {
 				}
 			}
 		} catch (SQLException e) {
-			throw new DALException("Insertion de personnel non effectuée - " + data, e);
+			throw new DALException("Insertion de personnel non effectuÃ©e - " + data, e);
 		} finally {
 			JdbcTools.closeConnection();
 		}
 	}
 
+	/**
+	 * Fonction qui gÃ¨re l'archivage du membre du personnel supprimÃ©
+	 * codePers
+	 */
 	public void delete(int codePers) throws DALException {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
@@ -199,7 +203,7 @@ public class PersonnelDAOJdbcImpl implements PersonnelDAO {
 			//Execution Select
 			rqt.executeUpdate();
 		} catch (SQLException e) {
-			throw new DALException("Supression d'un membre ratée - " + codePers, e);
+			throw new DALException("Supression d'un membre ratÃ©e - " + codePers, e);
 		} finally {
 			JdbcTools.closeConnection();
 		}

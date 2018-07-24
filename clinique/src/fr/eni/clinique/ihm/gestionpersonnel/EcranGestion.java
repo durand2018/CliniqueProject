@@ -85,7 +85,6 @@ public class EcranGestion extends JFrame {
 		panelFinal.add(panelBtn, BorderLayout.NORTH);
 		panelFinal.add(panelTable, BorderLayout.CENTER);
 		this.setContentPane(panelFinal);
-
 	}
 
 	public JButton getBtnAjouter() {
@@ -104,11 +103,8 @@ public class EcranGestion extends JFrame {
 					dispose();
 					EcranAjout.setVisible(true);
 				}
-
 			});
-
 		}
-
 		return btnAjouter;
 	}
 
@@ -138,8 +134,8 @@ public class EcranGestion extends JFrame {
 						
 					} catch (BLLException e1) {
 						
-						System.err.println("probleme EcranGestion personnel non supprimé ");
-						System.err.println("ou probleme errreur  base de donnée ");
+						System.err.println("probleme EcranGestion personnel non supprimï¿½ ");
+						System.err.println("ou probleme errreur  base de donnï¿½e ");
 						
 
 					}
@@ -165,12 +161,12 @@ public class EcranGestion extends JFrame {
 					int i = 0;
 					 i = tableau.getSelectedRow();
 					if(i==-1){
-						JOptionPane.showMessageDialog(null, "sectionnez un membre du personnel","réinitialisation mot de passe",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "sectionnez un membre du personnel","rï¿½initialisation mot de passe",JOptionPane.WARNING_MESSAGE);
 						return;
 					}
 					if( mdp.isEmpty()){
 						System.out.println("hey mdp = 0");
-						JOptionPane.showMessageDialog(null, "entrez un mot de passe!", "echec réinitialisation",
+						JOptionPane.showMessageDialog(null, "entrez un mot de passe!", "echec rï¿½initialisation",
 								JOptionPane.ERROR_MESSAGE);
 					}
 					
@@ -194,7 +190,7 @@ public class EcranGestion extends JFrame {
 						
 					} catch (BLLException e1) {
 					
-						JOptionPane.showMessageDialog(null, "echec réinitialisation", "mise a jour mot de passe",
+						JOptionPane.showMessageDialog(null, "echec rï¿½initialisation", "mise a jour mot de passe",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}
@@ -211,14 +207,14 @@ public class EcranGestion extends JFrame {
 
 }
 
-// Méthode appelée lorsque l'on presse le bouton gauche de la souris
+// Mï¿½thode appelï¿½e lorsque l'on presse le bouton gauche de la souris
 // public void mousePressed(MouseEvent event) {
 // int i = tableau.getSelectedRow();
-// System.out.println("ligne selectionné"+i);
+// System.out.println("ligne selectionnï¿½"+i);
 // }
 //
 // public void MousePressed(MouseEvent e) {
 
 // int i = tableau.getSelectedRow();
-// System.out.println("ligne selectionné"+i);
+// System.out.println("ligne selectionnï¿½"+i);
 // }
