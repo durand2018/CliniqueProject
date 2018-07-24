@@ -26,6 +26,11 @@ public class PanelAnimalByClt extends JFrame {
 		initIHM();
 	}
 	
+	public PanelAnimalByClt(int CodeClt){
+		super();
+		initIHM(CodeClt);
+	}
+	
 	public Component initIHM() { 
 		panelAni = new JPanel();
 		panelBtn = new JPanel();
@@ -48,7 +53,7 @@ public class PanelAnimalByClt extends JFrame {
 	public Component initIHM(int CodeClt) { 
 		panelAni = new JPanel();
 		panelBtn = new JPanel();
-		JTable tabAni = new JTable(new ModeleTableAnimaux());
+		JTable tabAni = new JTable(new ModeleTableAnimaux(CodeClt));
 		
 		panelAni.setOpaque(true);
 		panelAni.setLayout(new BorderLayout());
@@ -60,7 +65,11 @@ public class PanelAnimalByClt extends JFrame {
 		
 		panelAni.add(getJlTitre(),BorderLayout.NORTH);
 		panelAni.add(panelBtn,BorderLayout.SOUTH);
-		panelAni.add(tabAni,BorderLayout.CENTER);
+		if(tabAni.getRowCount() == 0){
+			panelAni.add(getJlAucunAni(),BorderLayout.CENTER);
+		} else {
+			panelAni.add(tabAni,BorderLayout.CENTER);
+		}
 		
 		return panelAni;
 	}

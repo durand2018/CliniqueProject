@@ -16,15 +16,13 @@ public class ModeleTableAnimaux extends AbstractTableModel {
 
 	private final String[] entetes = { "Numero", "Nom", "Sexe", "Couleur", "Race", "Espece", "Tatouage" };
 
-	public ModeleTableAnimaux() {
+	public ModeleTableAnimaux(int CodeClient) {
 		try {
 			mger = AnimalMger.getInstance();
-			listeAnimaux = mger.getList();
-
+			listeAnimaux = mger.selectAnimalByClient(CodeClient);
 		} catch (BLLException e) {
 			System.out.println("Pb chgt liste Animaux");
 		}
-		
 	}
 
 	@Override

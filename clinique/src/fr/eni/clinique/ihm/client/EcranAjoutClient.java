@@ -67,17 +67,15 @@ public class EcranAjoutClient extends JFrame{
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// Récupère le client affiché
+					// RÃ©cupÃ¨re le client affichÃ©
 					Clients cltAffiche = getPanClt().getClient();
-					System.out.println(cltAffiche);
 					try {
 						// Sauvegarde un nouveau client dans la BDD
 						mger = new ClientsMger();
 						mger.addClients(cltAffiche);
-						int c = cltAffiche.getCodeClient();
-						// Ferme l'écran
+						// Ferme l'Ã©cran
 						dispose();
-						//Ouvre un nouvel écran client qui affiche le nouveau client
+						//Ouvre un nouvel ï¿½cran client qui affiche le nouveau client
 						EcranClients ecranClt = new EcranClients(cltAffiche);
 						ecranClt.setSize(new Dimension(1000,600));
 						ecranClt.setVisible(true);

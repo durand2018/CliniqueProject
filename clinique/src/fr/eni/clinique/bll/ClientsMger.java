@@ -37,10 +37,19 @@ public class ClientsMger {
 		}
 		return liste;
 	}
+	
+	public List<Clients> rechercherClt(String saisie) throws BLLException {
+		try {
+			liste = daoClients.selectByNomPartiel(saisie);
+		} catch (DALException e) {
+			throw new BLLException("Erreur liste client", e);
+		}
+		return liste;
+	}
 
 	public void addClients(Clients c) throws BLLException {
 		if (c.getCodeClient() != 0) {
-			throw new BLLException("Membre de client dÈj‡ enregistrÈ");
+			throw new BLLException("Client d√©j√† enregistr√©");
 		}
 		validerClient(c);
 		try {
@@ -51,25 +60,26 @@ public class ClientsMger {
 
 	}
 	
-	public void updateClients(Clients c) throws BLLException{
+	public void updateClient(Clients c) throws BLLException{
 		validerClient(c);
 		try {
 			daoClients.update(c);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
-			throw new BLLException("Echec updatePersonnel "+ c ,e);
+			throw new BLLException("Echec updateClient "+ c ,e);
 		}
 	}
 
-	public void removePersonnel(int numeroLigne) throws BLLException{
+	public void removeClient(int numeroLigne) throws BLLException{
 		try{
-			daoClients.delete(getClients(numeroLigne).getCodeClient());
+			daoClients.delete(getClient(numeroLigne).getCodeClient());
 		} catch (DALException e){
 			throw new BLLException("Echec delete client "+ numeroLigne, e);
 			
 		}
 	}
-	public Clients getClients(int codeClient){
+	
+	public Clients getClient(int codeClient){
 		return liste.get(codeClient);
 	}
 	
@@ -79,11 +89,11 @@ public class ClientsMger {
 		StringBuffer sb = new StringBuffer();
 		if (c.getNomClient().equals(null) || c.getNomClient().trim().isEmpty()) {
 			test = false;
-			sb.append("Nom non renseignÈ \n");
+			sb.append("Nom non renseign√© \n");
 		}
 		if (c.getPrenomClient().equals(null) || c.getPrenomClient().trim().isEmpty()) {
 			test = false;
-			sb.append("PrÈnom non renseignÈ \n");
+			sb.append("Pr√©nom non renseign√© \n");
 		}
 		if (test == false) {
 			throw new BLLException(sb.toString());

@@ -11,7 +11,7 @@ public class AppliTestDAL {
 
 	public static void main(String[] args) {
 		// *******************************************************************************PERSONNEL***********
-		// Déclaration et instanciation de la DAO sec, vet ou adm)
+		// Dï¿½claration et instanciation de la DAO sec, vet ou adm)
 		// PersonnelDAO PersonnelDAO = DAOFactory.getPersonnelDAO();
 		//
 		// // Instanciation du jeu d'essai
@@ -27,27 +27,27 @@ public class AppliTestDAL {
 		// try {
 		// Ajout d'un membre du Personnel
 		// PersonnelDAO.insert(p1);
-		// System.out.println("Personnel ajouté : " + p1.toString());
+		// System.out.println("Personnel ajoutï¿½ : " + p1.toString());
 		// PersonnelDAO.insert(p2);
-		// System.out.println("Personnel ajouté : " + p2.toString());
+		// System.out.println("Personnel ajoutï¿½ : " + p2.toString());
 		// PersonnelDAO.insert(p3);
-		// System.out.println("Personnel ajouté : " + p3.toString());
+		// System.out.println("Personnel ajoutï¿½ : " + p3.toString());
 		// PersonnelDAO.insert(p4);
-		// System.out.println("Personnel ajouté : " + p4.toString());
+		// System.out.println("Personnel ajoutï¿½ : " + p4.toString());
 
-		// Sélection d'un membre
+		// Sï¿½lection d'un membre
 		// Personnels p = PersonnelDAO.selectByCode(p2.getCodePers());
-		// System.out.println("\n Sélection d'un membre du Personnel par code :
+		// System.out.println("\n Sï¿½lection d'un membre du Personnel par code :
 		// " + p.toString());
 
-		// Sélection de tout le Personnel
+		// Sï¿½lection de tout le Personnel
 		// List<Personnels> Personnels = PersonnelDAO.selectAll();
-		// System.out.println("\n Sélection de tous le Personnel : ");
+		// System.out.println("\n Sï¿½lection de tous le Personnel : ");
 		// afficherPersonnels(Personnels);
 		//
-		// // Sélection du Personnel non archivé
+		// // Sï¿½lection du Personnel non archivï¿½
 		// List<Personnels> PersonnelActif = PersonnelDAO.selectAllNoArchive();
-		// System.out.println("\n Sélection du Personnel actuel : ");
+		// System.out.println("\n Sï¿½lection du Personnel actuel : ");
 		// afficherPersonnels(PersonnelActif);
 
 		// Modification d'un Personnel
@@ -68,12 +68,12 @@ public class AppliTestDAL {
 		// p12.toString());
 		//
 		//
-		// Suppression d'un élément du Personnel
+		// Suppression d'un ï¿½lï¿½ment du Personnel
 		// System.out.println("\n Suppression d'un membre du personnel : " +
 		// p13.toString());
 		// PersonnelDAO.delete(p13.getCodePers());
 		// Personnels = PersonnelDAO.selectAll();
-		// System.out.println("Liste des membre du personnel après suppression :
+		// System.out.println("Liste des membre du personnel aprï¿½s suppression :
 		// ");
 		// afficherPersonnels(Personnels);
 		// System.out.println("---------------------------------------------------------------");
@@ -93,8 +93,8 @@ public class AppliTestDAL {
 
 		// //
 		// *******************************************************************************ANIMAL***********
-		// Déclaration et instanciation de la DAO animaux)
-		AnimauxDAO AnimauxDAO = DAOFactory.getAnimauxDAO();
+		// Dï¿½claration et instanciation de la DAO animaux)
+//		AnimauxDAO AnimauxDAO = DAOFactory.getAnimauxDAO();
 
 		// // Instanciation du jeu d'essai
 		// Animaux a1 = new Animaux("MEDA", "F", "Verte", "Levrier", "Chien", 9,
@@ -103,37 +103,37 @@ public class AppliTestDAL {
 		// "KVBHJK464", true);
 		//
 		// System.out.println("Ajout animal... ");
-		try {
+//		try {
 			// // Ajout d'un Animal
 			// AnimauxDAO.insert(a1);
-			// System.out.println("Animal ajouté : " + a1.toString());
+			// System.out.println("Animal ajoutï¿½ : " + a1.toString());
 			// AnimauxDAO.insert(a2);
-			// System.out.println("Animal ajouté : " + a2.toString());
+			// System.out.println("Animal ajoutï¿½ : " + a2.toString());
 
-			// // Sélection d'un Animal
+			// // Sï¿½lection d'un Animal
 			// Animaux a = AnimauxDAO.selectByCode(a2.getCodeAnimal());
-			// System.out.println("\n Sélection d'un animal par code : " +
+			// System.out.println("\n Sï¿½lection d'un animal par code : " +
 			// a.toString());
 
-			// Sélection d'une espece
-			List<Race> EspeceList = AnimauxDAO.selectEspece();
-			System.out.println("\n Sélection des especes : ");
-			afficherEspece(EspeceList);
+			// Sï¿½lection d'une espece
+//			List<Race> EspeceList = AnimauxDAO.selectEspece();
+//			System.out.println("\n Sï¿½lection des especes : ");
+//			afficherEspece(EspeceList);
 
-			// Sélection d'une race
-			List<Race> RaceList = AnimauxDAO.selectRaceByEspece("Chien");
-			System.out.println("\n Sélection des races : ");
-			afficherRace(RaceList);
+			// Sï¿½lection d'une race
+//			List<Race> RaceList = AnimauxDAO.selectRaceByEspece("Chien");
+//			System.out.println("\n Sï¿½lection des races : ");
+//			afficherRace(RaceList);
 
-			// Sélection de tout le Animal
+			// Sï¿½lection de tout le Animal
 			// List<Animaux> Animaux = AnimauxDAO.selectAll();
-			// System.out.println("\n Sélection de tous les animaux : ");
+			// System.out.println("\n Sï¿½lection de tous les animaux : ");
 			//
 			// afficherAnimaux(Animaux);
 
-			// Sélection des animaux non archivé
+			// Sï¿½lection des animaux non archivï¿½
 			// List<Animaux> AnimauxActif = AnimauxDAO.selectAllNoArchive();
-			// System.out.println("\n Sélection des animaux actuel : ");
+			// System.out.println("\n Sï¿½lection des animaux actuel : ");
 			// afficherAnimaux(AnimauxActif);
 
 			// // Modification d'un Animal
@@ -156,14 +156,14 @@ public class AppliTestDAL {
 			// a2.toString());
 			// AnimauxDAO.delete(a2.getCodeAnimal());
 			// Animaux = AnimauxDAO.selectAll();
-			// System.out.println("Liste des animaux après suppression : ");
+			// System.out.println("Liste des animaux aprï¿½s suppression : ");
 			// afficherAnimaux(Animaux);
 			// System.out.println("---------------------------------------------------------------");
 
-		} catch (DALException e) {
-			e.printStackTrace();
-		}
-	}
+//		} catch (DALException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	// private static void afficherAnimaux(List<Animaux> Animaux) {
 	// StringBuffer sb = new StringBuffer();
@@ -173,100 +173,104 @@ public class AppliTestDAL {
 	// }
 	// System.out.println(sb.toString());
 	// }
-	private static void afficherEspece(List<Race> Espece) {
-		StringBuffer sb = new StringBuffer();
-		for (Race spc : Espece) {
-			sb.append(spc.toString());
-			sb.append("\n");
-		}
-		System.out.println(sb.toString());
-	}
+//	private static void afficherEspece(List<Race> Espece) {
+//		StringBuffer sb = new StringBuffer();
+//		for (Race spc : Espece) {
+//			sb.append(spc.toString());
+//			sb.append("\n");
+//		}
+//		System.out.println(sb.toString());
+//	}
 
-	private static void afficherRace(List<Race> Race) {
+//	private static void afficherRace(List<Race> Race) {
+//		StringBuffer sb = new StringBuffer();
+//		for (Race rce : Race) {
+//			sb.append(rce.toString());
+//			sb.append("\n");
+//		}
+//		System.out.println(sb.toString());
+//	}
+	// *******************************************************************************CLIENTS***********
+	 // DÃ©claration et instanciation de la DAO Clients)
+	 ClientsDAO ClientsDAO = DAOFactory.getClientsDAO();
+	
+	 // Instanciation du jeu d'essai
+//	 Clients c1 = new Clients("SPECTOR", "Phil", "19 la mainge ", "", "91934",
+//	 "SEMARE", "0195860309", "MMA",
+//	 "dededudu@yahouuuu.fr", "Attention ï¿½ bien le faire payer en liquide car il est interdit bancaire. ",
+//	 false);
+//	 Clients c2 = new Clients("LA FRITE", "Jean-Jean", "le petit bois", "",
+//	 "44250", "QUEVILLY", "0295867896", "AXA",
+//	 "jeanlafrite@free.fr", "", false);
+//	 Clients c3 = new Clients("BALLE", "Jean", "12 le rumbaleur ", "le pont au
+//	 vieux", "44800", "LIGNE",
+//	 "0295860659", "GROUPAMA", "jeanballe@orange.fr", "", false);
+	
+//	 System.out.println("Ajout Client... ");
+	 try {
+	 // Ajout d'un Client
+//	 ClientsDAO.insert(c1);
+//	 System.out.println("Client ajoutï¿½ : " + c1.toString());
+//	 ClientsDAO.insert(c2);
+//	 System.out.println("Client ajoutï¿½ : " + c2.toString());
+//	 ClientsDAO.insert(c3);
+//	 System.out.println("Client ajoutï¿½ : " + c3.toString());
+	
+	 // Sï¿½lection d'un Client
+//	 Clients c = ClientsDAO.selectByCode(c2.getCodeClient());
+//	 System.out.println("\n Sï¿½lection d'un Client par code : " +
+//	 c.toString());
+	
+	 // Sï¿½lection de tout le Client
+	 List<Clients> Clients = ClientsDAO.selectAll();
+	 System.out.println("\n Sï¿½lection de tous les Clients : ");
+	
+	 afficherClients(Clients);
+	
+	 // Sï¿½lection des Clients non archivï¿½
+//	 List<Clients> ClientsActif = ClientsDAO.selectAllNoArchive();
+//	 System.out.println("\n Sï¿½lection des Clients actuel : ");
+//	 afficherClients(ClientsActif);
+	
+	// Recherche Clients
+	 List<Clients> c = ClientsDAO.selectByNomPartiel("Ver");
+	 System.out.println("\n Recherche Client par nom partiel : " );
+	 afficherClients(c);
+	 
+	 // Modification d'un Client
+//	 System.out.println("\nModification Clients : ");
+//	 System.out.println("Client avant modification : " + c1.toString());
+//	 c1.setNomClient("LATRIQUE");
+//	 c1.setPrenomClient("Patrick");
+//	 c1.setAssurance("GROUPAMA");
+//	 c3.setArchive(true);
+//	 ClientsDAO.update(c1);
+//	 ClientsDAO.update(c2);
+//	 ClientsDAO.update(c3);
+//	 System.out.println("Client apres modification : " + c1.toString());
+//	 System.out.println("Client apres modification : " + c2.toString());
+//	 System.out.println("Client apres modification : " + c3.toString());
+	 //
+	 //
+	 // Suppression d'un Client
+//	 System.out.println("\n Suppression d'un Client : " + c3.toString());
+//	 ClientsDAO.delete(c2.getCodeClient());
+//	 Clients = ClientsDAO.selectAll();
+//	 System.out.println("Liste des Clients aprï¿½s suppression : ");
+//	 afficherClients(Clients);
+//	 System.out.println("---------------------------------------------------------------");
+	
+	 } catch (DALException e) {
+	 e.printStackTrace();
+	 }
+	 }
+
+	private static void afficherClients(List<Clients> Clients) {
 		StringBuffer sb = new StringBuffer();
-		for (Race rce : Race) {
-			sb.append(rce.toString());
+		for (Clients clt : Clients) {
+			sb.append(clt.toString());
 			sb.append("\n");
 		}
 		System.out.println(sb.toString());
 	}
-	// *******************************************************************************CLIENTS***********
-	// // Déclaration et instanciation de la DAO Clients)
-	// ClientsDAO ClientsDAO = DAOFactory.getClientsDAO();
-	//
-	// // Instanciation du jeu d'essai
-	// Clients c1 = new Clients("SPECTOR", "Phil", "19 la mainge ", "", "91934",
-	// "SEMARE", "0195860309", "MMA",
-	// "dededudu@yahouuuu.fr", "Attention à bien le faire payer en liquide car
-	// il est interdit bancaire. ",
-	// false);
-	// Clients c2 = new Clients("LA FRITE", "Jean-Jean", "le petit bois", "",
-	// "44250", "QUEVILLY", "0295867896", "AXA",
-	// "jeanlafrite@free.fr", "", false);
-	// Clients c3 = new Clients("BALLE", "Jean", "12 le rumbaleur ", "le pont au
-	// vieux", "44800", "LIGNE",
-	// "0295860659", "GROUPAMA", "jeanballe@orange.fr", "", false);
-	//
-	// System.out.println("Ajout Client... ");
-	// try {
-	// // Ajout d'un Client
-	// ClientsDAO.insert(c1);
-	// System.out.println("Client ajouté : " + c1.toString());
-	// ClientsDAO.insert(c2);
-	// System.out.println("Client ajouté : " + c2.toString());
-	// ClientsDAO.insert(c3);
-	// System.out.println("Client ajouté : " + c3.toString());
-	//
-	// // Sélection d'un Client
-	// Clients c = ClientsDAO.selectByCode(c2.getCodeClient());
-	// System.out.println("\n Sélection d'un Client par code : " +
-	// c.toString());
-	//
-	// // Sélection de tout le Client
-	// List<Clients> Clients = ClientsDAO.selectAll();
-	// System.out.println("\n Sélection de tous les Clients : ");
-	//
-	// afficherClients(Clients);
-	//
-	// // Sélection des Clients non archivé
-	// List<Clients> ClientsActif = ClientsDAO.selectAllNoArchive();
-	// System.out.println("\n Sélection des Clients actuel : ");
-	// afficherClients(ClientsActif);
-	//
-	// // Modification d'un Client
-	// System.out.println("\nModification Clients : ");
-	// System.out.println("Client avant modification : " + c1.toString());
-	// c1.setNomClient("LATRIQUE");
-	// c1.setPrenomClient("Patrick");
-	// c1.setAssurance("GROUPAMA");
-	// c3.setArchive(true);
-	// ClientsDAO.update(c1);
-	// ClientsDAO.update(c2);
-	// ClientsDAO.update(c3);
-	// System.out.println("Client apres modification : " + c1.toString());
-	// System.out.println("Client apres modification : " + c2.toString());
-	// System.out.println("Client apres modification : " + c3.toString());
-	// //
-	// //
-	// // Suppression d'un Client
-	// System.out.println("\n Suppression d'un Client : " + c3.toString());
-	// ClientsDAO.delete(c2.getCodeClient());
-	// Clients = ClientsDAO.selectAll();
-	// System.out.println("Liste des Clients après suppression : ");
-	// afficherClients(Clients);
-	// System.out.println("---------------------------------------------------------------");
-	//
-	// } catch (DALException e) {
-	// e.printStackTrace();
-	// }
-	// }
-	//
-	// private static void afficherClients(List<Clients> Clients) {
-	// StringBuffer sb = new StringBuffer();
-	// for (Clients clt : Clients) {
-	// sb.append(clt.toString());
-	// sb.append("\n");
-	// }
-	// System.out.println(sb.toString());
-	// }
 }

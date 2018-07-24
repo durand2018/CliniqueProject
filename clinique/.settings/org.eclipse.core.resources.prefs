@@ -1,2 +1,12 @@
 eclipse.preferences.version=1
+encoding//src/fr/eni/clinique/bll/AgendaMger.java=UTF-8
+encoding//src/fr/eni/clinique/bll/AnimalMger.java=UTF-8
+encoding//src/fr/eni/clinique/bll/AppliTestBLL.java=UTF-8
+encoding//src/fr/eni/clinique/bll/BLLException.java=UTF-8
+encoding//src/fr/eni/clinique/bll/ClientsMger.java=UTF-8
+encoding//src/fr/eni/clinique/bll/LoginMger.java=UTF-8
+encoding//src/fr/eni/clinique/bo=UTF-8
+encoding//src/fr/eni/clinique/bo/Agenda.java=UTF-8
+encoding//src/fr/eni/clinique/bo/Animaux.java=UTF-8
+encoding//src/fr/eni/clinique/bo/AppliTestBO.java=UTF-8
 encoding/<project>=UTF-8

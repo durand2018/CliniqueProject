@@ -21,7 +21,50 @@ public class ClientsDAOJdbcImpl implements ClientsDAO {
 	private static final String sqlSelectAllNoArchive = "select * from Clients where Archive = 0";
 	private static final String sqlUpdate = "update Clients set NomClient=?,PrenomClient=?,Adresse1=?,Adresse2=?,CodePostal=?,Ville=?,NumTel=?,Assurance=?,Email=?,Remarque=?,Archive=? where CodeClient=?";
 	private static final String sqlDelete = "delete from Clients where CodeClient=?";
+	private static final String sqlFind = "select * from Clients where NomClient LIKE ?";
 
+	@Override
+	public List<Clients> selectByNomPartiel(String saisie) throws DALException {
+		Connection cnx = null;
+		PreparedStatement rqt = null;
+		ResultSet rs = null;
+		Clients client = null;
+		List<Clients> lesClientsParNomPartiel = new ArrayList<>();
+		try {
+			// Lancement connexion
+			cnx = JdbcTools.getConnection();
+			// Lancement Select sur la BDD
+			rqt = cnx.prepareStatement(sqlFind);
+			rqt.setString(1, saisie+"%");
+			
+			// Execution Select
+			rs = rqt.executeQuery();
+			while (rs.next()) {
+				client = new Clients();
+
+				client.setCodeClient(rs.getInt("CodeClient"));
+				client.setNomClient(rs.getString("NomClient"));
+				client.setPrenomClient(rs.getString("PrenomClient"));
+				client.setAdresse1(rs.getString("Adresse1"));
+				client.setAdresse2(rs.getString("Adresse2"));
+				client.setCodePostal(rs.getString("CodePostal"));
+				client.setVille(rs.getString("Ville"));
+				client.setNumTel(rs.getString("NumTel"));
+				client.setAssurance(rs.getString("Assurance"));
+				client.setEmail(rs.getString("Email"));
+				client.setRemarque(rs.getString("Remarque"));
+				client.setArchive(rs.getBoolean("Archive"));
+				lesClientsParNomPartiel.add(client);
+			}
+			return lesClientsParNomPartiel;
+
+		} catch (SQLException e) {
+			throw new DALException("Aucun Client ne commence par ces lettres ! - " + saisie, e);
+		} finally {
+			JdbcTools.closeConnection();
+		}
+	}
+	
 	@Override
 	public Clients selectByCode(int codeClient) throws DALException {
 		Connection cnx = null;
@@ -95,7 +138,7 @@ public class ClientsDAOJdbcImpl implements ClientsDAO {
 			}
 			return lesClients;
 		} catch (SQLException e) {
-			throw new DALException("select all Clients echoué ", e);
+			throw new DALException("select all Clients echouï¿½ ", e);
 		} finally {
 			JdbcTools.closeConnection();
 		}
@@ -211,7 +254,7 @@ public class ClientsDAOJdbcImpl implements ClientsDAO {
 			//Execution Select
 			int nbRows = rqt.executeUpdate();
 			if (nbRows == 1) {
-				//Récupération identifiant généré par la BDD
+				//Rï¿½cupï¿½ration identifiant gï¿½nï¿½rï¿½ par la BDD
 				ResultSet rs = rqt.getGeneratedKeys();
 				if (rs.next()) {
 					int cle = rs.getInt(1);
@@ -219,7 +262,7 @@ public class ClientsDAOJdbcImpl implements ClientsDAO {
 				}
 			}
 		} catch (SQLException e) {
-			throw new DALException("Insertion du client non effectuée - " + data, e);
+			throw new DALException("Insertion du client non effectuï¿½e - " + data, e);
 		} finally {
 			JdbcTools.closeConnection();
 		}
@@ -240,7 +283,7 @@ public class ClientsDAOJdbcImpl implements ClientsDAO {
 			//Execution Select
 			rqt.executeUpdate();
 		} catch (SQLException e) {
-			throw new DALException("Supression d'un membre ratée - " + codeClient, e);
+			throw new DALException("Supression d'un membre ratï¿½e - " + codeClient, e);
 		} finally {
 			JdbcTools.closeConnection();
 		}
