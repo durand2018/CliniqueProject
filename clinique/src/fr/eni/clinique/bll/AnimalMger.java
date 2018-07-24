@@ -13,7 +13,7 @@ public class AnimalMger {
 	private static AnimalMger instance = null;
 	private AnimauxDAO daoAnimal = DAOFactory.getAnimauxDAO();
 	private List<Animaux> listeAni;
-	private List<Race> listeEscpece;
+	private List<Race> listeEspece;
 	private List<Race> listeRace;
 
 	private AnimalMger() throws BLLException {
@@ -109,11 +109,20 @@ public class AnimalMger {
 
 	public List<Race> selectEspece() throws BLLException {
 		try {
-			listeEscpece = daoAnimal.selectEspece();
+			listeEspece = daoAnimal.selectEspece();
 		} catch (DALException e) {
 			throw new BLLException("Erreur dans la sélection.", e);
 		}
-		return listeEscpece;
+		return listeEspece;
+	}
+	
+	public List<Race> selectRace() throws BLLException {
+		try {
+			listeRace = daoAnimal.selectRace();
+		} catch (DALException e) {
+			throw new BLLException("Erreur dans la sélection.", e);
+		}
+		return listeRace;
 	}
 
 	public List<Race> selectRaceByEspece(String espece) throws BLLException {

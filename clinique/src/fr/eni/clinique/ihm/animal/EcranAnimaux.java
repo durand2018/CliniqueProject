@@ -40,15 +40,26 @@ public class EcranAnimaux extends JFrame {
 			e.printStackTrace();
 			System.out.println("Aucun animal à afficher !");
 		}
-
 		initIHM();
-		jtCode.setText(Integer.toString(mgr.getAnimal(0).getCodeAnimal()));
-		jtNom.setText(mgr.getAnimal(0).getNomAnimal());
-		jtCouleur.setText(mgr.getAnimal(0).getCouleur());
-		jcombSexe.setToolTipText(mgr.getAnimal(0).getSexe());
-		jcombEspece.setToolTipText(mgr.getAnimal(0).getEspece());
-		jcombRaces.setToolTipText(mgr.getAnimal(0).getRace());
-		jtTatoo.setText(mgr.getAnimal(0).getTatouage());
+	}
+
+	public EcranAnimaux(int codeAnimal) {
+		super("Animaux");
+		try {
+			mgr = AnimalMger.getInstance();
+		} catch (BLLException e) {
+			e.printStackTrace();
+			System.out.println("Aucun animal à afficher !");
+		}
+
+		initIHM(codeAnimal);
+		jtCode.setText(Integer.toString(mgr.getAnimal(codeAnimal).getCodeAnimal()));
+		jtNom.setText(mgr.getAnimal(codeAnimal).getNomAnimal());
+		jtCouleur.setText(mgr.getAnimal(codeAnimal).getCouleur());
+		jcombSexe.setToolTipText(mgr.getAnimal(codeAnimal).getSexe());
+		jcombEspece.setToolTipText(mgr.getAnimal(codeAnimal).getEspece());
+		jcombRaces.setToolTipText(mgr.getAnimal(codeAnimal).getRace());
+		jtTatoo.setText(mgr.getAnimal(codeAnimal).getTatouage());
 	}
 
 	private void initIHM() {
@@ -105,11 +116,11 @@ public class EcranAnimaux extends JFrame {
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.gridwidth = 1;
-		panelChamps.add(getJlName(), gbc);
+		panelChamps.add(getJlNom(), gbc);
 
 		gbc.gridx = 1;
 		gbc.gridwidth = 3;
-		panelChamps.add(getJtName(), gbc);
+		panelChamps.add(getJtNom(), gbc);
 
 		gbc.gridx = 4;
 		gbc.gridwidth = 1;
@@ -118,17 +129,17 @@ public class EcranAnimaux extends JFrame {
 		// ligne3
 		gbc.gridx = 0;
 		gbc.gridy = 2;
-		panelChamps.add(getJlColor(), gbc);
+		panelChamps.add(getJlCouleur(), gbc);
 
 		gbc.gridx = 1;
 		gbc.gridwidth = 3;
-		panelChamps.add(getJtColor(), gbc);
+		panelChamps.add(getJtCouleur(), gbc);
 
 		// ligne4
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		gbc.gridwidth = 1;
-		panelChamps.add(getJlSpecies(), gbc);
+		panelChamps.add(getJlEspece(), gbc);
 
 		gbc.gridx = 1;
 		gbc.gridwidth = 2;
@@ -140,6 +151,116 @@ public class EcranAnimaux extends JFrame {
 
 		gbc.gridx = 4;
 		panelChamps.add(getJcombRaces(), gbc);
+
+		// ligne 5
+		gbc.gridx = 0;
+		gbc.gridy = 4;
+		panelChamps.add(getJlTatoo(), gbc);
+
+		gbc.gridx = 1;
+		gbc.gridwidth = 3;
+		panelChamps.add(getJtTatoo(), gbc);
+
+		// panels finaux
+
+		panelFinal.add(panelBtn, BorderLayout.NORTH);
+		panelItermediaire.add(panelClt, BorderLayout.NORTH);
+		panelItermediaire.add(panelChamps, BorderLayout.CENTER);
+		panelFinal.add(panelItermediaire, BorderLayout.CENTER);
+
+		this.setContentPane(panelFinal);
+
+	}
+
+	private void initIHM(int codeAnimal) {
+		panelFinal = new JPanel();
+		panelItermediaire = new JPanel();
+		panelBtn = new JPanel();
+		panelClt = new JPanel();
+		panelChamps = new JPanel();
+		panelFinal.setOpaque(true);
+		panelFinal.setLayout(new BorderLayout());
+		panelFinal.setBackground(Color.lightGray);
+		panelItermediaire.setOpaque(true);
+		panelItermediaire.setLayout(new BorderLayout());
+		panelItermediaire.setBackground(Color.lightGray);
+		panelBtn.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		panelBtn.setBackground(Color.lightGray);
+		panelBtn.setPreferredSize(new Dimension(500, 50));
+		panelClt.setLayout(new GridBagLayout());
+		panelClt.setBackground(Color.lightGray);
+		panelClt.setPreferredSize(new Dimension(500, 80));
+		panelChamps.setLayout(new GridBagLayout());
+		panelChamps.setBackground(Color.GRAY);
+		panelChamps.setMaximumSize(new Dimension(750, 750));
+		GridBagConstraints gbc = new GridBagConstraints();
+		GridBagConstraints gbcp = new GridBagConstraints();
+
+		/////////////////////////////////////////////////////// PanelBtn
+		panelBtn.add(getBtnValider());
+		panelBtn.add(getBtnAnnuler());
+		gbc.insets = new Insets(5, 5, 5, 5);
+		/////////////////////////////////////////////////////// PanelClt
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		gbc.insets = new Insets(5, 5, 5, 5);
+		gbc.anchor = GridBagConstraints.WEST;
+		panelClt.add(getJlClient(), gbc);
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		panelClt.add(getJtClient(), gbc);
+
+		/////////////////////////////////////////////////////// PanelFields
+		// ligne 1
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		gbc.insets = new Insets(5, 5, 5, 5);
+		panelChamps.add(getJlCode(), gbc);
+
+		gbc.gridx = 1;
+		gbc.gridwidth = 3;
+		panelChamps.add(getJtCode(), gbc);
+
+		// ligne2
+
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		gbc.gridwidth = 1;
+		panelChamps.add(getJlNom(), gbc);
+
+		gbc.gridx = 1;
+		gbc.gridwidth = 3;
+		panelChamps.add(getJtNom(), gbc);
+
+		gbc.gridx = 4;
+		gbc.gridwidth = 1;
+		panelChamps.add(getJcombSexe(), gbc);
+
+		// ligne3
+		gbc.gridx = 0;
+		gbc.gridy = 2;
+		panelChamps.add(getJlCouleur(), gbc);
+
+		gbc.gridx = 1;
+		gbc.gridwidth = 3;
+		panelChamps.add(getJtCouleur(), gbc);
+
+		// ligne4
+		gbc.gridx = 0;
+		gbc.gridy = 3;
+		gbc.gridwidth = 1;
+		panelChamps.add(getJlEspece(), gbc);
+
+		gbc.gridx = 1;
+		gbc.gridwidth = 2;
+		panelChamps.add(getJcombEscpece(codeAnimal), gbc);
+
+		gbc.gridx = 3;
+		gbc.gridwidth = 1;
+		panelChamps.add(getJlRace(), gbc);
+
+		gbc.gridx = 4;
+		panelChamps.add(getJcombRaces(codeAnimal), gbc);
 
 		// ligne 5
 		gbc.gridx = 0;
@@ -175,21 +296,21 @@ public class EcranAnimaux extends JFrame {
 		return jlCode;
 	}
 
-	public JLabel getJlName() {
+	public JLabel getJlNom() {
 		if (jlNom == null) {
 			jlNom = new JLabel("Nom ");
 		}
 		return jlNom;
 	}
 
-	public JLabel getJlColor() {
+	public JLabel getJlCouleur() {
 		if (jlCouleur == null) {
 			jlCouleur = new JLabel("Couleur ");
 		}
 		return jlCouleur;
 	}
 
-	public JLabel getJlSpecies() {
+	public JLabel getJlEspece() {
 		if (jlEspece == null) {
 			jlEspece = new JLabel("Espèce ");
 		}
@@ -224,14 +345,14 @@ public class EcranAnimaux extends JFrame {
 		return jtCode;
 	}
 
-	public JTextField getJtName() {
+	public JTextField getJtNom() {
 		if (jtNom == null) {
 			jtNom = new JTextField(20);
 		}
 		return jtNom;
 	}
 
-	public JTextField getJtColor() {
+	public JTextField getJtCouleur() {
 		if (jtCouleur == null) {
 			jtCouleur = new JTextField(20);
 		}
@@ -276,7 +397,6 @@ public class EcranAnimaux extends JFrame {
 		jcombEspece = new JComboBox<String>();
 		jcombEspece.setPreferredSize(new Dimension(150, 20));
 		Iterator<Race> itR;
-
 		try {
 			itR = mgr.selectEspece().iterator();
 			Race ra;
@@ -287,6 +407,14 @@ public class EcranAnimaux extends JFrame {
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
+
+		return jcombEspece;
+	}
+
+	public JComboBox<String> getJcombEscpece(int codeAnimal) {
+		jcombEspece = new JComboBox<String>();
+		jcombEspece.setPreferredSize(new Dimension(150, 20));
+		jcombEspece.addItem(mgr.getAnimal(codeAnimal).getEspece());
 
 		return jcombEspece;
 	}
@@ -310,13 +438,31 @@ public class EcranAnimaux extends JFrame {
 
 		return jcombRaces;
 	}
+	public JComboBox<String> getJcombRaces(String espece) {
+		jcombRaces = new JComboBox<String>();
+		jcombRaces.setPreferredSize(new Dimension(150, 20));
+		Iterator<Race> itR;
+		
+		try {
+			itR = mgr.selectRaceByEspece(espece).iterator();
+			Race ra;
+			while (itR.hasNext()) {
+				ra = itR.next();
+				jcombRaces.addItem(ra.getRace());
+			}
+		} catch (BLLException e) {
+			e.printStackTrace();
+		}
+		
+		return jcombRaces;
+	}
 
-	// public JComboBox<String> getJcombRace() {
-	// jcombRace = new JComboBox<String>();
-	// jcombRace.setPreferredSize(new Dimension(150, 20));
-	// jcombRace.addItem("test1");
-	// jcombRace.addItem("test2");
-	// return jcombRace;
-	// }
+	public JComboBox<String> getJcombRaces(int codeAnimal) {
+		jcombRaces = new JComboBox<String>();
+		jcombRaces.setPreferredSize(new Dimension(150, 20));
+		jcombRaces.addItem(mgr.getAnimal(codeAnimal).getRace());
 
+		return jcombRaces;
+
+	}
 }

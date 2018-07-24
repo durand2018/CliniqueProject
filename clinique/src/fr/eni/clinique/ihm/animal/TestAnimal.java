@@ -26,7 +26,7 @@ public class TestAnimal {
 
 			@Override
 			public void run() {
-				EcranAnimaux monEcran = new EcranAnimaux();
+				EcranAnimaux monEcran = new EcranAnimaux(25);
 				monEcran.setSize(new Dimension(600, 400));
 				monEcran.setVisible(true);
 

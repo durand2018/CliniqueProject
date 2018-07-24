@@ -25,4 +25,10 @@ public interface AnimauxDAO {
 
 	public void delete(int code) throws DALException;
 
+	/**
+	 * Fonction en charge de la sélection des races
+	 * @return la liste des races
+	 */
+	public List<Race> selectRace() throws DALException;
+
 }
