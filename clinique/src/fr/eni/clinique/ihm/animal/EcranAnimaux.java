@@ -8,6 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.util.Iterator;
 
 import javax.swing.ImageIcon;
@@ -15,12 +16,19 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import fr.eni.clinique.bll.AnimalMger;
 import fr.eni.clinique.bll.BLLException;
+import fr.eni.clinique.bll.ClientsMger;
+import fr.eni.clinique.bo.Animaux;
+import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.bo.Race;
+import fr.eni.clinique.ihm.client.EcranAjoutClient;
+import fr.eni.clinique.ihm.client.EcranClients;
+import fr.eni.clinique.ihm.client.PanelClient;
 
 @SuppressWarnings("serial")
 public class EcranAnimaux extends JFrame {
@@ -38,7 +46,7 @@ public class EcranAnimaux extends JFrame {
 			mgr = AnimalMger.getInstance();
 		} catch (BLLException e) {
 			e.printStackTrace();
-			System.out.println("Aucun animal ‡ afficher !");
+			System.out.println("Aucun animal √† afficher !");
 		}
 		initIHM();
 	}
@@ -49,7 +57,7 @@ public class EcranAnimaux extends JFrame {
 			mgr = AnimalMger.getInstance();
 		} catch (BLLException e) {
 			e.printStackTrace();
-			System.out.println("Aucun animal ‡ afficher !");
+			System.out.println("Aucun animal √† afficher !");
 		}
 
 		initIHM(codeAnimal);
@@ -60,6 +68,7 @@ public class EcranAnimaux extends JFrame {
 		jcombEspece.setToolTipText(mgr.getAnimal(codeAnimal).getEspece());
 		jcombRaces.setToolTipText(mgr.getAnimal(codeAnimal).getRace());
 		jtTatoo.setText(mgr.getAnimal(codeAnimal).getTatouage());
+		mgr.getAnimal(codeAnimal).getCodeClient();
 	}
 
 	private void initIHM() {
@@ -312,7 +321,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JLabel getJlEspece() {
 		if (jlEspece == null) {
-			jlEspece = new JLabel("EspËce ");
+			jlEspece = new JLabel("Esp√®ce ");
 		}
 		return jlEspece;
 	}
@@ -334,6 +343,10 @@ public class EcranAnimaux extends JFrame {
 	public JTextField getJtClient() {
 		if (jtClient == null) {
 			jtClient = new JTextField(20);
+			// R√©cup√®re le code client
+//			Animaux codeClt = getJtClient().getCodeClient();
+//			System.out.println(codeClt);
+			
 		}
 		return jtClient;
 	}
@@ -387,7 +400,7 @@ public class EcranAnimaux extends JFrame {
 	public JComboBox<String> getJcombSexe() {
 		jcombSexe = new JComboBox<String>();
 		jcombSexe.setPreferredSize(new Dimension(80, 20));
-		jcombSexe.addItem("M‚le");
+		jcombSexe.addItem("M√¢le");
 		jcombSexe.addItem("Femelle");
 
 		return jcombSexe;
@@ -438,11 +451,12 @@ public class EcranAnimaux extends JFrame {
 
 		return jcombRaces;
 	}
+
 	public JComboBox<String> getJcombRaces(String espece) {
 		jcombRaces = new JComboBox<String>();
 		jcombRaces.setPreferredSize(new Dimension(150, 20));
 		Iterator<Race> itR;
-		
+
 		try {
 			itR = mgr.selectRaceByEspece(espece).iterator();
 			Race ra;
@@ -453,7 +467,7 @@ public class EcranAnimaux extends JFrame {
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return jcombRaces;
 	}
 
