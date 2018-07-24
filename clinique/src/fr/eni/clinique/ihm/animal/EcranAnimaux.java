@@ -25,11 +25,11 @@ import fr.eni.clinique.bo.Race;
 @SuppressWarnings("serial")
 public class EcranAnimaux extends JFrame {
 
-	private JPanel panelFinal, panelBtn, panelClt, panelFields, panelIterm;
-	private JLabel jlClient, jlCode, jlName, jlColor, jlSpecies, jlRace, jlTatoo;
-	private JTextField jtClient, jtCode, jtName, jtColor, jtTatoo;
+	private JPanel panelFinal, panelBtn, panelClt, panelChamps, panelItermediaire;
+	private JLabel jlClient, jlCode, jlNom, jlCouleur, jlEspece, jlRace, jlTatoo;
+	private JTextField jtClient, jtCode, jtNom, jtCouleur, jtTatoo;
 	private JButton btnValider, btnAnnuler;
-	private JComboBox<String> jcombSexe, jcombSpicies, jcombRaces;
+	private JComboBox<String> jcombSexe, jcombEspece, jcombRaces;
 	private AnimalMger mgr;
 
 	public EcranAnimaux() {
@@ -43,35 +43,35 @@ public class EcranAnimaux extends JFrame {
 
 		initIHM();
 		jtCode.setText(Integer.toString(mgr.getAnimal(0).getCodeAnimal()));
-		jtName.setText(mgr.getAnimal(0).getNomAnimal());
-		jtColor.setText(mgr.getAnimal(0).getCouleur());
+		jtNom.setText(mgr.getAnimal(0).getNomAnimal());
+		jtCouleur.setText(mgr.getAnimal(0).getCouleur());
 		jcombSexe.setToolTipText(mgr.getAnimal(0).getSexe());
-		jcombSpicies.setToolTipText(mgr.getAnimal(0).getEspece());
+		jcombEspece.setToolTipText(mgr.getAnimal(0).getEspece());
 		jcombRaces.setToolTipText(mgr.getAnimal(0).getRace());
 		jtTatoo.setText(mgr.getAnimal(0).getTatouage());
 	}
 
 	private void initIHM() {
 		panelFinal = new JPanel();
-		panelIterm = new JPanel();
+		panelItermediaire = new JPanel();
 		panelBtn = new JPanel();
 		panelClt = new JPanel();
-		panelFields = new JPanel();
+		panelChamps = new JPanel();
 		panelFinal.setOpaque(true);
 		panelFinal.setLayout(new BorderLayout());
 		panelFinal.setBackground(Color.lightGray);
-		panelIterm.setOpaque(true);
-		panelIterm.setLayout(new BorderLayout());
-		panelIterm.setBackground(Color.lightGray);
+		panelItermediaire.setOpaque(true);
+		panelItermediaire.setLayout(new BorderLayout());
+		panelItermediaire.setBackground(Color.lightGray);
 		panelBtn.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		panelBtn.setBackground(Color.lightGray);
 		panelBtn.setPreferredSize(new Dimension(500, 50));
 		panelClt.setLayout(new GridBagLayout());
 		panelClt.setBackground(Color.lightGray);
 		panelClt.setPreferredSize(new Dimension(500, 80));
-		panelFields.setLayout(new GridBagLayout());
-		panelFields.setBackground(Color.GRAY);
-		panelFields.setMaximumSize(new Dimension(750, 750));
+		panelChamps.setLayout(new GridBagLayout());
+		panelChamps.setBackground(Color.GRAY);
+		panelChamps.setMaximumSize(new Dimension(750, 750));
 		GridBagConstraints gbc = new GridBagConstraints();
 		GridBagConstraints gbcp = new GridBagConstraints();
 
@@ -94,68 +94,68 @@ public class EcranAnimaux extends JFrame {
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.insets = new Insets(5, 5, 5, 5);
-		panelFields.add(getJlCode(), gbc);
+		panelChamps.add(getJlCode(), gbc);
 
 		gbc.gridx = 1;
 		gbc.gridwidth = 3;
-		panelFields.add(getJtCode(), gbc);
+		panelChamps.add(getJtCode(), gbc);
 
 		// ligne2
 
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.gridwidth = 1;
-		panelFields.add(getJlName(), gbc);
+		panelChamps.add(getJlName(), gbc);
 
 		gbc.gridx = 1;
 		gbc.gridwidth = 3;
-		panelFields.add(getJtName(), gbc);
+		panelChamps.add(getJtName(), gbc);
 
 		gbc.gridx = 4;
 		gbc.gridwidth = 1;
-		panelFields.add(getJcombSexe(), gbc);
+		panelChamps.add(getJcombSexe(), gbc);
 
 		// ligne3
 		gbc.gridx = 0;
 		gbc.gridy = 2;
-		panelFields.add(getJlColor(), gbc);
+		panelChamps.add(getJlColor(), gbc);
 
 		gbc.gridx = 1;
 		gbc.gridwidth = 3;
-		panelFields.add(getJtColor(), gbc);
+		panelChamps.add(getJtColor(), gbc);
 
 		// ligne4
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		gbc.gridwidth = 1;
-		panelFields.add(getJlSpecies(), gbc);
+		panelChamps.add(getJlSpecies(), gbc);
 
 		gbc.gridx = 1;
 		gbc.gridwidth = 2;
-		panelFields.add(getJcombSpicies(), gbc);
+		panelChamps.add(getJcombEscpece(), gbc);
 
 		gbc.gridx = 3;
 		gbc.gridwidth = 1;
-		panelFields.add(getJlRace(), gbc);
+		panelChamps.add(getJlRace(), gbc);
 
 		gbc.gridx = 4;
-		panelFields.add(getJcombRaces(), gbc);
+		panelChamps.add(getJcombRaces(), gbc);
 
 		// ligne 5
 		gbc.gridx = 0;
 		gbc.gridy = 4;
-		panelFields.add(getJlTatoo(), gbc);
+		panelChamps.add(getJlTatoo(), gbc);
 
 		gbc.gridx = 1;
 		gbc.gridwidth = 3;
-		panelFields.add(getJtTatoo(), gbc);
+		panelChamps.add(getJtTatoo(), gbc);
 
 		// panels finaux
 
 		panelFinal.add(panelBtn, BorderLayout.NORTH);
-		panelIterm.add(panelClt, BorderLayout.NORTH);
-		panelIterm.add(panelFields, BorderLayout.CENTER);
-		panelFinal.add(panelIterm, BorderLayout.CENTER);
+		panelItermediaire.add(panelClt, BorderLayout.NORTH);
+		panelItermediaire.add(panelChamps, BorderLayout.CENTER);
+		panelFinal.add(panelItermediaire, BorderLayout.CENTER);
 
 		this.setContentPane(panelFinal);
 
@@ -176,24 +176,24 @@ public class EcranAnimaux extends JFrame {
 	}
 
 	public JLabel getJlName() {
-		if (jlName == null) {
-			jlName = new JLabel("Nom ");
+		if (jlNom == null) {
+			jlNom = new JLabel("Nom ");
 		}
-		return jlName;
+		return jlNom;
 	}
 
 	public JLabel getJlColor() {
-		if (jlColor == null) {
-			jlColor = new JLabel("Couleur ");
+		if (jlCouleur == null) {
+			jlCouleur = new JLabel("Couleur ");
 		}
-		return jlColor;
+		return jlCouleur;
 	}
 
 	public JLabel getJlSpecies() {
-		if (jlSpecies == null) {
-			jlSpecies = new JLabel("Espèce ");
+		if (jlEspece == null) {
+			jlEspece = new JLabel("Espèce ");
 		}
-		return jlSpecies;
+		return jlEspece;
 	}
 
 	public JLabel getJlRace() {
@@ -225,17 +225,17 @@ public class EcranAnimaux extends JFrame {
 	}
 
 	public JTextField getJtName() {
-		if (jtName == null) {
-			jtName = new JTextField(20);
+		if (jtNom == null) {
+			jtNom = new JTextField(20);
 		}
-		return jtName;
+		return jtNom;
 	}
 
 	public JTextField getJtColor() {
-		if (jtColor == null) {
-			jtColor = new JTextField(20);
+		if (jtCouleur == null) {
+			jtCouleur = new JTextField(20);
 		}
-		return jtColor;
+		return jtCouleur;
 	}
 
 	public JTextField getJtTatoo() {
@@ -248,7 +248,7 @@ public class EcranAnimaux extends JFrame {
 	public JButton getBtnValider() {
 		if (btnValider == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/valider_rond.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/New24.gif")));
 			btnValider = new JButton(image);
 		}
 		return btnValider;
@@ -257,7 +257,7 @@ public class EcranAnimaux extends JFrame {
 	public JButton getBtnAnnuler() {
 		if (btnAnnuler == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annulerBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/New24.gif")));
 			btnAnnuler = new JButton(image);
 		}
 		return btnAnnuler;
@@ -272,9 +272,9 @@ public class EcranAnimaux extends JFrame {
 		return jcombSexe;
 	}
 
-	public JComboBox<String> getJcombSpicies() {
-		jcombSpicies = new JComboBox<String>();
-		jcombSpicies.setPreferredSize(new Dimension(150, 20));
+	public JComboBox<String> getJcombEscpece() {
+		jcombEspece = new JComboBox<String>();
+		jcombEspece.setPreferredSize(new Dimension(150, 20));
 		Iterator<Race> itR;
 
 		try {
@@ -282,13 +282,13 @@ public class EcranAnimaux extends JFrame {
 			Race ra;
 			while (itR.hasNext()) {
 				ra = itR.next();
-				jcombSpicies.addItem(ra.getEspece());
+				jcombEspece.addItem(ra.getEspece());
 			}
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
 
-		return jcombSpicies;
+		return jcombEspece;
 	}
 
 	public JComboBox<String> getJcombRaces() {

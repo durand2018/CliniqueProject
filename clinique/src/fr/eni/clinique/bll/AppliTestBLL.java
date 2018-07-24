@@ -85,13 +85,13 @@ public class AppliTestBLL {
 //		System.out.println(sb.toString());
 //	}
 //	private static void afficherAnimalRace(List<Race> anirace) {
-		StringBuffer sb = new StringBuffer();
-		for (Race r : anirace) {
-			sb.append(r.toString());
-			sb.append("\n");
-		}
-		System.out.println(sb.toString());
-	}
+//		StringBuffer sb = new StringBuffer();
+//		for (Race r : anirace) {
+//			sb.append(r.toString());
+//			sb.append("\n");
+//		}
+//		System.out.println(sb.toString());
+//	}
 }
 /////////////////////////////////////////////////////////////////////////// Afficher
 // personnel
