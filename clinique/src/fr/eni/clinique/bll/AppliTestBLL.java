@@ -75,6 +75,7 @@ public class AppliTestBLL {
 	}
 
 	///////////////////////////////////////////////////////////////////////////
+
 	//	 Afficher animal
 	private static void afficherAnimal(List<Animaux> anim) {
 		StringBuffer sb = new StringBuffer();
@@ -92,7 +93,7 @@ public class AppliTestBLL {
 		}
 		System.out.println(sb.toString());
 	}
-}
+
 /////////////////////////////////////////////////////////////////////////// Afficher
 // personnel
 // private static void afficherPersonnel(List<Personnels> perso) {
@@ -124,3 +125,4 @@ public class AppliTestBLL {
 // e.printStackTrace();
 // }
 // }}
+}
