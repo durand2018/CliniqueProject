@@ -7,7 +7,14 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.ItemSelectable;
+import java.awt.List;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.ImageIcon;
@@ -17,6 +24,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.plaf.basic.BasicComboBoxUI.ItemHandler;
 
 import fr.eni.clinique.bll.AnimalMger;
 import fr.eni.clinique.bll.BLLException;
@@ -38,17 +46,17 @@ public class EcranAnimaux extends JFrame {
 			mgr = AnimalMger.getInstance();
 		} catch (BLLException e) {
 			e.printStackTrace();
-			System.out.println("Aucun animal à afficher !");
+			System.out.println("Aucun animal Ã  afficher !");
 		}
 
 		initIHM();
-		jtCode.setText(Integer.toString(mgr.getAnimal(0).getCodeAnimal()));
-		jtNom.setText(mgr.getAnimal(0).getNomAnimal());
-		jtCouleur.setText(mgr.getAnimal(0).getCouleur());
-		jcombSexe.setToolTipText(mgr.getAnimal(0).getSexe());
-		jcombEspece.setToolTipText(mgr.getAnimal(0).getEspece());
-		jcombRaces.setToolTipText(mgr.getAnimal(0).getRace());
-		jtTatoo.setText(mgr.getAnimal(0).getTatouage());
+//		jtCode.setText(Integer.toString(mgr.getAnimal(0).getCodeAnimal()));
+//		jtNom.setText(mgr.getAnimal(0).getNomAnimal());
+//		jtCouleur.setText(mgr.getAnimal(0).getCouleur());
+//		jcombSexe.setToolTipText(mgr.getAnimal(0).getSexe());
+	jcombEspece.setToolTipText(mgr.getAnimal(6).getEspece());
+//		jcombRaces.setToolTipText(mgr.getAnimal(0).getRace());
+//		jtTatoo.setText(mgr.getAnimal(0).getTatouage());
 	}
 
 	private void initIHM() {
@@ -191,7 +199,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JLabel getJlSpecies() {
 		if (jlEspece == null) {
-			jlEspece = new JLabel("Espèce ");
+			jlEspece = new JLabel("EspÃ¨ce ");
 		}
 		return jlEspece;
 	}
@@ -266,7 +274,7 @@ public class EcranAnimaux extends JFrame {
 	public JComboBox<String> getJcombSexe() {
 		jcombSexe = new JComboBox<String>();
 		jcombSexe.setPreferredSize(new Dimension(80, 20));
-		jcombSexe.addItem("Mâle");
+		jcombSexe.addItem("MÃ¢le");
 		jcombSexe.addItem("Femelle");
 
 		return jcombSexe;
@@ -275,14 +283,31 @@ public class EcranAnimaux extends JFrame {
 	public JComboBox<String> getJcombEscpece() {
 		jcombEspece = new JComboBox<String>();
 		jcombEspece.setPreferredSize(new Dimension(150, 20));
+		
+		
+		jcombEspece.addItemListener(new ItemListener() {
+	
+
+			@Override
+			public void itemStateChanged(ItemEvent arg0) {
+				// TODO Auto-generated method stub
+			System.out.println(jcombEspece.getSelectedIndex());
+			}
+		});
 		Iterator<Race> itR;
+		//(null)String especeSelection=(String) jcombEspece.getSelectedItem();
 
 		try {
+			ArrayList<String> listeItem = new ArrayList<>(); 
 			itR = mgr.selectEspece().iterator();
 			Race ra;
 			while (itR.hasNext()) {
 				ra = itR.next();
 				jcombEspece.addItem(ra.getEspece());
+				listeItem.add(ra.getEspece().toString());
+				//System.out.println(listeItem);
+				
+				//(null)   System.out.println(especeSelection);
 			}
 		} catch (BLLException e) {
 			e.printStackTrace();
@@ -290,19 +315,26 @@ public class EcranAnimaux extends JFrame {
 
 		return jcombEspece;
 	}
-
+	
 	public JComboBox<String> getJcombRaces() {
 		jcombRaces = new JComboBox<String>();
 		jcombRaces.setPreferredSize(new Dimension(150, 20));
+	
 		Iterator<Race> itR;
-		String espece = null;
+		String espece=getJcombEscpece().getSelectedItem().toString();
+		//System.out.println(espece);
+		
 
 		try {
 			itR = mgr.selectRaceByEspece(espece).iterator();
 			Race ra;
 			while (itR.hasNext()) {
 				ra = itR.next();
+				int i= 0;
 				jcombRaces.addItem(ra.getRace());
+				
+				
+				
 			}
 		} catch (BLLException e) {
 			e.printStackTrace();
@@ -311,11 +343,12 @@ public class EcranAnimaux extends JFrame {
 		return jcombRaces;
 	}
 
+	
+
 	// public JComboBox<String> getJcombRace() {
 	// jcombRace = new JComboBox<String>();
 	// jcombRace.setPreferredSize(new Dimension(150, 20));
-	// jcombRace.addItem("test1");
-	// jcombRace.addItem("test2");
+	
 	// return jcombRace;
 	// }
 

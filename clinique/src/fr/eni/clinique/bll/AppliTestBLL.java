@@ -1,13 +1,12 @@
 package fr.eni.clinique.bll;
 
-import fr.eni.clinique.bo.Animaux;
 
-import java.util.List;
+//import java.util.List;
 
 //import fr.eni.clinique.bo.Animaux;
-//import fr.eni.clinique.bo.Clients;
+import fr.eni.clinique.bo.Clients;
 //import fr.eni.clinique.bo.Personnels;
-import fr.eni.clinique.bo.Race;
+//import fr.eni.clinique.bo.Race;
 
 
 public class AppliTestBLL {
@@ -107,19 +106,16 @@ public class AppliTestBLL {
 // }
 
 /////////////////////////////////////////////////////////////////////////// Client
-// Clients c1 = new Clients("Truc","Alain","19 Once ","","91934","SEMARE","01 95 86 03 09","MMA","dededudu@yahouuuu.fr","Attention � bien le faire payer en
-// liquide car il est interdit bancaire. ",false);
-// Clients c2 = new Clients("MET", "Val", "1 rue des ET", "La Base", "44440", "RIAIL", "02 15 48 15 49","AXA","vmet@sfr.fr","", false);
+ Clients c1 = new Clients("Truc","Alain","19 Once","","91934","SEMARE","01 95 86 03 09","MMA","dededudu@yahouuuu.fr","Attention � bien le faire payer en liquide car il est interdit bancaire. ",false);
+ Clients c2 = new Clients("MET", "Val", "1 rue des ET", "La Base",
+ "44440", "RIAIL", "02 15 48 15 49","AXA","vmet@sfr.fr","", false);
  ClientsMger cmger = null;
  try {
 
  cmger = ClientsMger.getInstance();
  // Ajout clients
-// cmger.addClients(c1);
-// cmger.addClients(c2);
- 
- // Recherche
- 
+ cmger.addClients(c1);
+ cmger.addClients(c2);
 
  } catch (BLLException e) {
  e.printStackTrace();
