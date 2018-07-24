@@ -74,13 +74,15 @@ public class EcranAjoutClient extends JFrame{
 						// Sauvegarde un nouveau client dans la BDD
 						mger = new ClientsMger();
 						mger.addClients(cltAffiche);
+						int c = cltAffiche.getCodeClient();
 						// Ferme l'écran
 						dispose();
 						EcranClients ecranClt = new EcranClients();
 						PanelClient panClt = new PanelClient();
 						ecranClt.setSize(new Dimension(1000,600));
 						ecranClt.setVisible(true);
-						panClt.RemplirPanelClt(2);
+						System.out.println(c);
+						panClt.RemplirPanelClt(c);
 						ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					} catch (BLLException e1) {
 						JOptionPane.showConfirmDialog(EcranAjoutClient.this, "Une erreur est survenue lors de l'Ajout");

@@ -9,7 +9,7 @@ import java.awt.Insets;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-//import javax.swing.JScrollPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -25,7 +25,7 @@ public class PanelClient extends JFrame {
 	private JTextField jtCodeClt, jtNomClt, jtPrenomClt, jtAdresse1, jtAdresse2, jtCodePostal, jtVille, jtNumTel,
 	jtAssurance, jtEmail;
 	private JTextArea jtRemarque;
-//	private JScrollPane defil;
+	private JScrollPane defil;
 	private JPanel panelClt;
 	private ClientsMger mgr = null;
 	private Integer numEnreg;
@@ -122,11 +122,8 @@ public class PanelClient extends JFrame {
 		gbc.gridy = 10;
 		panelClt.add(getJlRemarque(), gbc);
 		gbc.gridx = 1;
-		panelClt.add(getJtRemarque(), gbc);
-
 		//Mise en place scroll sur Case Remarque - ne fonctionne pas !
-//		defil = new JScrollPane(jtRemarque);
-//		panelClt.add(getDefil());
+		panelClt.add(getDefil(), gbc);
 		
 		getJtRemarque().setLineWrap(true);
 				
@@ -143,7 +140,7 @@ public class PanelClient extends JFrame {
 			System.out.println("Aucun client à afficher");
 			System.exit(1);
 		}
-		numEnreg = 0;
+		numEnreg = CodeClt-1;
 		jtCodeClt.setText(Integer.toString((mgr.getClients(numEnreg).getCodeClient())));
 		jtNomClt.setText(mgr.getClients(numEnreg).getNomClient());
 		jtPrenomClt.setText(mgr.getClients(numEnreg).getPrenomClient());
@@ -327,12 +324,12 @@ public class PanelClient extends JFrame {
 		return jtRemarque;
 	}
 	
-//	public JScrollPane getDefil(){
-//		if(defil == null){
-//			defil = new JScrollPane(getJtRemarque());
-//		}
-//		return defil;
-//	}
+	public JScrollPane getDefil(){
+		if(defil == null){
+			defil = new JScrollPane(getJtRemarque());
+		}
+		return defil;
+	}
 	
 	/**
 	 * Fonction en charge de récupérer les infos du formulaire Clients

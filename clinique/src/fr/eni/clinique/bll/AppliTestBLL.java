@@ -2,11 +2,11 @@ package fr.eni.clinique.bll;
 
 import fr.eni.clinique.bo.Animaux;
 
-//import java.util.List;
+import java.util.List;
 
 //import fr.eni.clinique.bo.Animaux;
-import fr.eni.clinique.bo.Clients;
-import fr.eni.clinique.bo.Personnels;
+//import fr.eni.clinique.bo.Clients;
+//import fr.eni.clinique.bo.Personnels;
 import fr.eni.clinique.bo.Race;
 
 
@@ -52,9 +52,9 @@ public class AppliTestBLL {
 
 			amger = AnimalMger.getInstance();
 			// Ajout animal
-//			amger.addAnimaux(a1);
-//			amger.addAnimaux(a2);
-//			afficherAnimal(amger.getList());
+			amger.addAnimaux(a1);
+			amger.addAnimaux(a2);
+			afficherAnimal(amger.getList());
 			// Modif animal
 //			System.out.println("\n Modification d'un animal :");
 //			System.out.println("Animal avant :" + a1.toString());
@@ -67,7 +67,7 @@ public class AppliTestBLL {
 //			System.out.println("\n Suppression d'un animal :" + a1);
 //			System.out.println("\n Liste après suppression :");
 //			afficherAnimal(amger.selectAnimalByClient(2));
-//			afficherAnimalRace(amger.selectEspece());
+			afficherAnimalRace(amger.selectEspece());
 
 		} catch (BLLException e) {
 			e.printStackTrace();
@@ -75,16 +75,16 @@ public class AppliTestBLL {
 	}
 
 	///////////////////////////////////////////////////////////////////////////
-	// Afficher animal
-//	private static void afficherAnimal(List<Animaux> anim) {
-//		StringBuffer sb = new StringBuffer();
-//		for (Animaux a : anim) {
-//			sb.append(a.toString());
-//			sb.append("\n");
-//		}
-//		System.out.println(sb.toString());
-//	}
-//	private static void afficherAnimalRace(List<Race> anirace) {
+	//	 Afficher animal
+	private static void afficherAnimal(List<Animaux> anim) {
+		StringBuffer sb = new StringBuffer();
+		for (Animaux a : anim) {
+			sb.append(a.toString());
+			sb.append("\n");
+		}
+		System.out.println(sb.toString());
+	}
+	private static void afficherAnimalRace(List<Race> anirace) {
 		StringBuffer sb = new StringBuffer();
 		for (Race r : anirace) {
 			sb.append(r.toString());
