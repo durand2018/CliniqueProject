@@ -116,9 +116,9 @@ public class AnimalMger {
 		return listeEscpece;
 	}
 
-	public List<Race> selectRaceByEspece() throws BLLException {
+	public List<Race> selectRaceByEspece(String espece) throws BLLException {
 		try {
-			listeRace = daoAnimal.selectRaceByEspece("chien");
+			listeRace = daoAnimal.selectRaceByEspece(espece);
 		} catch (DALException e) {
 			throw new BLLException("Erreur dans la sélection.", e);
 		}

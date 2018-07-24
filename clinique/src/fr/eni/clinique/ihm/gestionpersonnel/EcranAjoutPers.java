@@ -24,6 +24,7 @@ import fr.eni.clinique.bll.BLLException;
 import fr.eni.clinique.bll.LoginMger;
 import fr.eni.clinique.bo.Personnels;
 
+@SuppressWarnings("serial")
 public class EcranAjoutPers extends JFrame {
 
 	private JLabel jlNom;
@@ -36,7 +37,7 @@ public class EcranAjoutPers extends JFrame {
 	private JButton btnValider;
 	private JPanel panel;
 	private JPanel panelbtn;
-	private Personnels p;
+//	private Personnels p;
 
 	private String Nom;
 	private String Prenom;
@@ -184,13 +185,6 @@ public class EcranAjoutPers extends JFrame {
 		return jlRole;
 	}
 
-	// public JTextField getJtRole() {
-	// if (jtRole == null) {
-	// jtRole = new JTextField(20);
-	// }
-	// return jtRole;
-	// }
-
 	public JRadioButton getRdbtnVET() {
 		if (rdbtnVET == null) {
 			rdbtnVET = new JRadioButton("VET");
@@ -237,13 +231,6 @@ public class EcranAjoutPers extends JFrame {
 					try {
 						mgr.addPersonnel(p);
 					} catch (BLLException e1) {
-						try {
-							mgr.validerPersonnel(p);
-						} catch (BLLException e2) {
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						}
-
 						if (Nom.length() > 30 || Prenom.length() > 30) {
 							JOptionPane.showMessageDialog(panel, "trop de caractère", "ajout personnel",
 									JOptionPane.INFORMATION_MESSAGE);
