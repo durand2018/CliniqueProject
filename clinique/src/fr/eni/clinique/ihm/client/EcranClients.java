@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 //import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.ihm.animal.PanelAnimalByClt;
 
 @SuppressWarnings("serial")
@@ -27,6 +28,10 @@ public class EcranClients extends JFrame {
 	public EcranClients(){
 		super("Clients");
 		initIHM();
+	}
+	public EcranClients(Clients c){
+		super("Clients");
+		initIHMavecClt(c);
 	}
 	
 	private void initIHM(){
@@ -58,6 +63,38 @@ public class EcranClients extends JFrame {
 		panelClt.add(panelBtn, BorderLayout.NORTH);
 		panelClt.add(panelBas, BorderLayout.CENTER);
 		
+		this.setContentPane(panelClt);
+	}
+	
+	private void initIHMavecClt(Clients c){
+		panelClt = new JPanel();
+		panelBtn = new JPanel();
+		panelBas = new JPanel();
+		PanelClient panClt = new PanelClient(c);
+		PanelAnimalByClt panAni = new PanelAnimalByClt();
+		
+		panelBtn.setLayout(new FlowLayout(FlowLayout.LEFT));
+//		panelBtn.add(getLogo());
+		panelBtn.add(getBtnRechercher());
+		panelBtn.setLayout(new FlowLayout(FlowLayout.CENTER));
+		panelBtn.add(getBtnAjouter());
+		panelBtn.add(getBtnSupprimer());
+		panelBtn.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		panelBtn.add(getBtnValider());
+		panelBtn.add(getBtnAnnuler());
+		
+		panelBas.setLayout(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		panelBas.add(panClt.initIHM());
+		gbc.gridx = 1;
+		panelBas.add(panAni.initIHM(c.getCodeClient()));
+		
+		panelClt.setBackground(Color.gray);
+		panelClt.add(panelBtn, BorderLayout.NORTH);
+		panelClt.add(panelBas, BorderLayout.CENTER);
+		
 		
 		this.setContentPane(panelClt);
 	}
@@ -67,6 +104,7 @@ public class EcranClients extends JFrame {
 			ImageIcon image = new ImageIcon(
 					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/saveBlanc.jpg")));
 			btnValider = new JButton(image);
+			btnValider.setToolTipText("Valider");
 		}
 		return btnValider;
 	}
@@ -76,6 +114,7 @@ public class EcranClients extends JFrame {
 			ImageIcon image = new ImageIcon(
 					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annulerBlanc.jpg")));
 			btnAnnuler = new JButton(image);
+			btnAnnuler.setToolTipText("Annuler");
 			
 			btnAnnuler.addActionListener(new ActionListener(){
 
@@ -93,6 +132,7 @@ public class EcranClients extends JFrame {
 			ImageIcon image = new ImageIcon(
 					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ajouterBlanc.jpg")));
 			btnAjouter = new JButton(image);
+			btnAjouter.setToolTipText("Ajouter");
 			
 			btnAjouter.addActionListener(new ActionListener(){
 
@@ -102,6 +142,7 @@ public class EcranClients extends JFrame {
 					EcranAjoutClient ecranAjclt = new EcranAjoutClient ();
 					ecranAjclt.setSize(new Dimension(500,600));
 					ecranAjclt.setVisible(true);
+					dispose();
 					ecranAjclt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				}
 			});
@@ -114,6 +155,7 @@ public class EcranClients extends JFrame {
 			ImageIcon image = new ImageIcon(
 					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/eteindreBlanc.jpg")));
 			btnSupprimer = new JButton(image);
+			btnSupprimer.setToolTipText("Supprimer");
 		}
 		return btnSupprimer;
 	}
@@ -123,6 +165,7 @@ public class EcranClients extends JFrame {
 			ImageIcon image = new ImageIcon(
 					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/rechercherBlanc.jpg")));
 			btnRechercher = new JButton(image);
+			btnRechercher.setToolTipText("Rechercher");
 		}
 		return btnRechercher;
 	}

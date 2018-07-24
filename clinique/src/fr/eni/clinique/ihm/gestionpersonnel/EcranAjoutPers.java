@@ -51,7 +51,6 @@ public class EcranAjoutPers extends JFrame {
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 
 	public EcranAjoutPers() {
-
 		super("Ajouter Personnel");
 		setSize(new Dimension(800, 600));
 		try {
@@ -206,10 +205,10 @@ public class EcranAjoutPers extends JFrame {
 		return rdbtnADM;
 	}
 
-	// ajouter les données saisie a la base de donnée
+	// ajouter les donnï¿½es saisie a la base de donnï¿½e
 	public JButton getBtnValider() {
 		if (btnValider == null) {
-			btnValider = new JButton("Valdier");
+			btnValider = new JButton("Valider");
 			btnValider.addActionListener(new ActionListener() {
 
 				@Override
@@ -232,7 +231,7 @@ public class EcranAjoutPers extends JFrame {
 						mgr.addPersonnel(p);
 					} catch (BLLException e1) {
 						if (Nom.length() > 30 || Prenom.length() > 30) {
-							JOptionPane.showMessageDialog(panel, "trop de caractère", "ajout personnel",
+							JOptionPane.showMessageDialog(panel, "trop de caractï¿½re", "ajout personnel",
 									JOptionPane.INFORMATION_MESSAGE);
 
 						} else if (MDP.length() > 20) {

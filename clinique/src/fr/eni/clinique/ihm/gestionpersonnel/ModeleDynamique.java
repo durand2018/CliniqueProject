@@ -9,19 +9,19 @@ import fr.eni.clinique.bll.BLLException;
 import fr.eni.clinique.bll.LoginMger;
 import fr.eni.clinique.bo.Personnels;
 
+@SuppressWarnings("serial")
 public class ModeleDynamique extends AbstractTableModel {
 
 	private LoginMger mger = null;
 	private List<Personnels> listePerso;
-	private JTable tableau;
 	
-	private final String[] entetes = { "Nom", "Prénom", "MDP", "Role" };
+	private final String[] entetes = { "Nom", "Prï¿½nom", "MDP", "Role" };
 
 	public ModeleDynamique() {
 
 		try {
 			mger = LoginMger.getInstance();
-			listePerso = mger.getList();
+			listePerso = mger.getListePnonArchive();
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

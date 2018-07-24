@@ -35,8 +35,7 @@ public class EcranAjoutClient extends JFrame{
 	private void initIHMAjoutClt() {
 		panelAjoutClt = new JPanel();
 		panelBtn = new JPanel();
-		
-		
+				
 		panelAjoutClt.setOpaque(true);
 		panelAjoutClt.setLayout(new BorderLayout());
 		
@@ -62,6 +61,7 @@ public class EcranAjoutClient extends JFrame{
 			ImageIcon image = new ImageIcon(
 					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/saveBlanc.jpg")));
 			btnValider = new JButton(image);
+			btnValider.setToolTipText("Valider");
 			
 			btnValider.addActionListener(new ActionListener(){
 
@@ -77,12 +77,10 @@ public class EcranAjoutClient extends JFrame{
 						int c = cltAffiche.getCodeClient();
 						// Ferme l'écran
 						dispose();
-						EcranClients ecranClt = new EcranClients();
-						PanelClient panClt = new PanelClient();
+						//Ouvre un nouvel écran client qui affiche le nouveau client
+						EcranClients ecranClt = new EcranClients(cltAffiche);
 						ecranClt.setSize(new Dimension(1000,600));
 						ecranClt.setVisible(true);
-						System.out.println(c);
-						panClt.RemplirPanelClt(c);
 						ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					} catch (BLLException e1) {
 						JOptionPane.showConfirmDialog(EcranAjoutClient.this, "Une erreur est survenue lors de l'Ajout");
@@ -100,6 +98,7 @@ public class EcranAjoutClient extends JFrame{
 			ImageIcon image = new ImageIcon(
 					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annulerBlanc.jpg")));
 			btnAnnuler = new JButton(image);
+			btnAnnuler.setToolTipText("Annuler");
 			
 			btnAnnuler.addActionListener(new ActionListener(){
 
