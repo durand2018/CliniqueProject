@@ -7,6 +7,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
+import fr.eni.clinique.bll.BLLException;
+
 public class TestAnimal {
 
 	public static void main(String[] args) {
@@ -26,11 +28,18 @@ public class TestAnimal {
 
 			@Override
 			public void run() {
-				EcranAnimaux monEcran = new EcranAnimaux();
-				monEcran.setSize(new Dimension(600, 400));
-				monEcran.setVisible(true);
+				EcranAnimaux monEcran;
+				try {
+					monEcran = new EcranAnimaux();
+					monEcran.setSize(new Dimension(600, 400));
+					monEcran.setVisible(true);
 
-				monEcran.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					monEcran.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				} catch (BLLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
 
 		});
