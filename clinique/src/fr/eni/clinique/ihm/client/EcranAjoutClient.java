@@ -81,7 +81,7 @@ public class EcranAjoutClient extends JFrame{
 						mger.addClients(cltAffiche);
 						// Ferme l'écran
 						dispose();
-						//Ouvre un nouvel �cran client qui affiche le nouveau client
+						//Ouvre un nouvel écran client qui affiche le nouveau client
 						EcranClients ecranClt = new EcranClients(cltAffiche);
 						ecranClt.setSize(new Dimension(1000,600));
 						ecranClt.setVisible(true);
