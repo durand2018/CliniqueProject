@@ -11,6 +11,8 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Iterator;
 
 import javax.swing.ImageIcon;
@@ -18,13 +20,16 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import fr.eni.clinique.bll.AnimalMger;
 import fr.eni.clinique.bll.BLLException;
+import fr.eni.clinique.bo.Animaux;
 import fr.eni.clinique.bo.Race;
 import fr.eni.clinique.ihm.MiseEnPage;
+import fr.eni.clinique.ihm.client.EcranClients;
 
 @SuppressWarnings("serial")
 public class EcranAnimaux extends JFrame {
@@ -36,7 +41,60 @@ public class EcranAnimaux extends JFrame {
 	private JComboBox<String> jcombSexe, jcombEspece, jcombRaces;
 	private AnimalMger mgr;
 
-	public EcranAnimaux() {
+	private int indexRace;
+
+	public int getIndexRace() {
+		return indexRace;
+	}
+
+	public void setIndexRace(int indexRace) {
+		this.indexRace = indexRace;
+	}
+
+	public JPanel getPanelFinal() {
+		return panelFinal;
+	}
+
+	public JPanel getPanelBtn() {
+		return panelBtn;
+	}
+
+	public JPanel getPanelClt() {
+		return panelClt;
+	}
+
+	public JPanel getPanelChamps() {
+		return panelChamps;
+	}
+
+	public JPanel getPanelItermediaire() {
+		return panelItermediaire;
+	}
+
+	public AnimalMger getMgr() {
+		return mgr;
+	}
+
+	private int indexSexe;
+	private int indexEspece;
+
+	public int getIndexEspece() {
+		return indexEspece;
+	}
+
+	public void setIndexEspece(int indexEspece) {
+		this.indexEspece = indexEspece;
+	}
+
+	public int getIndexSexe() {
+		return indexSexe;
+	}
+
+	public void setIndexSexe(int indexSexe) {
+		this.indexSexe = indexSexe;
+	}
+
+	public EcranAnimaux() throws BLLException {
 		super("Animaux");
 		MiseEnPage.getMiseEnPage();
 		try {
@@ -68,7 +126,7 @@ public class EcranAnimaux extends JFrame {
 		mgr.getAnimal(codeAnimal).getCodeClient();
 	}
 
-	private void initIHM() {
+	private void initIHM() throws BLLException {
 		panelFinal = new JPanel();
 		panelItermediaire = new JPanel();
 		panelBtn = new JPanel();
@@ -148,7 +206,7 @@ public class EcranAnimaux extends JFrame {
 
 		gbc.gridx = 1;
 		gbc.gridwidth = 2;
-		panelChamps.add(getJcombEscpece(), gbc);
+		panelChamps.add(getJcombEspece(), gbc);
 
 		gbc.gridx = 3;
 		gbc.gridwidth = 1;
@@ -262,7 +320,7 @@ public class EcranAnimaux extends JFrame {
 
 		gbc.gridx = 1;
 		gbc.gridwidth = 2;
-		panelChamps.add(getJcombEscpece(codeAnimal), gbc);
+		panelChamps.add(getJcombEspece(codeAnimal), gbc);
 
 		gbc.gridx = 3;
 		gbc.gridwidth = 1;
@@ -386,53 +444,52 @@ public class EcranAnimaux extends JFrame {
 			btnValider = new JButton(image);
 			btnValider.setToolTipText("Valider");
 
-			// btnValider.addActionListener(new ActionListener() {
+			btnValider.addActionListener(new ActionListener() {
 
-			// @Override
-			// public void actionPerformed(ActionEvent e) {
-			// Recupere l'animal affiche
-			// Animaux aniAffiche = getAnimal();
-			// System.out.println(aniAffiche);
-			// try {
-			// // Sauvegarde un nouvel animal dans la BDD
-			// mgr = new AnimalMger();
-			// mgr.addAnimaux(aniAffiche);
-			// int c = aniAffiche.getCodeAnimal();
-			// // Ferme l'ecran
-			// dispose();
-			// // Ouvre un nouvel ecran client qui affiche le nouveau
-			// // animal
-			// EcranClients ecranClt = new EcranClients();
-			// ecranClt.setSize(new Dimension(1000, 600));
-			// ecranClt.setVisible(true);
-			// ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			// } catch (BLLException e1) {
-			// JOptionPane.showConfirmDialog(EcranAnimaux.this, "Une erreur est
-			// survenue lors de l'Ajout");
-			// e1.printStackTrace();
-			// }
-			// }
-			// });
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// Recupere l'animal affiche
+
+					try {
+						Animaux aniAffiche = getAnimal();
+						System.out.println(aniAffiche);
+						// Sauvegarde un nouvel animal dans la BDD
+						mgr = new AnimalMger();
+						mgr.addAnimaux(aniAffiche);
+						int c = aniAffiche.getCodeAnimal();
+						// Ferme l'ecran
+						dispose();
+						// Ouvre un nouvel ecran client qui affiche le nouveau
+						// animal
+						EcranClients ecranClt = new EcranClients();
+						ecranClt.setSize(new Dimension(1000, 600));
+						ecranClt.setVisible(true);
+						ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					} catch (BLLException e1) {
+						JOptionPane.showConfirmDialog(EcranAnimaux.this, "Une erreur est survenue lors de l'Ajout");
+						e1.printStackTrace();
+					}
+				}
+			});
 		}
 		return btnValider;
 	}
 
-	// public Animaux getAnimal(){
-	//
-	// Animaux AniCourant = new Animaux();
-	// AniCourant.setNomAnimal(getJtNom().getText());
-	// AniCourant.setCouleur(getJtCouleur().getText());
-	// //att
-	// AniCourant.setSexe(getJcombSexe().getItemAt());
-	// AniCourant.setTatouage(getJtTatoo().getText());
-	// //att
-	// AniCourant.setEspece(getJcombEscpece().getItemAt());
-	// //att
-	// AniCourant.setRace(getJcombRaces().getItemAt());
-	// System.out.println(AniCourant);
-	// return AniCourant;
-	//
-	// }
+	public Animaux getAnimal() throws BLLException {
+
+		Animaux AniCourant = new Animaux();
+		AniCourant.setNomAnimal(getJtNom().getText());
+		AniCourant.setCouleur(getJtCouleur().getText());
+		// att
+		AniCourant.setSexe(getJcombSexe().getItemAt(getIndexSexe()));
+		AniCourant.setTatouage(getJtTatoo().getText());
+		// att
+		AniCourant.setEspece(getJcombEspece().getItemAt(getIndexEspece()));
+		// att
+		AniCourant.setRace(getJcombRaces().toString());
+		System.out.println(AniCourant);
+		return AniCourant;
+	}
 
 	public JButton getBtnAnnuler() {
 		if (btnAnnuler == null) {
@@ -457,16 +514,24 @@ public class EcranAnimaux extends JFrame {
 		jcombSexe.setPreferredSize(new Dimension(80, 20));
 		jcombSexe.addItem("Mâle");
 		jcombSexe.addItem("Femelle");
-		// if(jcombSexe.getItemAt(1)){
+		jcombSexe.addItemListener(new ItemListener() {
 
-		// }
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				indexSexe = jcombSexe.getSelectedIndex();
+				System.out.println(indexSexe);
+				setIndexSexe(indexSexe);
+
+			}
+		});
 
 		return jcombSexe;
 	}
 
-	public JComboBox<String> getJcombEscpece() {
+	public JComboBox<String> getJcombEspece() throws BLLException {
 		jcombEspece = new JComboBox<String>();
 		jcombEspece.setPreferredSize(new Dimension(150, 20));
+
 		Iterator<Race> itR;
 		try {
 			itR = mgr.selectEspece().iterator();
@@ -479,10 +544,21 @@ public class EcranAnimaux extends JFrame {
 			e.printStackTrace();
 		}
 
+		jcombEspece.addItemListener(new ItemListener() {
+
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO Auto-generated method stub
+				indexEspece = jcombEspece.getSelectedIndex();
+				setIndexEspece(indexEspece);
+				System.out.println(getIndexEspece());
+
+			}
+		});
 		return jcombEspece;
 	}
 
-	public JComboBox<String> getJcombEscpece(int codeAnimal) {
+	public JComboBox<String> getJcombEspece(int codeAnimal) {
 		jcombEspece = new JComboBox<String>();
 		jcombEspece.setPreferredSize(new Dimension(150, 20));
 		jcombEspece.addItem(mgr.getAnimal(codeAnimal).getEspece());
@@ -502,6 +578,18 @@ public class EcranAnimaux extends JFrame {
 			while (itR.hasNext()) {
 				ra = itR.next();
 				jcombRaces.addItem(ra.getRace());
+				jcombRaces.addItemListener(new ItemListener() {
+
+					@Override
+					public void itemStateChanged(ItemEvent e) {
+						// TODO Auto-generated method stub
+						// jcombRaces =
+						// jcombRaces.getSelectedIndex();*****************
+						setIndexEspece(indexRace);
+						System.out.println(getIndexEspece());
+					}
+				});
+
 			}
 		} catch (BLLException e) {
 			e.printStackTrace();
