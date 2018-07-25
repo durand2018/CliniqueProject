@@ -15,8 +15,8 @@ public class testJtableAnimaux extends JFrame {
     }
 	
 	public testJtableAnimaux(){
-		setTitle("Animaux Clinique");
-		JTable tabAnimaux = new JTable(new ModeleTableAnimaux());
+		setTitle("Animaux du client 5");
+		JTable tabAnimaux = new JTable(new ModeleTableAnimaux(5));
 		getContentPane().add(new JScrollPane(tabAnimaux),BorderLayout.CENTER);
 		pack();
 	}

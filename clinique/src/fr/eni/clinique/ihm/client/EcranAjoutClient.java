@@ -3,6 +3,7 @@ package fr.eni.clinique.ihm.client;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,6 +47,11 @@ public class EcranAjoutClient extends JFrame{
 		panelAjoutClt.add(panelBtn, BorderLayout.NORTH);
 		panelAjoutClt.add(getPanClt().initIHM(), BorderLayout.CENTER);
 		
+		//Changer Icone fenÃªtre
+		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
+		this.setIconImage(image);
+		
+		//Lancer la fenÃªtre
 		this.setContentPane(panelAjoutClt);
 	}
 	
@@ -67,17 +73,15 @@ public class EcranAjoutClient extends JFrame{
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// Récupère le client affiché
+					// RÃ©cupÃ¨re le client affichÃ©
 					Clients cltAffiche = getPanClt().getClient();
-					System.out.println(cltAffiche);
 					try {
 						// Sauvegarde un nouveau client dans la BDD
 						mger = new ClientsMger();
 						mger.addClients(cltAffiche);
-						int c = cltAffiche.getCodeClient();
-						// Ferme l'écran
+						// Ferme l'Ã©cran
 						dispose();
-						//Ouvre un nouvel écran client qui affiche le nouveau client
+						//Ouvre un nouvel ï¿½cran client qui affiche le nouveau client
 						EcranClients ecranClt = new EcranClients(cltAffiche);
 						ecranClt.setSize(new Dimension(1000,600));
 						ecranClt.setVisible(true);

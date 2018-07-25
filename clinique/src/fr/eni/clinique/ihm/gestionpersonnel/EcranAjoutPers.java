@@ -201,7 +201,11 @@ public class EcranAjoutPers extends JFrame {
 		return rdbtnADM;
 	}
 
-	// ajouter les donn�es saisie a la base de donn�e
+	// 
+	/**
+	 * Fonction en charge d'ajouter les données saisies à la base de données sur clic sur Bouton
+	 * @return BtnValider
+	 */
 	public JButton getBtnValider() {
 		if (btnValider == null) {
 			btnValider = new JButton("Valider");
