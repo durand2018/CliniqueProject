@@ -13,9 +13,10 @@ import fr.eni.clinique.bo.Race;
 import fr.eni.clinique.dal.AnimauxDAO;
 import fr.eni.clinique.dal.DALException;
 
+
 public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 
-	// requêtes SQL
+	// requï¿½tes SQL
 	private static final String SQL_INSERT = "insert into Animaux(NomAnimal,Sexe,Couleur,Race,Espece,CodeClient,Tatouage,"
 			+ "Archive) values(?,?,?,?,?,?,?,?)";
 	private static final String SQL_SELECT_BY_CODE = "select * from Animaux where CodeAnimal = ?";
@@ -50,7 +51,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			// Execution Select
 			rs = rqt.executeQuery();
 			// transfert info BDD dans l'instance de ani si une ligne
-			// sélectionnée
+			// sï¿½lectionnï¿½e
 			if (rs.next()) {
 				ani = new Animaux();
 				ani.setCodeAnimal(rs.getInt("CodeAnimal"));
@@ -205,7 +206,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			// Execution Select
 			int nbRows = rqt.executeUpdate();
 			if (nbRows == 1) {
-				// Récupération identifiant généré par la BDD
+				// Rï¿½cupï¿½ration identifiant gï¿½nï¿½rï¿½ par la BDD
 				ResultSet rs = rqt.getGeneratedKeys();
 				if (rs.next()) {
 					int cle = rs.getInt(1);
@@ -238,6 +239,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 		}
 	}
 
+	@Override
 	public List<Animaux> selectAnimalByClient(int CodeClient) throws DALException {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
@@ -275,6 +277,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 		}
 	}
 
+	@Override
 	public List<Race> selectEspece() throws DALException {
 		Connection cnx = null;
 		Statement rqt = null;
@@ -304,6 +307,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 
 	}
 
+	@Override
 	public List<Race> selectRaceByEspece(String espece) throws DALException {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
@@ -319,7 +323,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			// Execution Select
 			rs = rqt.executeQuery();
 			// transfert info BDD dans l'instance de race si une ligne
-			// sélectionnée
+			// sï¿½lectionnï¿½e
 			while (rs.next()) {
 				race = new Race();
 				race.setRace(rs.getString("Race"));
@@ -328,7 +332,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			}
 			return lesRaces;
 		} catch (SQLException e) {
-			throw new DALException("Cette race ne peut être affefctée ! - " + espece, e);
+			throw new DALException("Cette race ne peut ï¿½tre affefctï¿½e ! - " + espece, e);
 		} finally {
 			JdbcTools.closeConnection();
 		}

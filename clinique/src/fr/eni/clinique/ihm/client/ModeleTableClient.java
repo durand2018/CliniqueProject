@@ -28,19 +28,23 @@ public class ModeleTableClient extends AbstractTableModel {
 		}
 	}
 	
+	@Override
 	public int getRowCount() {
 		return listeClients.size();
 	}
 	//************
 
+	@Override
 	public int getColumnCount() {
 		return entetes.length;
 	}
 
+	@Override
 	public String getColumnName(int columnIndex) {
 		return entetes[columnIndex];
 	}
 
+	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch (columnIndex) {
 		case 0:

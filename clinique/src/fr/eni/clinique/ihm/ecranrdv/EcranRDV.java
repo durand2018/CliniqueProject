@@ -3,20 +3,24 @@
  */
 package fr.eni.clinique.ihm.ecranrdv;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import fr.eni.clinique.bll.AgendaMger;
+import fr.eni.clinique.bll.AnimalMger;
 import fr.eni.clinique.bll.BLLException;
-import fr.eni.clinique.bll.LoginMger;
 import fr.eni.clinique.ihm.gestionpersonnel.ModeleDynamique;
 
 /**
@@ -25,71 +29,138 @@ import fr.eni.clinique.ihm.gestionpersonnel.ModeleDynamique;
  * @date 23 juil. 2018 - 14:11:42
  * clinique - Version 1.0
  */
+@SuppressWarnings("serial")
 public class EcranRDV extends JFrame {
 	
-	private JTextField jtRecherche;
-	private JButton btnRecherche;
-	private JTable tableResultat;
-	private JPanel panelRech;
-	private JPanel panelTable;
-	private JPanel panelFinal;
-	private AgendaMger mger = null;
-//////////
-	protected JTable tableau;
+	private JComboBox<String> combClient, combAnimal, combVeto;
+	private JLabel jlClient,jlAnimal,jlVeto,jlDate,jlH;
+	private JButton btnAjoutClient, btnAjoutAnimal,btnValider,btnSupprimer;
+	private AnimalMger mgr;
+	private JPanel panelPour, panelPar, PanelQuand,panelTable,
+					panelBtn,panelFinal;
 	
+	public EcranRDV() {
+		super("prise rdv");
+		try {
+			mgr = AnimalMger.getInstance();
+		} catch (BLLException e) {
+			e.printStackTrace();
+			System.out.println("Aucun animal à afficher !");
+		}
 
-	public EcranRDV() throws BLLException {
-		super();
-		setSize(new Dimension(500,250));
-		mger = AgendaMger.getInstance();
 		initIHM();
-}
-	/**
-	 * Fonction en charge d'oganiser la page
-	 */
+	}
+	
 	private void initIHM() {
 		
-		panelRech = new JPanel();
-		panelRech.setOpaque(true);
-		panelRech.setLayout(new FlowLayout());
-		GridBagConstraints gbc = new GridBagConstraints();
+		panelPour = new JPanel();
+		panelPar = new JPanel();
+		PanelQuand = new JPanel();
+		panelTable = new JPanel();
+		panelBtn = new JPanel();
+		panelFinal = new JPanel();
+		panelPour.setOpaque(true);
+		panelPour.setLayout(new FlowLayout());
+	//	GridBagConstraints gbc = new GridBagConstraints();
+		panelPour.add(combClient);
+		this.setContentPane(panelPour);
+	}
+//		
+//		
+//		panelPour.add(combClient);
+//		panelPour.add(jlAnimal);
+//		panelPour.add(combAnimal);
+//		panelPour.add(btnAjoutClient);
+//		panelPour.add(btnAjoutAnimal);
 		
-		panelTable= new JPanel ();
-	//	panelTable.add(tableau);
-		tableau = new JTable(new ModeleDynamique());
+//***************************************************panelPour*******
+// client
+//		gbc.gridx = 0;
+//		gbc.gridy = 0;
+//		gbc.insets = new Insets(5, 5, 5, 5);
+//		panelPour.add(getJlClient());
 		
-		// premier panel
-		panelRech.add(jtRecherche);
-		panelRech.add(btnRecherche);
-		this.setContentPane(panelRech);
+//		gbc.gridx = 0;
+//		gbc.gridy = 1;
+	
 		
-	}
-	public JTable getTableResultat() {
-		if (tableResultat == null) {
-			tableResultat = new JTable();
-		}
-		return tableResultat;
-	}
-	public void setTableResultat(JTable tableResultat) {
-		this.tableResultat = tableResultat;
-	}
-	public JTextField getJtRecherche() {
-		if (jtRecherche == null) {
-			jtRecherche = new JTextField(20);
-		}
-		return jtRecherche;
-	}
-	public JButton getBtnRecherche() {
-		if (btnRecherche == null) {
-			btnRecherche = new JButton("rechercher");
-		}
-		return btnRecherche;
-	}
+		
 
-	public JTable getTableau() {
-		if (tableau == null) {
-			tableau = new JTable();
-		}
-		return tableau;
+
+
+
+	public JComboBox<String> getCombClient() {
+		combClient = new JComboBox<String>();
+		combClient.addItem("nom");
+		return combClient;
 	}
+//	public JComboBox<String> getCombAnimal() {
+//		combAnimal = new JComboBox<String>();
+//		combAnimal.setPreferredSize(new Dimension(50, 20));
+//		combAnimal.addItem("Animal");
+//		return combAnimal;
+//	}
+//	public JComboBox<String> getCombVeto() {
+//		combVeto = new JComboBox<String>();
+//		combVeto.setPreferredSize(new Dimension(50, 20));
+//		combVeto.addItem("veterinaire");
+//		return combVeto;
+//	}
+	public JLabel getJlClient() {
+		if (jlClient == null) {
+			jlClient = new JLabel("Client");
+		}
+		return jlClient;
+	}
+//	public JLabel getJlAnimal() {
+//		if (jlAnimal == null) {
+//			jlAnimal = new JLabel("Animal");
+//		}
+//		return jlAnimal;
+//	}
+//	public JLabel getJlVeto() {
+//		if (jlVeto == null) {
+//			jlVeto = new JLabel("Veterinaire");
+//		}
+//		return jlVeto;
+//	}
+//	public JLabel getJlDate() {
+//		if (jlDate == null) {
+//			jlDate = new JLabel("Date");
+//		}
+//		return jlDate;
+//	}
+//	public JLabel getJlH() {
+//		if (jlH == null) {
+//			jlH = new JLabel("H");
+//		}
+//		
+//		return jlH;
+//	}
+//	public JButton getBtnAjoutClient() {
+//		if (btnAjoutClient == null) {
+//			btnAjoutClient = new JButton("+");
+//		}
+//		return btnAjoutClient;
+//	}
+//	public JButton getBtnAjoutAnimal() {
+//		if (btnAjoutAnimal == null) {
+//			btnAjoutAnimal = new JButton("+");
+//		}
+//		return btnAjoutAnimal;
+//	}
+//	public JButton getBtnValider() {
+//		if (btnValider == null) {
+//			btnValider = new JButton("Valider");
+//		}
+//		return btnValider;
+//	}
+//	public JButton getBtnSupprimer() {
+//		if (btnValider == null) {
+//			btnValider = new JButton("Supprimer");
+//		}
+//		return btnSupprimer;
+//	}
+	
+
 }

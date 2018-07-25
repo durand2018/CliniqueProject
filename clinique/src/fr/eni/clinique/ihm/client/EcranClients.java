@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 //import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 import fr.eni.clinique.bll.BLLException;
 import fr.eni.clinique.bll.ClientsMger;
@@ -160,7 +161,7 @@ public class EcranClients extends JFrame {
 					ecranAjclt.setSize(new Dimension(500, 600));
 					ecranAjclt.setVisible(true);
 					dispose();
-					ecranAjclt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					ecranAjclt.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				}
 			});
 		}

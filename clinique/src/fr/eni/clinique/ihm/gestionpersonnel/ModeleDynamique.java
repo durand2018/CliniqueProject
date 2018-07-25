@@ -2,7 +2,6 @@ package fr.eni.clinique.ihm.gestionpersonnel;
 
 import java.util.List;
 
-import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
 import fr.eni.clinique.bll.BLLException;
@@ -28,19 +27,23 @@ public class ModeleDynamique extends AbstractTableModel {
 		}
 	}
 	
+	@Override
 	public int getRowCount() {
 		return listePerso.size();
 	}
 	//************
 
+	@Override
 	public int getColumnCount() {
 		return entetes.length;
 	}
 
+	@Override
 	public String getColumnName(int columnIndex) {
 		return entetes[columnIndex];
 	}
 
+	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch (columnIndex) {
 		case 0:
