@@ -99,7 +99,7 @@ public class EcranClients extends JFrame {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		panelBas.add(getPanClt().initIHM());
+		panelBas.add(getPanClt(c).initIHM());
 		gbc.gridx = 1;
 		panelBas.add(panAni.initIHM(c.getCodeClient()));
 
@@ -113,6 +113,13 @@ public class EcranClients extends JFrame {
 	public PanelClient getPanClt() {
 		if (panClt == null) {
 			panClt = new PanelClient();
+		}
+		return panClt;
+	}
+	
+	public PanelClient getPanClt(Clients client) {
+		if (panClt == null) {
+			panClt = new PanelClient(client);
 		}
 		return panClt;
 	}
@@ -227,7 +234,7 @@ public class EcranClients extends JFrame {
 						if (i > 1){
 							//Relance Ecran avec le client trouvé
 							EcranRechercheClient ecranRecherche = new EcranRechercheClient();
-							ecranRecherche.setSize(new Dimension(200,400));
+							ecranRecherche.setSize(new Dimension(700,300));
 							ecranRecherche.setVisible(true);
 							ecranRecherche.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 						}

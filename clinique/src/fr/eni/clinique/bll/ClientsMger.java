@@ -83,6 +83,24 @@ public class ClientsMger {
 		return liste.get(codeClient);
 	}
 	
+	public List<Clients> selectAllNoArchive() throws BLLException{
+		try {
+			liste = daoClients.selectAllNoArchive();
+		} catch (DALException e) {
+			throw new BLLException("Erreur liste client non archivé", e);
+		}
+		return liste;
+	}
+	public Clients selectByCode (int code) throws BLLException{
+		Clients client;
+		try {
+			client = daoClients.selectByCode(code);
+		} catch (DALException e) {
+			throw new BLLException("Erreur client sélectionné par Id", e);
+		}
+		return client;
+	}
+	
 	private void validerClient(Clients c) throws BLLException {
 		// TODO Auto-generated method stub
 		boolean test = true;

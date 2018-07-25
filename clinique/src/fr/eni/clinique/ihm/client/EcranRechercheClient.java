@@ -109,10 +109,15 @@ public class EcranRechercheClient extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int i = 0;
 				 i = tabClt.getSelectedRow();
+				 System.out.println(i);
 				try {
 					// Récupère le client affiché
 					mger = new ClientsMger();
-					Clients cltChoisi = mger.getClient(i);
+					int idCltChoisi = mger.getClient(i).getCodeClient();
+					System.out.println("idCltChoisi");
+					System.out.println(idCltChoisi);
+					Clients cltChoisi = mger.selectByCode(idCltChoisi);
+					System.out.println(cltChoisi);
 					// Ferme l'écran
 					dispose();
 					//Ouvre un nouvel écran client qui affiche le client choisi
@@ -124,8 +129,6 @@ public class EcranRechercheClient extends JFrame {
 					System.err.println("Probleme Selection Client recherché ");
 				}
 			}
-			
-			
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
