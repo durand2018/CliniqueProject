@@ -3,6 +3,7 @@ package fr.eni.clinique.ihm.client;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,6 +47,11 @@ public class EcranAjoutClient extends JFrame{
 		panelAjoutClt.add(panelBtn, BorderLayout.NORTH);
 		panelAjoutClt.add(getPanClt().initIHM(), BorderLayout.CENTER);
 		
+		//Changer Icone fenêtre
+		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
+		this.setIconImage(image);
+		
+		//Lancer la fenêtre
 		this.setContentPane(panelAjoutClt);
 	}
 	
