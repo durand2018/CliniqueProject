@@ -13,6 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import fr.eni.clinique.bo.Clients;
+import fr.eni.clinique.ihm.MiseEnPage;
 
 @SuppressWarnings("serial")
 public class PanelClient extends JFrame {
@@ -27,11 +28,13 @@ public class PanelClient extends JFrame {
 
 	public PanelClient() {
 		super();
+		MiseEnPage.getMiseEnPage();
 		initIHM();
 	}
 
 	public PanelClient(Clients c) {
 		super();
+		MiseEnPage.getMiseEnPage();
 		initIHM();
 		RemplirPanelClt(c);
 	}

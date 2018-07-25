@@ -3,7 +3,9 @@ package fr.eni.clinique.ihm.gestionpersonnel;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,6 +21,7 @@ import javax.swing.JTextField;
 import fr.eni.clinique.bll.BLLException;
 import fr.eni.clinique.bll.LoginMger;
 import fr.eni.clinique.bo.Personnels;
+import fr.eni.clinique.ihm.MiseEnPage;
 
 @SuppressWarnings("serial")
 public class EcranAjoutPers extends JFrame {
@@ -33,7 +36,7 @@ public class EcranAjoutPers extends JFrame {
 	private JButton btnValider;
 	private JPanel panel;
 	private JPanel panelbtn;
-//	private Personnels p;
+	// private Personnels p;
 
 	private String Nom;
 	private String Prenom;
@@ -48,6 +51,7 @@ public class EcranAjoutPers extends JFrame {
 
 	public EcranAjoutPers() {
 		super("Ajouter Personnel");
+		MiseEnPage.getMiseEnPage();
 		setSize(new Dimension(800, 600));
 		try {
 			mgr = LoginMger.getInstance();
@@ -126,6 +130,11 @@ public class EcranAjoutPers extends JFrame {
 		gbc.fill = GridBagConstraints.EAST;
 
 		panel.add(getBtnValider(), gbc);
+
+		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
+		this.setIconImage(image);
+
+		// Lancer la fenêtre
 		this.setContentPane(panel);
 
 	}
@@ -201,9 +210,11 @@ public class EcranAjoutPers extends JFrame {
 		return rdbtnADM;
 	}
 
-	// 
+	//
 	/**
-	 * Fonction en charge d'ajouter les données saisies à la base de données sur clic sur Bouton
+	 * Fonction en charge d'ajouter les données saisies à la base de données sur
+	 * clic sur Bouton
+	 * 
 	 * @return BtnValider
 	 */
 	public JButton getBtnValider() {

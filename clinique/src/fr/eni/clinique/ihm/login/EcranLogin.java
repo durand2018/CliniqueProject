@@ -3,7 +3,9 @@ package fr.eni.clinique.ihm.login;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
@@ -19,8 +21,10 @@ import javax.swing.JTextField;
 import fr.eni.clinique.bll.BLLException;
 import fr.eni.clinique.bll.LoginMger;
 import fr.eni.clinique.bo.Personnels;
+import fr.eni.clinique.ihm.MiseEnPage;
 import fr.eni.clinique.ihm.accueil.EcranAccueil;
 
+@SuppressWarnings("serial")
 public class EcranLogin extends JFrame {
 	private JLabel jlNom;
 	private JTextField jtNom;
@@ -33,15 +37,14 @@ public class EcranLogin extends JFrame {
 	private JPanel panel;
 	public String codeRole;
 
-
-
 	public EcranLogin() {
 		super("Connexion");
-		setSize(new Dimension(500,250));
+		MiseEnPage.getMiseEnPage();
+		setSize(new Dimension(500, 250));
 		try {
 			mger = LoginMger.getInstance();
 		} catch (BLLException e) {
-			System.out.println("Pb avec la fenêtre de connexion");
+			System.out.println("Pb avec la fenï¿½tre de connexion");
 			System.exit(1);
 		}
 		initIHM();
@@ -95,6 +98,10 @@ public class EcranLogin extends JFrame {
 
 		panel.add(getBtnValider(), gbc);
 
+		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
+		this.setIconImage(image);
+
+		// Lancer la fenÃªtre
 		this.setContentPane(panel);
 
 	}
@@ -140,7 +147,7 @@ public class EcranLogin extends JFrame {
 		}
 		return jpMdp;
 	}
-	
+
 	public String getCodeRole() {
 		return codeRole;
 	}
@@ -150,17 +157,18 @@ public class EcranLogin extends JFrame {
 			btnValider = new JButton("Valider");
 
 			btnValider.addActionListener(new ActionListener() {
-				
+
 				StringBuffer sb = new StringBuffer();
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					String nom = jtNom.getText();
 					String prenom = jtPNom.getText();
 					char[] mdp = jpMdp.getPassword();
-					for(int i = 0; i<mdp.length;i++){
+					for (int i = 0; i < mdp.length; i++) {
 						sb.append(mdp[i]);
 					}
-					
+
 					String userMdp = null;
 					Boolean userExist = false;
 					try {
@@ -172,7 +180,7 @@ public class EcranLogin extends JFrame {
 								userExist = true;
 								userMdp = p.getMotPasse();
 								codeRole = p.getRole();
-								System.out.println(getCodeRole()+"  Ecranlogin");
+								System.out.println(getCodeRole() + "  Ecranlogin");
 							}
 						}
 						if (userExist == false) {
@@ -181,19 +189,19 @@ public class EcranLogin extends JFrame {
 							return;
 						}
 						if (userMdp.equals(sb.toString())) {
-							EcranAccueil ecranAccueil = new EcranAccueil (EcranLogin.this);
-							ecranAccueil.setSize(new Dimension(500,250));
-							
+							EcranAccueil ecranAccueil = new EcranAccueil(EcranLogin.this);
+							ecranAccueil.setSize(new Dimension(500, 250));
+
 							dispose();
-							
+
 							ecranAccueil.setVisible(true);
-							
+
 						} else {
 							JOptionPane.showMessageDialog(panel, "Mot de Passe incorrect", "Connexion",
 									JOptionPane.INFORMATION_MESSAGE);
 						}
 					} catch (BLLException e1) {
-						
+
 						System.out.println("Erreur connexion");
 					}
 				}

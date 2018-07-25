@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import fr.eni.clinique.bll.BLLException;
 import fr.eni.clinique.bll.ClientsMger;
 import fr.eni.clinique.bo.Clients;
+import fr.eni.clinique.ihm.MiseEnPage;
 
 @SuppressWarnings("serial")
 public class EcranAjoutClient extends JFrame{
@@ -29,6 +30,7 @@ public class EcranAjoutClient extends JFrame{
 	
 	public EcranAjoutClient() {
 		super("Ajouter Client");
+		MiseEnPage.getMiseEnPage();
 		initIHMAjoutClt();
 	}
 

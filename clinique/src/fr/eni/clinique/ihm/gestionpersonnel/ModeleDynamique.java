@@ -7,31 +7,31 @@ import javax.swing.table.AbstractTableModel;
 import fr.eni.clinique.bll.BLLException;
 import fr.eni.clinique.bll.LoginMger;
 import fr.eni.clinique.bo.Personnels;
+import fr.eni.clinique.ihm.MiseEnPage;
 
 @SuppressWarnings("serial")
 public class ModeleDynamique extends AbstractTableModel {
 
 	private LoginMger mger = null;
 	private List<Personnels> listePerso;
-	
+
 	private final String[] entetes = { "Nom", "Prénom", "MDP", "Role" };
 
 	public ModeleDynamique() {
-
+		MiseEnPage.getMiseEnPage();
 		try {
 			mger = LoginMger.getInstance();
 			listePerso = mger.getListePnonArchive();
 		} catch (BLLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public int getRowCount() {
 		return listePerso.size();
 	}
-	//************
+	// ************
 
 	@Override
 	public int getColumnCount() {

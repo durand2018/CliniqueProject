@@ -19,9 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -29,7 +27,7 @@ import javax.swing.SwingConstants;
 import fr.eni.clinique.bll.BLLException;
 import fr.eni.clinique.bll.ClientsMger;
 import fr.eni.clinique.bo.Clients;
-import fr.eni.clinique.ihm.gestionpersonnel.EcranGestion;
+import fr.eni.clinique.ihm.MiseEnPage;
 
 /**
  * Classe en charge de l'Ecran de Recherche Client
@@ -47,6 +45,7 @@ public class EcranRechercheClient extends JFrame {
 
 	public EcranRechercheClient() {
 		super("Résultat de la Recherche");
+		MiseEnPage.getMiseEnPage();
 		initIHM();
 	}
 
@@ -108,8 +107,7 @@ public class EcranRechercheClient extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int i = 0;
-				 i = tabClt.getSelectedRow();
-				 System.out.println(i);
+				i = tabClt.getSelectedRow();
 				try {
 					// Récupère le client affiché
 					mger = new ClientsMger();
@@ -120,9 +118,9 @@ public class EcranRechercheClient extends JFrame {
 					System.out.println(cltChoisi);
 					// Ferme l'écran
 					dispose();
-					//Ouvre un nouvel écran client qui affiche le client choisi
+					// Ouvre un nouvel écran client qui affiche le client choisi
 					EcranClients ecranClt = new EcranClients(cltChoisi);
-					ecranClt.setSize(new Dimension(1000,600));
+					ecranClt.setSize(new Dimension(1000, 600));
 					ecranClt.setVisible(true);
 					ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				} catch (BLLException e1) {

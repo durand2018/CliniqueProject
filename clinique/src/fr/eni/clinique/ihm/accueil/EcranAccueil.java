@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,11 +15,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-import fr.eni.clinique.bll.LoginMger;
-import fr.eni.clinique.bo.Personnels;
+import fr.eni.clinique.ihm.MiseEnPage;
+import fr.eni.clinique.ihm.ecranrdv.EcranRDV;
 import fr.eni.clinique.ihm.gestionpersonnel.EcranGestion;
 import fr.eni.clinique.ihm.login.EcranLogin;
 
+@SuppressWarnings("serial")
 public class EcranAccueil extends JFrame {
 
 	private JMenuBar menuBar = new JMenuBar();
@@ -30,10 +33,12 @@ public class EcranAccueil extends JFrame {
 	private JMenuItem menuItem2 = new JMenuItem("Prise de RDV");
 	private JMenuItem menuItem2b = new JMenuItem("Gestion des Clients");
 	protected EcranLogin ecranLogin;
-	private LoginMger mger = null;
-	private Personnels p;
 
 	public EcranAccueil(EcranLogin ecranLogin) {
+		MiseEnPage.getMiseEnPage();
+		// Changer Icone fenêtre
+		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
+		this.setIconImage(image);
 
 		CardLayout CardL = new CardLayout();
 		JPanel panel1 = new JPanel();
@@ -46,7 +51,6 @@ public class EcranAccueil extends JFrame {
 		menuBar.add(menu_2);
 		menuBar.add(menu_3);
 		menuBar.add(menu_4, BorderLayout.EAST);
-	
 
 		menu.add(menuItem);
 		menu.add(menuItem1);
@@ -73,8 +77,8 @@ public class EcranAccueil extends JFrame {
 				// TODO Auto-generated method stub
 				//
 				//
-			    //
-				//***********ECRAN AGENDA************
+				//
+				// ***********ECRAN AGENDA************
 				//
 				//
 				//
@@ -120,6 +124,20 @@ public class EcranAccueil extends JFrame {
 
 			}
 
+		});
+
+		menuItem2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+
+				EcranRDV ecranRdv = new EcranRDV();
+
+				ecranRdv.setSize(new Dimension(1024, 768));
+
+				ecranRdv.setVisible(true);
+			}
 		});
 	}
 
