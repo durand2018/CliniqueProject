@@ -16,7 +16,7 @@ public class AnimalMger {
 	private List<Race> listeEscpece;
 	private List<Race> listeRace;
 
-	private AnimalMger() throws BLLException {
+	public AnimalMger() throws BLLException {
 		super();
 		try {
 			listeAni = daoAnimal.selectAll();
@@ -43,7 +43,7 @@ public class AnimalMger {
 
 	public void addAnimaux(Animaux a) throws BLLException {
 		if (a.getCodeAnimal() != 0) {
-			throw new BLLException("Animal déjà enregistré");
+			throw new BLLException("Animal dï¿½jï¿½ enregistrï¿½");
 		}
 		validerAnimal(a);
 		try {
@@ -79,19 +79,19 @@ public class AnimalMger {
 		StringBuffer sb = new StringBuffer();
 		if (a.getNomAnimal().equals(null) || a.getNomAnimal().trim().isEmpty()) {
 			test = false;
-			sb.append("Nom de l'animal non renseigné \n");
+			sb.append("Nom de l'animal non renseignï¿½ \n");
 		}
 		if (a.getCouleur().equals(null) || a.getCouleur().trim().isEmpty()) {
 			test = false;
-			sb.append("Couleur non renseignée \n");
+			sb.append("Couleur non renseignï¿½e \n");
 		}
 		if (a.getEspece().equals(null)) {
 			test = false;
-			sb.append("Espèce non renseignée \n");
+			sb.append("Espï¿½ce non renseignï¿½e \n");
 		}
 		if (a.getRace().equals(null)) {
 			test = false;
-			sb.append("Race non renseignée \n");
+			sb.append("Race non renseignï¿½e \n");
 		}
 		if (test == false) {
 			throw new BLLException(sb.toString());
@@ -102,7 +102,7 @@ public class AnimalMger {
 		try {
 			listeAni = daoAnimal.selectAnimalByClient(codeClient);
 		} catch (DALException e) {
-			throw new BLLException("Erreur dans la sélection.", e);
+			throw new BLLException("Erreur dans la sï¿½lection.", e);
 		}
 		return listeAni;
 	}
@@ -111,7 +111,7 @@ public class AnimalMger {
 		try {
 			listeEscpece = daoAnimal.selectEspece();
 		} catch (DALException e) {
-			throw new BLLException("Erreur dans la sélection.", e);
+			throw new BLLException("Erreur dans la sï¿½lection.", e);
 		}
 		return listeEscpece;
 	}
@@ -120,7 +120,7 @@ public class AnimalMger {
 		try {
 			listeRace = daoAnimal.selectRaceByEspece(espece);
 		} catch (DALException e) {
-			throw new BLLException("Erreur dans la sélection.", e);
+			throw new BLLException("Erreur dans la sï¿½lection.", e);
 		}
 		return listeRace;
 	}

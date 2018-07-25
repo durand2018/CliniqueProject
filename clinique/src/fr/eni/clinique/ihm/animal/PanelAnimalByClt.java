@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class PanelAnimalByClt extends JFrame {
 	private JLabel jlTitre, jlAucunAni;
-		private JButton btnAjouter, btnSupprimer, btnEditer;
+	private JButton btnAjouter, btnSupprimer, btnEditer;
 	private JPanel panelBtn, panelAni;
 
 	public PanelAnimalByClt(){

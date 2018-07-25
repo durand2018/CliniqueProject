@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 //import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 import fr.eni.clinique.bll.BLLException;
 import fr.eni.clinique.bll.ClientsMger;
@@ -68,7 +70,12 @@ public class EcranClients extends JFrame {
 		panelClt.setBackground(Color.gray);
 		panelClt.add(panelBtn, BorderLayout.NORTH);
 		panelClt.add(panelBas, BorderLayout.CENTER);
-
+		
+		//Changer Icone fenêtre
+				Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
+				this.setIconImage(image);
+				
+		//Lancer la fenêtre
 		this.setContentPane(panelClt);
 	}
 
@@ -154,7 +161,7 @@ public class EcranClients extends JFrame {
 					ecranAjclt.setSize(new Dimension(500, 600));
 					ecranAjclt.setVisible(true);
 					dispose();
-					ecranAjclt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					ecranAjclt.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				}
 			});
 		}
