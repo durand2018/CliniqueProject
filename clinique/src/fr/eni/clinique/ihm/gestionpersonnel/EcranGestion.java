@@ -118,7 +118,7 @@ public class EcranGestion extends JFrame {
 					int i = 0;
 					 i = tableau.getSelectedRow();
 					if(i==-1){
-						JOptionPane.showMessageDialog(null, "sectionnez un membre du personnel","suppression d'un client",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Selectionnez un membre du personnel","suppression d'un client",JOptionPane.WARNING_MESSAGE);
 						return;
 					}
 					try {
@@ -131,16 +131,11 @@ public class EcranGestion extends JFrame {
 						EcranGestion.pack();
 						
 					} catch (BLLException e1) {
-						
 						System.err.println("probleme EcranGestion personnel non supprim� ");
 						System.err.println("ou probleme errreur  base de donn�e ");
-						
-
 					}
-
 				}
 			});
-
 		}
 		return btnSupprimer;
 	}

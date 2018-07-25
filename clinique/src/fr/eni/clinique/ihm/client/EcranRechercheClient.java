@@ -6,7 +6,6 @@ package fr.eni.clinique.ihm.client;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -20,9 +19,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import fr.eni.clinique.bll.BLLException;
+import fr.eni.clinique.bll.ClientsMger;
+import fr.eni.clinique.bo.Clients;
+import fr.eni.clinique.ihm.gestionpersonnel.EcranGestion;
 
 /**
  * Classe en charge de l'Ecran de Recherche Client
@@ -36,10 +43,16 @@ public class EcranRechercheClient extends JFrame {
 	private JLabel jlAucuneSelection;
 	private JPanel panelRecherche, panelResultat;
 	private JButton btnRechercher;
+	private ClientsMger mger;
 
 	public EcranRechercheClient() {
 		super("Résultat de la Recherche");
 		initIHM();
+	}
+
+	public EcranRechercheClient(String saisie) {
+		super("Résultat de la Recherche");
+		initIHM(saisie);
 	}
 
 	private void initIHM() {
@@ -63,32 +76,111 @@ public class EcranRechercheClient extends JFrame {
 		this.setContentPane(panelResultat);
 	}
 
+	private void initIHM(String saisie) {
+		panelRecherche = new JPanel();
+		panelResultat = new JPanel();
+		JTable tabClt = new JTable(new ModeleTableClient(saisie));
+
+		panelRecherche.add(getJtRecherche());
+		panelRecherche.add(getBtnRechercher());
+		jtRecherche.setText(saisie);
+		jtRecherche.getFont().deriveFont(Font.PLAIN);
+		jtRecherche.setForeground(Color.black);
+
+		panelResultat.setLayout(new BorderLayout());
+		panelResultat.add(panelRecherche, BorderLayout.NORTH);
+
+		if (tabClt.getRowCount() == 0) {
+			panelResultat.add(getJlAucuneSelection(), BorderLayout.CENTER);
+		} else {
+			panelResultat.add(tabClt, BorderLayout.CENTER);
+		}
+
+		// Changer Icone fenêtre
+		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
+		this.setIconImage(image);
+
+		// Lancer la fenêtre
+		this.setContentPane(panelResultat);
+
+		// Suivi clic sur liste client
+		tabClt.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int i = 0;
+				 i = tabClt.getSelectedRow();
+				try {
+					// Récupère le client affiché
+					mger = new ClientsMger();
+					Clients cltChoisi = mger.getClient(i);
+					// Ferme l'écran
+					dispose();
+					//Ouvre un nouvel écran client qui affiche le client choisi
+					EcranClients ecranClt = new EcranClients(cltChoisi);
+					ecranClt.setSize(new Dimension(1000,600));
+					ecranClt.setVisible(true);
+					ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				} catch (BLLException e1) {
+					System.err.println("Probleme Selection Client recherché ");
+				}
+			}
+			
+			
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+		});
+	}
+
 	public JTextField getJtRecherche() {
-		if(jtRecherche == null){
-//			jtRecherche = new JTextField(50);
+		if (jtRecherche == null) {
+			// jtRecherche = new JTextField(50);
 			jtRecherche = new JTextField("nom du client");
-			jtRecherche.setPreferredSize(new Dimension(300,20));
+			jtRecherche.setPreferredSize(new Dimension(300, 20));
 			jtRecherche.getFont().deriveFont(Font.ITALIC);
 			jtRecherche.setForeground(Color.gray);
-			
-			jtRecherche.addMouseListener(new MouseListener() { 
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							JTextField jtRecherche = ((JTextField)e.getSource());
-					        jtRecherche.setText("");
-					        jtRecherche.getFont().deriveFont(Font.PLAIN);
-					        jtRecherche.setForeground(Color.black);
-					        jtRecherche.removeMouseListener(this);
-						}
-						@Override
-						public void mouseEntered(MouseEvent e) {}
-						@Override
-						public void mouseExited(MouseEvent e) {}
-						@Override
-						public void mousePressed(MouseEvent e) {}
-						@Override
-						public void mouseReleased(MouseEvent e) {}
-			});	
+
+			jtRecherche.addMouseListener(new MouseListener() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					JTextField jtRecherche = ((JTextField) e.getSource());
+					if (jtRecherche.getText().equals("nom du client")) {
+						jtRecherche.setText("");
+						jtRecherche.getFont().deriveFont(Font.PLAIN);
+						jtRecherche.setForeground(Color.black);
+						jtRecherche.removeMouseListener(this);
+					}
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent e) {
+				}
+
+				@Override
+				public void mouseExited(MouseEvent e) {
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+				}
+
+				@Override
+				public void mouseReleased(MouseEvent e) {
+				}
+			});
 		}
 		return jtRecherche;
 	}
@@ -116,6 +208,13 @@ public class EcranRechercheClient extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					String nomPartiel = getJtRecherche().getText();
 					System.out.println(nomPartiel);
+					// Fermer écran précédent
+					dispose();
+					// Relancer un écran de recherche actualisé
+					EcranRechercheClient ecranFind = new EcranRechercheClient(nomPartiel);
+					ecranFind.setSize(new Dimension(700, 300));
+					ecranFind.setVisible(true);
+					ecranFind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 				}
 			});

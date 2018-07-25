@@ -14,7 +14,7 @@ public class testJtableClient extends JFrame {
 	        setTitle("Clients Clinique");
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	 
-	        JTable tableau = new JTable(new ModeleTableClient());
+	        JTable tableau = new JTable(new ModeleTableClient("Spe"));
 	 
 	        getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 	        pack();
