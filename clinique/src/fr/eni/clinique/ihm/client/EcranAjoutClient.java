@@ -67,7 +67,7 @@ public class EcranAjoutClient extends JFrame{
 	public JButton getBtnValider() {
 		if(btnValider == null){
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/saveBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/valider.jpg")));
 			btnValider = new JButton(image);
 			btnValider.setToolTipText("Valider");
 			
@@ -102,7 +102,7 @@ public class EcranAjoutClient extends JFrame{
 	public JButton getBtnAnnuler() {
 		if(btnAnnuler == null){
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annulerBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annuler.jpg")));
 			btnAnnuler = new JButton(image);
 			btnAnnuler.setToolTipText("Annuler");
 			

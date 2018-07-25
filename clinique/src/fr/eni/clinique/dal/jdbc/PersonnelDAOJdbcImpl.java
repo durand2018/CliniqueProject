@@ -18,8 +18,8 @@ public class PersonnelDAOJdbcImpl implements PersonnelDAO {
 	// declaration des requetes sql
 	private static final String sqlInsert = "insert into Personnels(Nom,Prenom,MotPasse,Role,Archive) values(?,?,?,?,?)";
 	private static final String sqlSelectByCode = "select * from Personnels where CodePers = ?";
-	private static final String sqlSelectAll = "select * from Personnels";
-	private static final String sqlSelectAllNoArchive = "select * from Personnels where Archive = 0";
+	private static final String sqlSelectAll = "select * from Personnels order by Nom";
+	private static final String sqlSelectAllNoArchive = "select * from Personnels where Archive = 0 order by Nom";
 	private static final String sqlUpdate = "update Personnels set Nom=?,Prenom=?,MotPasse=?,Role=?,Archive=? where CodePers=?" ;
 	private static final String sqlDelete = "update Personnels set Archive=1 where CodePers=?";
 

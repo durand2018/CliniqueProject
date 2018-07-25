@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.eni.clinique.ihm.ecranrdv;
+package fr.eni.clinique.ihm.rendezVous;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -44,7 +44,7 @@ public class EcranRDV extends JFrame {
 	private JLabel labelTravaux;
 
 	public EcranRDV() {
-		super("prise rdv");
+		super("Prise de rendez-vous");
 		MiseEnPage.getMiseEnPage();
 		try {
 			mgr = AnimalMger.getInstance();
@@ -251,7 +251,7 @@ public class EcranRDV extends JFrame {
 	public JButton getBtnValider() {
 		if (btnValider == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/saveBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/valider.png")));
 			btnValider = new JButton(image);
 			btnValider.setToolTipText("Valider");
 
@@ -262,7 +262,7 @@ public class EcranRDV extends JFrame {
 	public JButton getBtnSupprimer() {
 		if (btnSupprimer == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annulerBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/sortir.png")));
 			btnSupprimer = new JButton(image);
 			btnSupprimer.setToolTipText("Annuler");
 

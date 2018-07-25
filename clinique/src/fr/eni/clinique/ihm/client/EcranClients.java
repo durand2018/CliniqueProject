@@ -123,7 +123,7 @@ public class EcranClients extends JFrame {
 	public JButton getBtnValider() {
 		if (btnValider == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/saveBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/valider.jpg")));
 			btnValider = new JButton(image);
 			btnValider.setToolTipText("Valider");
 		}
@@ -133,7 +133,7 @@ public class EcranClients extends JFrame {
 	public JButton getBtnAnnuler() {
 		if (btnAnnuler == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annulerBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annuler.jpg")));
 			btnAnnuler = new JButton(image);
 			btnAnnuler.setToolTipText("Annuler");
 
@@ -151,7 +151,7 @@ public class EcranClients extends JFrame {
 	public JButton getBtnAjouter() {
 		if (btnAjouter == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ajouterBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ajouter.jpg")));
 			btnAjouter = new JButton(image);
 			btnAjouter.setToolTipText("Ajouter");
 
@@ -174,7 +174,7 @@ public class EcranClients extends JFrame {
 	public JButton getBtnSupprimer() {
 		if (btnSupprimer == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/eteindreBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/supprimer.jpg")));
 			btnSupprimer = new JButton(image);
 			btnSupprimer.setToolTipText("Supprimer");
 
@@ -200,7 +200,7 @@ public class EcranClients extends JFrame {
 	public JButton getBtnRechercher() {
 		if (btnRechercher == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/rechercherBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/loupe.jpg")));
 			btnRechercher = new JButton(image);
 			btnRechercher.setToolTipText("Rechercher");
 

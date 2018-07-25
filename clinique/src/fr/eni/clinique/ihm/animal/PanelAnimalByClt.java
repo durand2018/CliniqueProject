@@ -98,7 +98,7 @@ public class PanelAnimalByClt extends JFrame {
 	public JButton getBtnAjouter() {
 		if (btnAjouter == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ajouterBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ajouter.jpg")));
 			btnAjouter = new JButton(image);
 			btnAjouter.setToolTipText("Ajouter");
 		}
@@ -108,7 +108,7 @@ public class PanelAnimalByClt extends JFrame {
 	public JButton getBtnSupprimer() {
 		if (btnSupprimer == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/eteindreBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/supprimer.jpg")));
 			btnSupprimer = new JButton(image);
 			btnSupprimer.setToolTipText("Supprimer");
 		}
@@ -118,7 +118,7 @@ public class PanelAnimalByClt extends JFrame {
 	public JButton getBtnEditer() {
 		if (btnEditer == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/imprimerBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/editer.jpg")));
 			btnEditer = new JButton(image);
 			btnEditer.setToolTipText("Editer");
 		}

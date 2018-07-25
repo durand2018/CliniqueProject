@@ -40,7 +40,7 @@ public class EcranLogin extends JFrame {
 	public EcranLogin() {
 		super("Connexion");
 		MiseEnPage.getMiseEnPage();
-		setSize(new Dimension(500, 250));
+		setPreferredSize(new Dimension(500, 250));
 		try {
 			mger = LoginMger.getInstance();
 		} catch (BLLException e) {
@@ -115,7 +115,7 @@ public class EcranLogin extends JFrame {
 
 	public JTextField getJtPNom() {
 		if (jtPNom == null) {
-			jtPNom = new JTextField(20);
+			jtPNom = new JTextField(25);
 		}
 		return jtPNom;
 	}
@@ -129,7 +129,7 @@ public class EcranLogin extends JFrame {
 
 	public JTextField getJtNom() {
 		if (jtNom == null) {
-			jtNom = new JTextField(20);
+			jtNom = new JTextField(25);
 		}
 		return jtNom;
 	}
@@ -143,7 +143,7 @@ public class EcranLogin extends JFrame {
 
 	public JTextField getJpMdp() {
 		if (jpMdp == null) {
-			jpMdp = new JPasswordField(20);
+			jpMdp = new JPasswordField(25);
 		}
 		return jpMdp;
 	}
@@ -190,7 +190,7 @@ public class EcranLogin extends JFrame {
 						}
 						if (userMdp.equals(sb.toString())) {
 							EcranAccueil ecranAccueil = new EcranAccueil(EcranLogin.this);
-							ecranAccueil.setSize(new Dimension(500, 250));
+							ecranAccueil.setPreferredSize(new Dimension(500, 250));
 
 							dispose();
 

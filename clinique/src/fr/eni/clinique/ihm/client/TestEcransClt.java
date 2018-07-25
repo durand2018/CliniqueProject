@@ -25,7 +25,7 @@ public class TestEcransClt {
 //				ecranClt.setVisible(true);
 //				ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
-				EcranRechercheClient ecranFind = new EcranRechercheClient("Spe");
+				EcranRechercheClient ecranFind = new EcranRechercheClient();
 				ecranFind.setSize(new Dimension(700,300));
 				ecranFind.setVisible(true);
 				ecranFind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -15,7 +15,7 @@ public class TestAjoutPers {
 			@Override
 			public void run (){
 				EcranAjoutPers ecranAjout = new EcranAjoutPers ();
-				ecranAjout.setSize(new Dimension(800,600));
+				ecranAjout.setPreferredSize(new Dimension(800,600));
 				ecranAjout.setVisible(true);
 				ecranAjout.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				

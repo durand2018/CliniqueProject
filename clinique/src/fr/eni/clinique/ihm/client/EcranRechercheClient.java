@@ -146,7 +146,7 @@ public class EcranRechercheClient extends JFrame {
 		if (jtRecherche == null) {
 			// jtRecherche = new JTextField(50);
 			jtRecherche = new JTextField("nom du client");
-			jtRecherche.setPreferredSize(new Dimension(300, 20));
+			jtRecherche.setPreferredSize(new Dimension(300, 25));
 			jtRecherche.getFont().deriveFont(Font.ITALIC);
 			jtRecherche.setForeground(Color.gray);
 
@@ -195,7 +195,7 @@ public class EcranRechercheClient extends JFrame {
 	public JButton getBtnRechercher() {
 		if (btnRechercher == null) {
 			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/rechercherBlanc.jpg")));
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/loupe.png")));
 			btnRechercher = new JButton(image);
 			btnRechercher.setToolTipText("Rechercher");
 

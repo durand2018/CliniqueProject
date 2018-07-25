@@ -52,7 +52,7 @@ public class EcranAjoutPers extends JFrame {
 	public EcranAjoutPers() {
 		super("Ajouter Personnel");
 		MiseEnPage.getMiseEnPage();
-		setSize(new Dimension(800, 600));
+		setPreferredSize(new Dimension(800, 600));
 		try {
 			mgr = LoginMger.getInstance();
 		} catch (BLLException e) {
@@ -242,7 +242,7 @@ public class EcranAjoutPers extends JFrame {
 						mgr.addPersonnel(p);
 					} catch (BLLException e1) {
 						if (Nom.length() > 30 || Prenom.length() > 30) {
-							JOptionPane.showMessageDialog(panel, "trop de caract�re", "ajout personnel",
+							JOptionPane.showMessageDialog(panel, "trop de caractère", "ajout personnel",
 									JOptionPane.INFORMATION_MESSAGE);
 
 						} else if (MDP.length() > 20) {
@@ -256,7 +256,7 @@ public class EcranAjoutPers extends JFrame {
 
 					// afficher ecran de gestion a jour apres validation
 					EcranGestion EcranGestion = new EcranGestion();
-					EcranGestion.setSize(new Dimension(1000, 500));
+					EcranGestion.setPreferredSize(new Dimension(800, 600));
 					EcranGestion.setVisible(true);
 					EcranGestion.pack();
 

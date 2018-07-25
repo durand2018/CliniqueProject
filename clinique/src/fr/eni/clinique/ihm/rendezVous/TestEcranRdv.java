@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.eni.clinique.ihm.ecranrdv;
+package fr.eni.clinique.ihm.rendezVous;
 
 import java.awt.Dimension;
 

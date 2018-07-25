@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -95,7 +96,10 @@ public class EcranGestion extends JFrame {
 
 	public JButton getBtnAjouter() {
 		if (btnAjouter == null) {
-			btnAjouter = new JButton("Ajouter");
+			ImageIcon image = new ImageIcon(
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ajouter.png")));
+			btnAjouter = new JButton(image);
+			btnAjouter.setToolTipText("Valider");
 
 			btnAjouter.addActionListener(new ActionListener() {
 
@@ -103,7 +107,7 @@ public class EcranGestion extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 
 					EcranAjoutPers EcranAjout = new EcranAjoutPers();
-					EcranAjout.setSize(new Dimension(400, 300));
+					EcranAjout.setPreferredSize(new Dimension(800, 600));
 					pack();
 					dispose();
 					EcranAjout.setVisible(true);
@@ -115,7 +119,10 @@ public class EcranGestion extends JFrame {
 
 	public JButton getBtnSupprimer() {
 		if (btnSupprimer == null) {
-			btnSupprimer = new JButton("Supprimer");
+			ImageIcon image = new ImageIcon(
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/supprimer.png")));
+			btnSupprimer = new JButton(image);
+			btnSupprimer.setToolTipText("Supprimer");
 
 			btnSupprimer.addActionListener(new ActionListener() {
 
@@ -133,7 +140,7 @@ public class EcranGestion extends JFrame {
 
 						dispose();
 						EcranGestion EcranGestion = new EcranGestion();
-						EcranGestion.setSize(new Dimension(800, 300));
+						EcranGestion.setPreferredSize(new Dimension(800, 600));
 						EcranGestion.setVisible(true);
 						EcranGestion.pack();
 
@@ -149,24 +156,28 @@ public class EcranGestion extends JFrame {
 
 	public JButton getBtnReinitialiser() {
 		if (btnReinitialiser == null) {
-			btnReinitialiser = new JButton("Reinitialiser");
+			ImageIcon image = new ImageIcon(
+					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/cadena.png")));
+			btnReinitialiser = new JButton(image);
+			btnReinitialiser.setToolTipText("Reinitialiser");
+			
 			btnReinitialiser.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					String mdp;
-					mdp = JOptionPane.showInputDialog("saisir le nouveau mot de passe");
+					mdp = JOptionPane.showInputDialog("Saisir le nouveau mot de passe");
 
 					int i = 0;
 					i = tableau.getSelectedRow();
 					if (i == -1) {
-						JOptionPane.showMessageDialog(null, "sectionnez un membre du personnel",
-								"r�initialisation mot de passe", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Sectionnez un membre du personnel",
+								"Réinitialisation mot de passe", JOptionPane.WARNING_MESSAGE);
 						return;
 					}
 					if (mdp.isEmpty()) {
-						System.out.println("hey mdp = 0");
-						JOptionPane.showMessageDialog(null, "entrez un mot de passe!", "echec r�initialisation",
+						System.out.println("Hey mdp = 0");
+						JOptionPane.showMessageDialog(null, "Entrez un mot de passe!", "Echec réinitialisation",
 								JOptionPane.ERROR_MESSAGE);
 					}
 
@@ -182,14 +193,13 @@ public class EcranGestion extends JFrame {
 						dispose();
 
 						EcranGestion EcranGestion = new EcranGestion();
-						EcranGestion.setSize(new Dimension(1000, 500));
+						EcranGestion.setPreferredSize(new Dimension(800, 600));
 						EcranGestion.setVisible(true);
 						EcranGestion.pack();
-						EcranGestion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 					} catch (BLLException e1) {
 
-						JOptionPane.showMessageDialog(null, "echec r�initialisation", "mise a jour mot de passe",
+						JOptionPane.showMessageDialog(null, "Echec réinitialisation", "Mise a jour mot de passe",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}
@@ -204,14 +214,14 @@ public class EcranGestion extends JFrame {
 
 }
 
-// M�thode appel�e lorsque l'on presse le bouton gauche de la souris
+// Méthode appelée lorsque l'on presse le bouton gauche de la souris
 // public void mousePressed(MouseEvent event) {
 // int i = tableau.getSelectedRow();
-// System.out.println("ligne selectionn�"+i);
+// System.out.println("ligne selectionné"+i);
 // }
 //
 // public void MousePressed(MouseEvent e) {
 
 // int i = tableau.getSelectedRow();
-// System.out.println("ligne selectionn�"+i);
+// System.out.println("ligne selectionné"+i);
 // }
