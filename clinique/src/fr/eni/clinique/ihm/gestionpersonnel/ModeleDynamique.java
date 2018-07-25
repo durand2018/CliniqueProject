@@ -15,7 +15,7 @@ public class ModeleDynamique extends AbstractTableModel {
 	private LoginMger mger = null;
 	private List<Personnels> listePerso;
 	
-	private final String[] entetes = { "Nom", "Pr�nom", "MDP", "Role" };
+	private final String[] entetes = { "Nom", "Prénom", "MDP", "Role" };
 
 	public ModeleDynamique() {
 
