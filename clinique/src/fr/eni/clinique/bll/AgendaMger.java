@@ -6,10 +6,8 @@ package fr.eni.clinique.bll;
 import java.util.List;
 
 import fr.eni.clinique.bo.Agenda;
-import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.dal.AnimauxDAO;
 import fr.eni.clinique.dal.ClientsDAO;
-import fr.eni.clinique.dal.DALException;
 import fr.eni.clinique.dal.DAOFactory;
 
 /**

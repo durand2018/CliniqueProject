@@ -5,8 +5,6 @@ import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.List;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,9 +13,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import fr.eni.clinique.bo.Clients;
-
-import fr.eni.clinique.bll.BLLException;
-import fr.eni.clinique.bll.ClientsMger;
 
 @SuppressWarnings("serial")
 public class PanelClient extends JFrame {
@@ -50,7 +45,7 @@ public class PanelClient extends JFrame {
 		panelClt.setBackground(Color.gray);
 		panelClt.setLayout(new GridBagLayout());
 		
-		//Placement des éléments sur la grille
+		//Placement des ï¿½lï¿½ments sur la grille
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.insets = new Insets(5, 5, 5, 5);
 		//Ligne 1
@@ -137,7 +132,7 @@ public class PanelClient extends JFrame {
 	}
 
 	/**
-	 * Fonction en charge de remplir le panel CLient avec données d'un client 
+	 * Fonction en charge de remplir le panel CLient avec donnï¿½es d'un client 
 	 * @param c un client
 	 */
 	public void RemplirPanelClt(Clients c){
@@ -205,7 +200,7 @@ public class PanelClient extends JFrame {
 
 	public JLabel getJlNumTel() {
 		if(jlNumTel == null){
-			jlNumTel = new JLabel("N° Téléphone ");
+			jlNumTel = new JLabel("Nï¿½ Tï¿½lï¿½phone ");
 		}
 		return jlNumTel;
 	}
@@ -332,7 +327,7 @@ public class PanelClient extends JFrame {
 	}
 	
 	/**
-	 * Fonction en charge de récupérer les infos du formulaire Clients
+	 * Fonction en charge de rï¿½cupï¿½rer les infos du formulaire Clients
 	 * @return un client
 	 */
 	public Clients getClient(){

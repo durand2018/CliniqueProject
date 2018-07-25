@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 import fr.eni.clinique.bll.LoginMger;
 import fr.eni.clinique.bo.Personnels;
 import fr.eni.clinique.ihm.gestionpersonnel.EcranGestion;
-import fr.eni.clinique.ihm.login.AppliTestIHM;
 import fr.eni.clinique.ihm.login.EcranLogin;
 
 public class EcranAccueil extends JFrame {

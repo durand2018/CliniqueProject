@@ -12,6 +12,7 @@ import fr.eni.clinique.bo.Personnels;
 import fr.eni.clinique.dal.DALException;
 import fr.eni.clinique.dal.PersonnelDAO;
 
+
 public class PersonnelDAOJdbcImpl implements PersonnelDAO {
 
 	// declaration des requetes sql
@@ -92,6 +93,7 @@ public class PersonnelDAOJdbcImpl implements PersonnelDAO {
 		
 	}
 
+	@Override
 	public List<Personnels> selectAllNoArchive() throws DALException {
 		Connection cnx = null;
 		Statement rqt = null;
@@ -191,6 +193,7 @@ public class PersonnelDAOJdbcImpl implements PersonnelDAO {
 	 * Fonction qui gère l'archivage du membre du personnel supprimé
 	 * codePers
 	 */
+	@Override
 	public void delete(int codePers) throws DALException {
 		Connection cnx = null;
 		PreparedStatement rqt = null;

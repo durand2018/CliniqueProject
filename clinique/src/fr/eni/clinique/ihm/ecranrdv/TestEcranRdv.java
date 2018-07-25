@@ -10,7 +10,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import fr.eni.clinique.bll.BLLException;
-import fr.eni.clinique.ihm.gestionpersonnel.EcranGestion;
 
 /**
  * Classe en charge de l'affichage de l'ecran

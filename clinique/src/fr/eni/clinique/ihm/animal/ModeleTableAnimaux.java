@@ -32,6 +32,7 @@ public class ModeleTableAnimaux extends AbstractTableModel {
 		return entetes.length;
 	}
 
+	@Override
 	public String getColumnName(int columnIndex) {
 		return entetes[columnIndex];
 	}
