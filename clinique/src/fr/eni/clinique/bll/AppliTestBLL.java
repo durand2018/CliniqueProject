@@ -1,5 +1,6 @@
 package fr.eni.clinique.bll;
 
+import java.util.List;
 
 //import java.util.List;
 
@@ -7,7 +8,6 @@ package fr.eni.clinique.bll;
 import fr.eni.clinique.bo.Clients;
 //import fr.eni.clinique.bo.Personnels;
 //import fr.eni.clinique.bo.Race;
-
 
 public class AppliTestBLL {
 
@@ -44,81 +44,111 @@ public class AppliTestBLL {
 		// }
 
 		/////////////////////////////////////////////////////////////////////////// Animal
-//		Animaux a1 = new Animaux("NomAnimal", "M", "Couleur", "Levrier", "Chien", 8, "KVBHJK464", false);
-//		Animaux a2 = new Animaux("Lunette", "F", "Miroir", "Siamois", "Chat", 2, "KVB59464", false);
-//		AnimalMger amger = null;
-//		try {
-//
-//			amger = AnimalMger.getInstance();
-//			// Ajout animal
-//			amger.addAnimaux(a1);
-//			amger.addAnimaux(a2);
-//			afficherAnimal(amger.getList());
-			// Modif animal
-//			System.out.println("\n Modification d'un animal :");
-//			System.out.println("Animal avant :" + a1.toString());
-//			a1.setNomAnimal("Bibou");
-//			a1.setCouleur("Vert corridore");
-//			a1.setSexe("F");
-//			amger.updateAnimal(a1);
-//			System.out.println("Animal apr�s :" + a1.toString());
-//			amger.removeAnimal(1);
-//			System.out.println("\n Suppression d'un animal :" + a1);
-//			System.out.println("\n Liste apr�s suppression :");
-//			afficherAnimal(amger.selectAnimalByClient(2));
-//			afficherAnimalRace(amger.selectEspece());
-//
-//		} catch (BLLException e) {
-//			e.printStackTrace();
-//		}
-//	}
+		// Animaux a1 = new Animaux("NomAnimal", "M", "Couleur", "Levrier",
+		// "Chien", 8, "KVBHJK464", false);
+		// Animaux a2 = new Animaux("Lunette", "F", "Miroir", "Siamois", "Chat",
+		// 2, "KVB59464", false);
+		// AnimalMger amger = null;
+		// try {
+		//
+		// amger = AnimalMger.getInstance();
+		// // Ajout animal
+		// amger.addAnimaux(a1);
+		// amger.addAnimaux(a2);
+		// afficherAnimal(amger.getList());
+		// Modif animal
+		// System.out.println("\n Modification d'un animal :");
+		// System.out.println("Animal avant :" + a1.toString());
+		// a1.setNomAnimal("Bibou");
+		// a1.setCouleur("Vert corridore");
+		// a1.setSexe("F");
+		// amger.updateAnimal(a1);
+		// System.out.println("Animal apr�s :" + a1.toString());
+		// amger.removeAnimal(1);
+		// System.out.println("\n Suppression d'un animal :" + a1);
+		// System.out.println("\n Liste apr�s suppression :");
+		// afficherAnimal(amger.selectAnimalByClient(2));
+		// afficherAnimalRace(amger.selectEspece());
+		//
+		// } catch (BLLException e) {
+		// e.printStackTrace();
+		// }
+		// }
 
-	///////////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////
 
-	//	 Afficher animal
-//	private static void afficherAnimal(List<Animaux> anim) {
-//		StringBuffer sb = new StringBuffer();
-//		for (Animaux a : anim) {
-//			sb.append(a.toString());
-//			sb.append("\n");
-//		}
-//		System.out.println(sb.toString());
-//	}
-//	private static void afficherAnimalRace(List<Race> anirace) {
-//		StringBuffer sb = new StringBuffer();
-//		for (Race r : anirace) {
-//			sb.append(r.toString());
-//			sb.append("\n");
-//		}
-//		System.out.println(sb.toString());
-//	}
+		// Afficher animal
+		// private static void afficherAnimal(List<Animaux> anim) {
+		// StringBuffer sb = new StringBuffer();
+		// for (Animaux a : anim) {
+		// sb.append(a.toString());
+		// sb.append("\n");
+		// }
+		// System.out.println(sb.toString());
+		// }
+		// private static void afficherAnimalRace(List<Race> anirace) {
+		// StringBuffer sb = new StringBuffer();
+		// for (Race r : anirace) {
+		// sb.append(r.toString());
+		// sb.append("\n");
+		// }
+		// System.out.println(sb.toString());
+		// }
 
-/////////////////////////////////////////////////////////////////////////// Afficher
-// personnel
-// private static void afficherPersonnel(List<Personnels> perso) {
-// StringBuffer sb = new StringBuffer();
-// for (Personnels a : perso) {
-// sb.append(a.toString());
-// sb.append("\n");
-// }
-// System.out.println(sb.toString());
-//
-// }
+		/////////////////////////////////////////////////////////////////////////// Afficher
+		// personnel
+		// private static void afficherPersonnel(List<Personnels> perso) {
+		// StringBuffer sb = new StringBuffer();
+		// for (Personnels a : perso) {
+		// sb.append(a.toString());
+		// sb.append("\n");
+		// }
+		// System.out.println(sb.toString());
+		//
+		// }
 
-/////////////////////////////////////////////////////////////////////////// Client
- Clients c1 = new Clients("Truc","Alain","19 Once","","91934","SEMARE","01 95 86 03 09","MMA","dededudu@yahouuuu.fr","Attention � bien le faire payer en liquide car il est interdit bancaire. ",false);
- Clients c2 = new Clients("MET", "Val", "1 rue des ET", "La Base",
- "44440", "RIAIL", "02 15 48 15 49","AXA","vmet@sfr.fr","", false);
- ClientsMger cmger = null;
- try {
+		/////////////////////////////////////////////////////////////////////////// Client
+//		Clients c1 = new Clients("Truc", "Alain", "19 Once", "", "91934", "SEMARE", "01 95 86 03 09", "MMA",
+//				"dededudu@yahouuuu.fr", "Attention � bien le faire payer en liquide car il est interdit bancaire. ",
+//				false);
+		Clients c2 = new Clients("MET", "Val", "1 rue des ET", "La Base", "44440", "RIAIL", "02 15 48 15 49", "AXA",
+				"vmet@sfr.fr", "", false);
+		ClientsMger cmger = null;
+		try {
+			cmger = ClientsMger.getInstance();
+			// Ajout clients
+//			cmger.addClients(c1);
+			cmger.addClients(c2);
 
- cmger = ClientsMger.getInstance();
- // Ajout clients
- cmger.addClients(c1);
- cmger.addClients(c2);
+			afficherClients(cmger.getListcl());
+			
+//			System.out.println(cmger.getClient(13));
+//			System.out.println(cmger.selectByCode(13));
+			
+			System.out.println("Client avant :" + c2.toString());
+			 c2.setNomClient("METAYER");
+			 c2.setVille("JOUE");
+			 cmger.updateClient(c2);;
+			 System.out.println("Animal après :" + c2.toString());
+		} catch (BLLException e) {
+			System.out.println("Erreur instance client");
+			e.printStackTrace();
+		}
+	}
 
- } catch (BLLException e) {
- e.printStackTrace();
- }
- }
+	/**
+	 * Fonction en charge de Afficher client
+	 * 
+	 * @param listcl
+	 */
+	private static void afficherClients(List<Clients> clt) {
+		StringBuffer sb = new StringBuffer();
+		for (Clients c : clt) {
+			sb.append(c.toString());
+			sb.append("\n");
+		}
+		System.out.println(sb.toString());
+	}
+	
+	
 }

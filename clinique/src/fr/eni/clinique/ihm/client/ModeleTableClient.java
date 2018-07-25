@@ -15,7 +15,7 @@ public class ModeleTableClient extends AbstractTableModel {
 	private ClientsMger mger = null;
 	private List<Clients> listeClients;
 
-	private final String[] entetes = { "NomClient", "PrenomClient", "CodePostal", "Ville" };
+	private final String[] entetes = { "Code", "NomClient", "PrenomClient", "CodePostal", "Ville"};
 
 	public ModeleTableClient(String saisie) {
 		MiseEnPage.getMiseEnPage();
@@ -48,13 +48,16 @@ public class ModeleTableClient extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch (columnIndex) {
 		case 0:
-			return listeClients.get(rowIndex).getNomClient();
+			return listeClients.get(rowIndex).getCodeClient();	
 		case 1:
-			return listeClients.get(rowIndex).getPrenomClient();
+			return listeClients.get(rowIndex).getNomClient();
 		case 2:
-			return listeClients.get(rowIndex).getCodePostal();
+			return listeClients.get(rowIndex).getPrenomClient();
 		case 3:
+			return listeClients.get(rowIndex).getCodePostal();
+		case 4:
 			return listeClients.get(rowIndex).getVille();
+				
 		default:
 			return null; // Ne devrait jamais arriver
 		}

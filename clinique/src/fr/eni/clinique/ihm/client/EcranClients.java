@@ -73,12 +73,12 @@ public class EcranClients extends JFrame {
 		panelClt.setBackground(Color.gray);
 		panelClt.add(panelBtn, BorderLayout.NORTH);
 		panelClt.add(panelBas, BorderLayout.CENTER);
-		
-		//Changer Icone fenêtre
-				Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
-				this.setIconImage(image);
-				
-		//Lancer la fenêtre
+
+		// Changer Icone fenêtre
+		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
+		this.setIconImage(image);
+
+		// Lancer la fenêtre
 		this.setContentPane(panelClt);
 	}
 
@@ -89,7 +89,6 @@ public class EcranClients extends JFrame {
 		PanelAnimalByClt panAni = new PanelAnimalByClt();
 
 		panelBtn.setLayout(new FlowLayout(FlowLayout.LEFT));
-		// panelBtn.add(getLogo());
 		panelBtn.add(getBtnRechercher());
 		panelBtn.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelBtn.add(getBtnAjouter());
@@ -102,7 +101,7 @@ public class EcranClients extends JFrame {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		panelBas.add(getPanClt().initIHM());
+		panelBas.add(getPanClt(c).initIHM());
 		gbc.gridx = 1;
 		panelBas.add(panAni.initIHM(c.getCodeClient()));
 
@@ -120,12 +119,40 @@ public class EcranClients extends JFrame {
 		return panClt;
 	}
 
+	public PanelClient getPanClt(Clients client) {
+		if (panClt == null) {
+			panClt = new PanelClient(client);
+		}
+		return panClt;
+	}
+
 	public JButton getBtnValider() {
 		if (btnValider == null) {
 			ImageIcon image = new ImageIcon(
 					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/valider.jpg")));
 			btnValider = new JButton(image);
 			btnValider.setToolTipText("Valider");
+		
+			btnValider.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// Récupère le client affiché
+					Clients cltAffiche = getPanClt().getClient();
+					//System.out.println(getPanClt().getCodeCltAffiche());
+					
+					//System.out.println(cltAffiche);
+					try {
+						// Sauvegarde un nouveau client dans la BDD
+						mger = new ClientsMger();
+						mger.updateClient(cltAffiche);
+						
+					} catch (BLLException e1) {
+						JOptionPane.showMessageDialog(EcranClients.this, "Une erreur est survenue lors de la Mise à jour");
+						e1.printStackTrace();
+					}
+				}
+			});
 		}
 		return btnValider;
 	}
@@ -214,28 +241,28 @@ public class EcranClients extends JFrame {
 					try {
 						mger = ClientsMger.getInstance();
 						List<Clients> filtreClt = mger.rechercherClt(nomPartiel);
-						
+
 						int i = filtreClt.size();
 						System.out.println(i);
-							//Ferme Ecran
-							dispose();
-						
-						if (i == 1){
-							//Relance Ecran avec le client trouvé
+						// Ferme Ecran
+						dispose();
+
+						if (i == 1) {
+							// Relance Ecran avec le client trouvé
 							EcranClients ecranClt = new EcranClients(cltAffiche);
-							ecranClt.setSize(new Dimension(1000,600));
+							ecranClt.setSize(new Dimension(1000, 600));
 							ecranClt.setVisible(true);
 							ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 						}
-						if (i > 1){
-							//Relance Ecran avec le client trouvé
+						if (i > 1) {
+							// Relance Ecran avec le client trouvé
 							EcranRechercheClient ecranRecherche = new EcranRechercheClient();
-							ecranRecherche.setSize(new Dimension(200,400));
+							ecranRecherche.setSize(new Dimension(700, 300));
 							ecranRecherche.setVisible(true);
 							ecranRecherche.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 						}
 					} catch (BLLException e1) {
-						JOptionPane.showConfirmDialog(EcranClients.this,
+						JOptionPane.showMessageDialog(EcranClients.this,
 								"Une erreur est survenue lors de la recherche");
 						e1.printStackTrace();
 					}

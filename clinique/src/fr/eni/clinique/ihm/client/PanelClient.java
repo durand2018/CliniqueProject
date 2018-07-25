@@ -2,6 +2,7 @@ package fr.eni.clinique.ihm.client;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -11,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import com.sun.istack.internal.NotNull;
 
 import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.ihm.MiseEnPage;
@@ -24,6 +27,7 @@ public class PanelClient extends JFrame {
 	private JTextArea jtRemarque;
 	private JScrollPane defil;
 	private JPanel panelClt;
+	private int CodeCltAffiche;
 	// private ClientsMger mgr = null;
 
 	public PanelClient() {
@@ -47,16 +51,20 @@ public class PanelClient extends JFrame {
 		panelClt.setBackground(Color.gray);
 		panelClt.setLayout(new GridBagLayout());
 
-		// Placement des �l�ments sur la grille
+		// Placement des éléments sur la grille
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.insets = new Insets(5, 5, 5, 5);
 		// Ligne 1
 		gbc.anchor = GridBagConstraints.WEST;
-		// gbc.gridx = 0;
-		// gbc.gridy = 0;
-		// panelClt.add(getJlCodeClt(), gbc);
-		// gbc.gridx = 1;
-		// panelClt.add(getJtCodeClt(), gbc);
+		 gbc.gridx = 0;
+		 gbc.gridy = 0;
+		 panelClt.add(getJlCodeClt(), gbc);
+		 gbc.gridx = 1;
+		 panelClt.add(getJtCodeClt(), gbc);
+		 jtCodeClt.setEnabled(false);
+//		 jtCodeClt.setText("Renseigné par la base");
+		 jtCodeClt.getFont().deriveFont(Font.PLAIN);
+		 jtCodeClt.setForeground(Color.black);
 
 		// Ligne 2
 		gbc.gridx = 0;
@@ -139,6 +147,7 @@ public class PanelClient extends JFrame {
 	 *            un client
 	 */
 	public void RemplirPanelClt(Clients c) {
+		System.out.println(c);
 		jtNomClt.setText(c.getNomClient());
 		jtPrenomClt.setText(c.getPrenomClient());
 		jtAdresse1.setText(c.getAdresse1());
@@ -149,6 +158,9 @@ public class PanelClient extends JFrame {
 		jtAssurance.setText(c.getAssurance());
 		jtEmail.setText(c.getEmail());
 		jtRemarque.setText(c.getRemarque());
+		jtCodeClt.setText(Integer.toString(c.getCodeClient()));
+		setCodeCltAffiche(c.getCodeClient());
+		System.out.println(c.getCodeClient());
 	}
 
 	public JLabel getJlCodeClt() {
@@ -300,6 +312,15 @@ public class PanelClient extends JFrame {
 		return jtRemarque;
 	}
 
+	public int getCodeCltAffiche() {
+		return CodeCltAffiche;
+	}
+
+	
+	public void setCodeCltAffiche(int codeCltAffiche) {
+		this.CodeCltAffiche = codeCltAffiche;
+	}
+
 	public JScrollPane getDefil() {
 		if (defil == null) {
 			defil = new JScrollPane(getJtRemarque());
@@ -314,6 +335,11 @@ public class PanelClient extends JFrame {
 	 */
 	public Clients getClient() {
 		Clients cltCourant = new Clients();
+		if(getJtCodeClt().getText().equals(null)){
+			
+		} else {
+			cltCourant.setCodeClient(Integer.parseInt(getJtCodeClt().getText()));
+		}
 		cltCourant.setNomClient(getJtNomClt().getText());
 		cltCourant.setPrenomClient(getJtPrenomClt().getText());
 		cltCourant.setAdresse1(getJtAdresse1().getText());

@@ -15,6 +15,8 @@ public class testJtableClient extends JFrame {
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	 
 	        JTable tableau = new JTable(new ModeleTableClient("Spe"));
+	        //Permet d'ordrer sur en-tête colonne
+	        tableau.setAutoCreateRowSorter(true);
 	 
 	        getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 	        pack();

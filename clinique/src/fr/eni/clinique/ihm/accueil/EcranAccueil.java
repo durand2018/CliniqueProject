@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 
 import fr.eni.clinique.ihm.MiseEnPage;
 import fr.eni.clinique.ihm.agenda.EcranAgenda;
+import fr.eni.clinique.ihm.client.EcranClients;
 import fr.eni.clinique.ihm.gestionpersonnel.EcranGestion;
 import fr.eni.clinique.ihm.login.EcranLogin;
 import fr.eni.clinique.ihm.rendezVous.EcranRDV;
@@ -87,7 +88,6 @@ public class EcranAccueil extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 
 				EcranGestion ecranGestion = new EcranGestion();
 				ecranGestion.setPreferredSize(new Dimension(800, 600));
@@ -100,7 +100,6 @@ public class EcranAccueil extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 
 				EcranLogin ecranLogin2 = new EcranLogin();
 
@@ -117,7 +116,6 @@ public class EcranAccueil extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				System.exit(DISPOSE_ON_CLOSE);
 
 			}
@@ -128,13 +126,21 @@ public class EcranAccueil extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 
 				EcranRDV ecranRdv = new EcranRDV();
 
 				ecranRdv.setPreferredSize(new Dimension(800, 600));
 
 				ecranRdv.setVisible(true);
+			}
+		});
+
+		menuItem2b.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				EcranClients ecranClt = new EcranClients();
+				ecranClt.setSize(new Dimension(1000, 600));
+				ecranClt.setVisible(true);
 			}
 		});
 	}

@@ -108,10 +108,11 @@ public class EcranRechercheClient extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int i = 0;
 				i = tabClt.getSelectedRow();
+				int idCltChoisi = (int) tabClt.getValueAt(i, 0);
 				try {
 					// Récupère le client affiché
 					mger = new ClientsMger();
-					Clients cltChoisi = mger.getClient(i);
+					Clients cltChoisi = mger.selectByCode(idCltChoisi);
 					// Ferme l'écran
 					dispose();
 					// Ouvre un nouvel écran client qui affiche le client choisi
