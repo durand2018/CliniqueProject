@@ -16,6 +16,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import fr.eni.clinique.ihm.MiseEnPage;
+import fr.eni.clinique.ihm.client.EcranClients;
 import fr.eni.clinique.ihm.ecranrdv.EcranRDV;
 import fr.eni.clinique.ihm.gestionpersonnel.EcranGestion;
 import fr.eni.clinique.ihm.login.EcranLogin;
@@ -137,6 +138,15 @@ public class EcranAccueil extends JFrame {
 				ecranRdv.setSize(new Dimension(1024, 768));
 
 				ecranRdv.setVisible(true);
+			}
+		});
+		
+		menuItem2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				EcranClients ecranClt = new EcranClients();
+				ecranClt.setSize(new Dimension(1000,600));
+				ecranClt.setVisible(true);
 			}
 		});
 	}

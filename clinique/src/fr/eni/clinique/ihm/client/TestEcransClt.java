@@ -20,15 +20,15 @@ public class TestEcransClt {
 //				ecranAjclt.setVisible(true);
 //				ecranAjclt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
-//				EcranClients ecranClt = new EcranClients();
-//				ecranClt.setSize(new Dimension(1000,600));
-//				ecranClt.setVisible(true);
-//				ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				EcranClients ecranClt = new EcranClients();
+				ecranClt.setSize(new Dimension(1000,600));
+				ecranClt.setVisible(true);
+				ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
-				EcranRechercheClient ecranFind = new EcranRechercheClient("Spe");
-				ecranFind.setSize(new Dimension(700,300));
-				ecranFind.setVisible(true);
-				ecranFind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//				EcranRechercheClient ecranFind = new EcranRechercheClient("Spe");
+//				ecranFind.setSize(new Dimension(700,300));
+//				ecranFind.setVisible(true);
+//				ecranFind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			});
 		}

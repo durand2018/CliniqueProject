@@ -108,24 +108,28 @@ public class AppliTestBLL {
 		// }
 
 		/////////////////////////////////////////////////////////////////////////// Client
-		Clients c1 = new Clients("Truc", "Alain", "19 Once", "", "91934", "SEMARE", "01 95 86 03 09", "MMA",
-				"dededudu@yahouuuu.fr", "Attention � bien le faire payer en liquide car il est interdit bancaire. ",
-				false);
+//		Clients c1 = new Clients("Truc", "Alain", "19 Once", "", "91934", "SEMARE", "01 95 86 03 09", "MMA",
+//				"dededudu@yahouuuu.fr", "Attention � bien le faire payer en liquide car il est interdit bancaire. ",
+//				false);
 		Clients c2 = new Clients("MET", "Val", "1 rue des ET", "La Base", "44440", "RIAIL", "02 15 48 15 49", "AXA",
 				"vmet@sfr.fr", "", false);
 		ClientsMger cmger = null;
 		try {
 			cmger = ClientsMger.getInstance();
 			// Ajout clients
-			cmger.addClients(c1);
+//			cmger.addClients(c1);
 			cmger.addClients(c2);
 
 			afficherClients(cmger.getListcl());
 			
-			System.out.println(cmger.getClient(13));
-			System.out.println(cmger.selectByCode(13));
+//			System.out.println(cmger.getClient(13));
+//			System.out.println(cmger.selectByCode(13));
 			
-
+			System.out.println("Client avant :" + c2.toString());
+			 c2.setNomClient("METAYER");
+			 c2.setVille("JOUE");
+			 cmger.updateClient(c2);;
+			 System.out.println("Animal après :" + c2.toString());
 		} catch (BLLException e) {
 			System.out.println("Erreur instance client");
 			e.printStackTrace();

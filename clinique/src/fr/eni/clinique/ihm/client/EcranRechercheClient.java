@@ -108,14 +108,11 @@ public class EcranRechercheClient extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int i = 0;
 				i = tabClt.getSelectedRow();
+				int idCltChoisi = (int) tabClt.getValueAt(i, 0);
 				try {
 					// Récupère le client affiché
 					mger = new ClientsMger();
-					int idCltChoisi = mger.getClient(i).getCodeClient();
-					System.out.println("idCltChoisi");
-					System.out.println(idCltChoisi);
 					Clients cltChoisi = mger.selectByCode(idCltChoisi);
-					System.out.println(cltChoisi);
 					// Ferme l'écran
 					dispose();
 					// Ouvre un nouvel écran client qui affiche le client choisi
@@ -150,7 +147,7 @@ public class EcranRechercheClient extends JFrame {
 		if (jtRecherche == null) {
 			// jtRecherche = new JTextField(50);
 			jtRecherche = new JTextField("nom du client");
-			jtRecherche.setPreferredSize(new Dimension(300, 20));
+			jtRecherche.setPreferredSize(new Dimension(300, 25));
 			jtRecherche.getFont().deriveFont(Font.ITALIC);
 			jtRecherche.setForeground(Color.gray);
 
