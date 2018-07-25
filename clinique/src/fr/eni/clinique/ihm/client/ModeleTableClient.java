@@ -7,32 +7,32 @@ import javax.swing.table.AbstractTableModel;
 import fr.eni.clinique.bll.BLLException;
 import fr.eni.clinique.bll.ClientsMger;
 import fr.eni.clinique.bo.Clients;
-
+import fr.eni.clinique.ihm.MiseEnPage;
 
 @SuppressWarnings("serial")
 public class ModeleTableClient extends AbstractTableModel {
 
 	private ClientsMger mger = null;
 	private List<Clients> listeClients;
-	
-	private final String[] entetes = { "NomClient", "PrenomClient", "CodePostal","Ville" };
+
+	private final String[] entetes = { "NomClient", "PrenomClient", "CodePostal", "Ville" };
 
 	public ModeleTableClient(String saisie) {
+		MiseEnPage.getMiseEnPage();
 
 		try {
 			mger = ClientsMger.getInstance();
 			listeClients = mger.rechercherClt(saisie);
 		} catch (BLLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public int getRowCount() {
 		return listeClients.size();
 	}
-	//************
+	// ************
 
 	@Override
 	public int getColumnCount() {

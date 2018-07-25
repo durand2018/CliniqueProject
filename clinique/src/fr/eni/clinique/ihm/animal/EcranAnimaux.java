@@ -6,8 +6,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
-import java.awt.ItemSelectable;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,19 +18,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import fr.eni.clinique.bll.AnimalMger;
 import fr.eni.clinique.bll.BLLException;
-import fr.eni.clinique.bll.ClientsMger;
-import fr.eni.clinique.bo.Animaux;
-import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.bo.Race;
-import fr.eni.clinique.ihm.client.EcranAjoutClient;
-import fr.eni.clinique.ihm.client.EcranClients;
-import fr.eni.clinique.ihm.client.PanelClient;
+import fr.eni.clinique.ihm.MiseEnPage;
 
 @SuppressWarnings("serial")
 public class EcranAnimaux extends JFrame {
@@ -41,10 +35,10 @@ public class EcranAnimaux extends JFrame {
 	private JButton btnValider, btnAnnuler;
 	private JComboBox<String> jcombSexe, jcombEspece, jcombRaces;
 	private AnimalMger mgr;
-	private String sexeChoisi;
 
 	public EcranAnimaux() {
 		super("Animaux");
+		MiseEnPage.getMiseEnPage();
 		try {
 			mgr = AnimalMger.getInstance();
 		} catch (BLLException e) {
@@ -96,7 +90,6 @@ public class EcranAnimaux extends JFrame {
 		panelChamps.setBackground(Color.GRAY);
 		panelChamps.setMaximumSize(new Dimension(750, 750));
 		GridBagConstraints gbc = new GridBagConstraints();
-		GridBagConstraints gbcp = new GridBagConstraints();
 
 		/////////////////////////////////////////////////////// PanelBtn
 		panelBtn.add(getBtnValider());
@@ -180,6 +173,11 @@ public class EcranAnimaux extends JFrame {
 		panelItermediaire.add(panelChamps, BorderLayout.CENTER);
 		panelFinal.add(panelItermediaire, BorderLayout.CENTER);
 
+		// Changer Icone fenêtre
+		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
+		this.setIconImage(image);
+
+		// Lancer la fenêtre
 		this.setContentPane(panelFinal);
 
 	}
@@ -206,7 +204,6 @@ public class EcranAnimaux extends JFrame {
 		panelChamps.setBackground(Color.GRAY);
 		panelChamps.setMaximumSize(new Dimension(750, 750));
 		GridBagConstraints gbc = new GridBagConstraints();
-		GridBagConstraints gbcp = new GridBagConstraints();
 
 		/////////////////////////////////////////////////////// PanelBtn
 		panelBtn.add(getBtnValider());
@@ -416,26 +413,26 @@ public class EcranAnimaux extends JFrame {
 			// }
 			// }
 			// });
-			 }
-			 return btnValider;
 		}
+		return btnValider;
+	}
 
-		// public Animaux getAnimal(){
-		//
-		// Animaux AniCourant = new Animaux();
-		// AniCourant.setNomAnimal(getJtNom().getText());
-		// AniCourant.setCouleur(getJtCouleur().getText());
-		// //att
-		// AniCourant.setSexe(getJcombSexe().getItemAt());
-		// AniCourant.setTatouage(getJtTatoo().getText());
-		// //att
-		// AniCourant.setEspece(getJcombEscpece().getItemAt());
-		// //att
-		// AniCourant.setRace(getJcombRaces().getItemAt());
-		// System.out.println(AniCourant);
-		// return AniCourant;
-		//
-//	}
+	// public Animaux getAnimal(){
+	//
+	// Animaux AniCourant = new Animaux();
+	// AniCourant.setNomAnimal(getJtNom().getText());
+	// AniCourant.setCouleur(getJtCouleur().getText());
+	// //att
+	// AniCourant.setSexe(getJcombSexe().getItemAt());
+	// AniCourant.setTatouage(getJtTatoo().getText());
+	// //att
+	// AniCourant.setEspece(getJcombEscpece().getItemAt());
+	// //att
+	// AniCourant.setRace(getJcombRaces().getItemAt());
+	// System.out.println(AniCourant);
+	// return AniCourant;
+	//
+	// }
 
 	public JButton getBtnAnnuler() {
 		if (btnAnnuler == null) {

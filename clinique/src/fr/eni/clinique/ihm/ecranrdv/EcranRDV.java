@@ -10,8 +10,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Insets;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,19 +20,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 
-import fr.eni.clinique.bll.AgendaMger;
 import fr.eni.clinique.bll.AnimalMger;
 import fr.eni.clinique.bll.BLLException;
-import fr.eni.clinique.bll.ClientsMger;
-import fr.eni.clinique.bo.Clients;
-import fr.eni.clinique.ihm.client.EcranAjoutClient;
-import fr.eni.clinique.ihm.client.EcranClients;
-import fr.eni.clinique.ihm.gestionpersonnel.ModeleDynamique;
+import fr.eni.clinique.ihm.MiseEnPage;
 
 /**
  * Classe en charge de
@@ -47,11 +38,14 @@ public class EcranRDV extends JFrame {
 	private JComboBox<String> combClient, combAnimal, combVeto;
 	private JLabel jlClient, jlAnimal, jlVeto, jlDate, jlH;
 	private JButton btnAjoutClient, btnAjoutAnimal, btnValider, btnSupprimer;
+	@SuppressWarnings("unused")
 	private AnimalMger mgr;
 	private JPanel panelPour, panelPar, panelQuand, panelTable, panelBtn, panelFinal, panelNorth;
+	private JLabel labelTravaux;
 
 	public EcranRDV() {
 		super("prise rdv");
+		MiseEnPage.getMiseEnPage();
 		try {
 			mgr = AnimalMger.getInstance();
 		} catch (BLLException e) {
@@ -81,6 +75,11 @@ public class EcranRDV extends JFrame {
 		panelFinal.add(panelNorth, BorderLayout.NORTH);
 		panelFinal.add(getPanelTable(), BorderLayout.CENTER);
 		panelFinal.add(getPanelBtn(), BorderLayout.SOUTH);
+
+		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
+		this.setIconImage(image);
+
+		// Lancer la fenêtre
 		this.setContentPane(panelFinal);
 	}
 
@@ -156,11 +155,13 @@ public class EcranRDV extends JFrame {
 	}
 
 	public Component getPanelTable() {
-		GridBagConstraints gbc = new GridBagConstraints();
-		// panelTable.setLayout(new GridBagLayout());
 		panelTable = new JPanel();
 		panelTable.setBackground(Color.lightGray);
 		panelTable.setPreferredSize(new Dimension(300, 150));
+		ImageIcon image = new ImageIcon(
+				Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/travaux_infos.jpg")));
+		labelTravaux = new JLabel(image);
+		panelTable.add(labelTravaux);
 
 		return panelTable;
 

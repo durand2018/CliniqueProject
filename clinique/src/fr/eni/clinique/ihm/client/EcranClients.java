@@ -23,6 +23,7 @@ import javax.swing.WindowConstants;
 import fr.eni.clinique.bll.BLLException;
 import fr.eni.clinique.bll.ClientsMger;
 import fr.eni.clinique.bo.Clients;
+import fr.eni.clinique.ihm.MiseEnPage;
 import fr.eni.clinique.ihm.animal.PanelAnimalByClt;
 
 @SuppressWarnings("serial")
@@ -35,11 +36,13 @@ public class EcranClients extends JFrame {
 
 	public EcranClients() {
 		super("Clients");
+		MiseEnPage.getMiseEnPage();
 		initIHM();
 	}
 
 	public EcranClients(Clients c) {
 		super("Clients");
+		MiseEnPage.getMiseEnPage();
 		initIHMavecClt(c);
 	}
 
