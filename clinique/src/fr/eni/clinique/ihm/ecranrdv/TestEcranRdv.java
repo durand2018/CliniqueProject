@@ -20,7 +20,7 @@ import fr.eni.clinique.ihm.gestionpersonnel.EcranGestion;
  */
 public class TestEcranRdv {
 
-	public static void main(String[] args) throws Throwable, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable(){
 
 		
@@ -28,17 +28,10 @@ public class TestEcranRdv {
 		public void run (){
 			
 		
-			EcranRDV ecranRDV = null;
-			try {
-				ecranRDV = new EcranRDV ();
-			} catch (BLLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			ecranRDV.setSize(new Dimension(1000,500));
+			EcranRDV ecranRDV = new EcranRDV();
+			
 			ecranRDV.setVisible(true);
-			ecranRDV.pack();
-			ecranRDV.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 			}
 	
 		});
