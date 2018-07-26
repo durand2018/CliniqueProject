@@ -125,7 +125,7 @@ public class EcranAccueil extends JFrame {
 
 				EcranRDV ecranRdv = new EcranRDV();
 
-				ecranRdv.setSize(new Dimension(800, 710));
+				ecranRdv.setSize(new Dimension(940, 720));
 
 				ecranRdv.setVisible(true);
 			}
