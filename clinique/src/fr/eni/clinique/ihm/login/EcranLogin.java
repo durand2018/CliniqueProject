@@ -3,9 +3,7 @@ package fr.eni.clinique.ihm.login;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
@@ -42,10 +40,11 @@ public class EcranLogin extends JFrame {
 		super("Connexion");
 		MiseEnPage.getMiseEnPage();
 		setSize(new Dimension(500, 250));
+		
 		try {
 			mger = LoginMger.getInstance();
 		} catch (BLLException e) {
-			System.out.println("Pb avec la fen�tre de connexion");
+			System.out.println("Problème avec la fenêtre de connexion");
 			System.exit(1);
 		}
 		initIHM();
@@ -54,8 +53,10 @@ public class EcranLogin extends JFrame {
 	private void initIHM() {
 		panel = new JPanel();
 		panel.setOpaque(true);
-
 		panel.setLayout(new GridBagLayout());
+		this.setLocation(280,200);
+		
+		
 		GridBagConstraints gbc = new GridBagConstraints();
 
 		// ligne 1
@@ -100,11 +101,12 @@ public class EcranLogin extends JFrame {
 		panel.add(getBtnValider(), gbc);
 
 		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ico_veto.png"));
-				//Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
 		this.setIconImage(image.getImage());
 
 		// Lancer la fenêtre
 		this.setContentPane(panel);
+		
+		
 
 	}
 

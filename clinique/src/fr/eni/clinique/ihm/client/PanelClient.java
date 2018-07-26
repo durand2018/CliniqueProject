@@ -2,7 +2,6 @@ package fr.eni.clinique.ihm.client;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -12,8 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
-import com.sun.istack.internal.NotNull;
 
 import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.ihm.MiseEnPage;
@@ -26,7 +23,7 @@ public class PanelClient extends JFrame {
 			jtAssurance, jtEmail;
 	private JTextArea jtRemarque;
 	private JScrollPane defil;
-	private JPanel panelClt;
+	private JPanel panelClt, panelBas;
 	private int CodeCltAffiche;
 	// private ClientsMger mgr = null;
 
@@ -39,7 +36,7 @@ public class PanelClient extends JFrame {
 	public PanelClient(Clients c) {
 		super();
 		MiseEnPage.getMiseEnPage();
-		initIHM();
+		initIHMavecCode();
 		RemplirPanelClt(c);
 	}
 
@@ -56,98 +53,138 @@ public class PanelClient extends JFrame {
 		gbc.insets = new Insets(5, 5, 5, 5);
 		// Ligne 1
 		gbc.anchor = GridBagConstraints.WEST;
-		 gbc.gridx = 0;
-		 gbc.gridy = 0;
-		 panelClt.add(getJlCodeClt(), gbc);
-		 gbc.gridx = 1;
-		 panelClt.add(getJtCodeClt(), gbc);
-		 //Case non accessible à l'utilisateur
-		 jtCodeClt.setEnabled(false);
-		 jtCodeClt.setText("Renseigné par la base");
-		 jtCodeClt.getFont().deriveFont(Font.PLAIN);
-		 jtCodeClt.setForeground(Color.black);
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		panelClt.add(initPanelBas(),gbc);
+
+		return panelClt;
+	}
+	
+	public Component initPanelBas(){
+		// creation panel
+			panelBas = new JPanel();
+			panelBas.setOpaque(true);
+			panelBas.setBackground(Color.gray);
+			panelBas.setLayout(new GridBagLayout());
+
+			// Placement des éléments sur la grille
+			GridBagConstraints gbc = new GridBagConstraints();
+			gbc.insets = new Insets(5, 5, 5, 5);
+			// Ligne 1 réservée Code
+			gbc.anchor = GridBagConstraints.WEST;
+
+			// Ligne 2
+			gbc.gridx = 0;
+			gbc.gridy = 1;
+			panelClt.add(getJlNomClt(), gbc);
+			gbc.gridx = 1;
+			panelClt.add(getJtNomClt(), gbc);
+
+			// Ligne 3
+			gbc.gridx = 0;
+			gbc.gridy = 2;
+			panelClt.add(getJlPrenomClt(), gbc);
+			gbc.gridx = 1;
+			panelClt.add(getJtPrenomClt(), gbc);
+
+			// Ligne 4
+			gbc.gridx = 0;
+			gbc.gridy = 3;
+			panelClt.add(getJlAdresse(), gbc);
+			gbc.gridx = 1;
+			panelClt.add(getJtAdresse1(), gbc);
+
+			// Ligne 5
+			gbc.gridy = 4;
+			panelClt.add(getJtAdresse2(), gbc);
+
+			// Ligne 6
+			gbc.gridx = 0;
+			gbc.gridy = 5;
+			panelClt.add(getJlCodePostal(), gbc);
+			gbc.gridx = 1;
+			panelClt.add(getJtCodePostal(), gbc);
+
+			// Ligne 7
+			gbc.gridx = 0;
+			gbc.gridy = 6;
+			panelClt.add(getJlVille(), gbc);
+			gbc.gridx = 1;
+			panelClt.add(getJtVille(), gbc);
+
+			// Ligne 8
+			gbc.gridx = 0;
+			gbc.gridy = 7;
+			panelClt.add(getJlNumTel(), gbc);
+			gbc.gridx = 1;
+			panelClt.add(getJtNumTel(), gbc);
+
+			// Ligne 9
+			gbc.gridx = 0;
+			gbc.gridy = 8;
+			panelClt.add(getJlAssurance(), gbc);
+			gbc.gridx = 1;
+			panelClt.add(getJtAssurance(), gbc);
+
+			// Ligne 10
+			gbc.gridx = 0;
+			gbc.gridy = 9;
+			panelClt.add(getJlEmail(), gbc);
+			gbc.gridx = 1;
+			panelClt.add(getJtEmail(), gbc);
+
+			// Ligne 11
+			gbc.gridx = 0;
+			gbc.gridy = 10;
+			panelClt.add(getJlRemarque(), gbc);
+			gbc.gridx = 1;
+			// Mise en place scroll sur Case Remarque
+			panelClt.add(getDefil(), gbc);
+
+			getJtRemarque().setLineWrap(true);
+			
+		return panelBas;
+	}
+	
+
+	public Component initIHMavecCode() {
+		// creation panel
+		panelClt = new JPanel();
+		panelClt.setOpaque(true);
+		// panelClt.setSize(new Dimension(500,600));
+		panelClt.setBackground(Color.gray);
+		panelClt.setLayout(new GridBagLayout());
+
+		// Placement des éléments sur la grille
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.insets = new Insets(5, 5, 5, 5);
+		// Ligne 1
+		gbc.anchor = GridBagConstraints.WEST;
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		panelClt.add(getJlCodeClt(), gbc);
+		gbc.gridx = 1;
+		panelClt.add(getJtCodeClt(), gbc);
+		//Case non accessible à l'utilisateur
+		jtCodeClt.setEnabled(false);
 
 		// Ligne 2
 		gbc.gridx = 0;
 		gbc.gridy = 1;
-		panelClt.add(getJlNomClt(), gbc);
-		gbc.gridx = 1;
-		panelClt.add(getJtNomClt(), gbc);
-
-		// Ligne 3
-		gbc.gridx = 0;
-		gbc.gridy = 2;
-		panelClt.add(getJlPrenomClt(), gbc);
-		gbc.gridx = 1;
-		panelClt.add(getJtPrenomClt(), gbc);
-
-		// Ligne 4
-		gbc.gridx = 0;
-		gbc.gridy = 3;
-		panelClt.add(getJlAdresse(), gbc);
-		gbc.gridx = 1;
-		panelClt.add(getJtAdresse1(), gbc);
-
-		// Ligne 5
-		gbc.gridy = 4;
-		panelClt.add(getJtAdresse2(), gbc);
-
-		// Ligne 6
-		gbc.gridx = 0;
-		gbc.gridy = 5;
-		panelClt.add(getJlCodePostal(), gbc);
-		gbc.gridx = 1;
-		panelClt.add(getJtCodePostal(), gbc);
-
-		// Ligne 7
-		gbc.gridx = 0;
-		gbc.gridy = 6;
-		panelClt.add(getJlVille(), gbc);
-		gbc.gridx = 1;
-		panelClt.add(getJtVille(), gbc);
-
-		// Ligne 8
-		gbc.gridx = 0;
-		gbc.gridy = 7;
-		panelClt.add(getJlNumTel(), gbc);
-		gbc.gridx = 1;
-		panelClt.add(getJtNumTel(), gbc);
-
-		// Ligne 9
-		gbc.gridx = 0;
-		gbc.gridy = 8;
-		panelClt.add(getJlAssurance(), gbc);
-		gbc.gridx = 1;
-		panelClt.add(getJtAssurance(), gbc);
-
-		// Ligne 10
-		gbc.gridx = 0;
-		gbc.gridy = 9;
-		panelClt.add(getJlEmail(), gbc);
-		gbc.gridx = 1;
-		panelClt.add(getJtEmail(), gbc);
-
-		// Ligne 11
-		gbc.gridx = 0;
-		gbc.gridy = 10;
-		panelClt.add(getJlRemarque(), gbc);
-		gbc.gridx = 1;
-		// Mise en place scroll sur Case Remarque
-		panelClt.add(getDefil(), gbc);
-
-		getJtRemarque().setLineWrap(true);
-
+		panelClt.add(initPanelBas(), gbc);
+		
 		return panelClt;
 
 	}
-
+	
 	/**
-	 * Fonction en charge de remplir le panel CLient avec donn�es d'un client
+	 * Fonction en charge de remplir le panel CLient avec données d'un client
 	 * 
 	 * @param c
 	 *            un client
 	 */
 	public void RemplirPanelClt(Clients c) {
+		jtCodeClt.setText(Integer.toString(c.getCodeClient()));
 		jtNomClt.setText(c.getNomClient());
 		jtPrenomClt.setText(c.getPrenomClient());
 		jtAdresse1.setText(c.getAdresse1());
@@ -158,7 +195,6 @@ public class PanelClient extends JFrame {
 		jtAssurance.setText(c.getAssurance());
 		jtEmail.setText(c.getEmail());
 		jtRemarque.setText(c.getRemarque());
-		jtCodeClt.setText(Integer.toString(c.getCodeClient()));
 		setCodeCltAffiche(c.getCodeClient());
 		System.out.println(c.getCodeClient());
 	}
@@ -329,13 +365,13 @@ public class PanelClient extends JFrame {
 	}
 
 	/**
-	 * Fonction en charge de r�cup�rer les infos du formulaire Clients
+	 * Fonction en charge de récupérer les infos du formulaire Clients
 	 * 
 	 * @return un client
 	 */
 	public Clients getClient() {
 		Clients cltCourant = new Clients();
-		if(getJtCodeClt().getText().equals(null)){
+		if(getJtCodeClt().getText().equals("")){
 			
 		} else {
 			cltCourant.setCodeClient(Integer.parseInt(getJtCodeClt().getText()));

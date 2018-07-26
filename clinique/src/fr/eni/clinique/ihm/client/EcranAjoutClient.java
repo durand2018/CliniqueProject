@@ -1,6 +1,7 @@
 package fr.eni.clinique.ihm.client;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -29,6 +30,7 @@ public class EcranAjoutClient extends JFrame{
 	public EcranAjoutClient() {
 		super("Ajouter Client");
 		MiseEnPage.getMiseEnPage();
+		this.setLocation(280,200);
 		initIHMAjoutClt();
 	}
 
@@ -64,8 +66,9 @@ public class EcranAjoutClient extends JFrame{
 	
 	public JButton getBtnValider() {
 		if(btnValider == null){
-			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("valider.jpg"));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("valider.png"));
 			btnValider = new JButton(image);
+			btnValider.setBackground(Color.white);
 			btnValider.setToolTipText("Valider");
 			
 			btnValider.addActionListener(new ActionListener(){
@@ -98,8 +101,9 @@ public class EcranAjoutClient extends JFrame{
 
 	public JButton getBtnAnnuler() {
 		if(btnAnnuler == null){
-			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("annuler.jpg"));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("annuler.png"));
 			btnAnnuler = new JButton(image);
+			btnAnnuler.setBackground(Color.white);
 			btnAnnuler.setToolTipText("Annuler");
 			
 			btnAnnuler.addActionListener(new ActionListener(){
@@ -107,6 +111,11 @@ public class EcranAjoutClient extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					dispose();
+				//Ouvre un nouvel écran client vierge
+				EcranClients ecranClt = new EcranClients();
+				ecranClt.setSize(new Dimension(1000,600));
+				ecranClt.setVisible(true);
+				ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			});
 		}

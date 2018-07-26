@@ -44,11 +44,13 @@ public class EcranRechercheClient extends JFrame {
 	public EcranRechercheClient() {
 		super("Résultat de la Recherche");
 		MiseEnPage.getMiseEnPage();
+		this.setLocation(280,200);
 		initIHM();
 	}
 
 	public EcranRechercheClient(String saisie) {
 		super("Résultat de la Recherche");
+		this.setLocation(280,200);
 		initIHM(saisie);
 	}
 
@@ -145,7 +147,7 @@ public class EcranRechercheClient extends JFrame {
 		if (jtRecherche == null) {
 			// jtRecherche = new JTextField(50);
 			jtRecherche = new JTextField("nom du client");
-			jtRecherche.setSize(new Dimension(300, 25));
+			jtRecherche.setPreferredSize(new Dimension(300, 25));
 			jtRecherche.getFont().deriveFont(Font.ITALIC);
 			jtRecherche.setForeground(Color.gray);
 
@@ -195,6 +197,7 @@ public class EcranRechercheClient extends JFrame {
 		if (btnRechercher == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("loupe.png"));
 			btnRechercher = new JButton(image);
+			btnRechercher.setBackground(Color.white);
 			btnRechercher.setToolTipText("Rechercher");
 
 			btnRechercher.addActionListener(new ActionListener() {

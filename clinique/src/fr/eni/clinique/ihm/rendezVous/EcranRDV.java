@@ -44,6 +44,7 @@ public class EcranRDV extends JFrame {
 	public EcranRDV() {
 		super("Prise de rendez-vous");
 		MiseEnPage.getMiseEnPage();
+		this.setLocation(280,200);
 		try {
 			mgr = AnimalMger.getInstance();
 		} catch (BLLException e) {
@@ -91,7 +92,7 @@ public class EcranRDV extends JFrame {
 		panelQuand = new JPanel();
 		panelQuand.setLayout(new GridBagLayout());
 		panelQuand.setBackground(Color.lightGray);
-		panelQuand.setSize(new Dimension(300, 150));
+		panelQuand.setPreferredSize(new Dimension(300, 150));
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		panelQuand.add(getJlDate(), gbc);
@@ -110,7 +111,7 @@ public class EcranRDV extends JFrame {
 		panelPar = new JPanel();
 		panelPar.setLayout(new GridBagLayout());
 		panelPar.setBackground(Color.lightGray);
-		panelPar.setSize(new Dimension(300, 150));
+		panelPar.setPreferredSize(new Dimension(300, 150));
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		panelPar.add(getJlVeto(), gbc);
@@ -130,7 +131,7 @@ public class EcranRDV extends JFrame {
 		panelPour = new JPanel();
 		panelPour.setLayout(new GridBagLayout());
 		panelPour.setBackground(Color.lightGray);
-		panelPour.setSize(new Dimension(300, 150));
+		panelPour.setPreferredSize(new Dimension(300, 150));
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		panelPour.add(getJlClient(), gbc);
@@ -154,7 +155,7 @@ public class EcranRDV extends JFrame {
 
 	public Component getPanelTable() {
 		panelTable = new JPanel();
-		panelTable.setBackground(Color.lightGray);
+		panelTable.setBackground(Color.white);
 		panelTable.setSize(new Dimension(300, 150));
 		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("travaux_infos.jpg"));
 		labelTravaux = new JLabel(image);
@@ -249,6 +250,7 @@ public class EcranRDV extends JFrame {
 		if (btnValider == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("valider.png"));
 			btnValider = new JButton(image);
+			btnValider.setBackground(Color.white);
 			btnValider.setToolTipText("Valider");
 
 		}
@@ -259,6 +261,7 @@ public class EcranRDV extends JFrame {
 		if (btnSupprimer == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("sortir.png"));
 			btnSupprimer = new JButton(image);
+			btnSupprimer.setBackground(Color.white);
 			btnSupprimer.setToolTipText("Annuler");
 
 			btnSupprimer.addActionListener(new ActionListener() {

@@ -1,5 +1,6 @@
 package fr.eni.clinique.dal;
 
+@SuppressWarnings("serial")
 public class DALException extends Exception {
 	//Constructeurs
 	public DALException(){
@@ -14,7 +15,7 @@ public class DALException extends Exception {
 		super(message, exception);
 	}
 	
-	//Méthodes
+	//Mï¿½thodes
 		@Override
 		public String getMessage() {
 			StringBuffer sb = new StringBuffer("Couche DAL - ");

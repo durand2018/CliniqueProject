@@ -18,7 +18,6 @@ public class TestGestion {
 				EcranGestion EcranGestion = new EcranGestion();
 				EcranGestion.setPreferredSize(new Dimension(800, 600));
 				EcranGestion.setVisible(true);
-				EcranGestion.pack();
 				EcranGestion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 

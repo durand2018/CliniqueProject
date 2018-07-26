@@ -23,7 +23,6 @@ public class TestAnimal {
 
 					monEcran.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				} catch (BLLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				

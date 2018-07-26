@@ -19,7 +19,7 @@ public class ClientsDAOJdbcImpl implements ClientsDAO {
 	private static final String sqlSelectAll = "select * from Clients";
 	private static final String sqlSelectAllNoArchive = "select * from Clients where Archive = 0";
 	private static final String sqlUpdate = "update Clients set NomClient=?,PrenomClient=?,Adresse1=?,Adresse2=?,CodePostal=?,Ville=?,NumTel=?,Assurance=?,Email=?,Remarque=?,Archive=? where CodeClient=?";
-	private static final String sqlDelete = "delete from Clients where CodeClient=?";
+	private static final String sqlDelete = "update Clients set Archive=1 where CodeClient=?";
 	private static final String sqlFind = "select * from Clients where NomClient LIKE ?";
 
 	@Override
@@ -274,6 +274,7 @@ public class ClientsDAOJdbcImpl implements ClientsDAO {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
 		try {
+			System.out.println("codeClt delete =" + codeClient);
 			//Lancement connexion
 			cnx = JdbcTools.getConnection();
 			//Lancement Select sur la BDD
