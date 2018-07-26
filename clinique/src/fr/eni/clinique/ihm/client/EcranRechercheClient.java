@@ -147,7 +147,7 @@ public class EcranRechercheClient extends JFrame {
 		if (jtRecherche == null) {
 			// jtRecherche = new JTextField(50);
 			jtRecherche = new JTextField("nom du client");
-			jtRecherche.setSize(new Dimension(300, 25));
+			jtRecherche.setPreferredSize(new Dimension(300, 25));
 			jtRecherche.getFont().deriveFont(Font.ITALIC);
 			jtRecherche.setForeground(Color.gray);
 

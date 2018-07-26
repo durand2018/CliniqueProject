@@ -65,7 +65,7 @@ public class EcranAjoutClient extends JFrame{
 	
 	public JButton getBtnValider() {
 		if(btnValider == null){
-			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("valider.jpg"));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("valider.png"));
 			btnValider = new JButton(image);
 			btnValider.setToolTipText("Valider");
 			
@@ -99,7 +99,7 @@ public class EcranAjoutClient extends JFrame{
 
 	public JButton getBtnAnnuler() {
 		if(btnAnnuler == null){
-			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("annuler.jpg"));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("annuler.png"));
 			btnAnnuler = new JButton(image);
 			btnAnnuler.setToolTipText("Annuler");
 			
@@ -108,6 +108,11 @@ public class EcranAjoutClient extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					dispose();
+				//Ouvre un nouvel écran client vierge
+				EcranClients ecranClt = new EcranClients();
+				ecranClt.setSize(new Dimension(1000,600));
+				ecranClt.setVisible(true);
+				ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			});
 		}

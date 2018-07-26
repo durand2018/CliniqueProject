@@ -1,6 +1,7 @@
 package fr.eni.clinique.ihm.client;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -16,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 //import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
 import fr.eni.clinique.bll.BLLException;
@@ -100,14 +102,19 @@ public class EcranClients extends JFrame {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		panelBas.add(getPanClt(c).initIHM());
+		panelBas.add(getPanClt(c).initIHMavecCode());
 		gbc.gridx = 1;
 		panelBas.add(panAni.initIHM(c.getCodeClient()));
 
 		panelClt.setBackground(Color.gray);
 		panelClt.add(panelBtn, BorderLayout.NORTH);
 		panelClt.add(panelBas, BorderLayout.CENTER);
+		
+		// Changer Icone fenêtre
+				ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ico_veto.png"));
+				this.setIconImage(image.getImage());
 
+		// Lancer la fenêtre
 		this.setContentPane(panelClt);
 	}
 
@@ -137,14 +144,12 @@ public class EcranClients extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					// Récupère le client affiché
 					Clients cltAffiche = getPanClt().getClient();
-					// System.out.println(getPanClt().getCodeCltAffiche());
-
-					// System.out.println(cltAffiche);
 					try {
 						// Sauvegarde un nouveau client dans la BDD
 						mger = new ClientsMger();
 						mger.updateClient(cltAffiche);
-
+						//Affiche confirmation utilisateur
+						JOptionPane.showMessageDialog(EcranClients.this, "Modification sauvegardé", "Validation modification client",JOptionPane.INFORMATION_MESSAGE);
 					} catch (BLLException e1) {
 						JOptionPane.showMessageDialog(EcranClients.this,
 								"Une erreur est survenue lors de la Mise à jour");
@@ -166,7 +171,22 @@ public class EcranClients extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					dispose();
+					// Récupère le client affiché
+					Clients cltAffiche = getPanClt().getClient();
+					try {
+						mger = new ClientsMger();
+						Clients c = mger.selectByCode(cltAffiche.getCodeClient());
+						//Ferme la fenêtre avec les modifs
+						dispose();
+						//Relance l'écran avec le même client issu de la BDD
+						EcranClients ecranClt = new EcranClients(c);
+						ecranClt.setSize(new Dimension(1000, 600));
+						ecranClt.setVisible(true);
+					} catch (BLLException e1) {
+						JOptionPane.showConfirmDialog(EcranClients.this,
+								"Une erreur est survenue lors de l'annulation");
+						e1.printStackTrace();
+					}
 				}
 			});
 		}
@@ -208,7 +228,16 @@ public class EcranClients extends JFrame {
 					// Récupère le client affiché
 					Clients cltAffiche = getPanClt().getClient();
 					try {
+						mger = new ClientsMger();
 						mger.removeClient(cltAffiche.getCodeClient());
+						//Affiche confirmation utilisateur
+						JOptionPane.showMessageDialog(EcranClients.this, "Client archivé", "Suppression de client",JOptionPane.INFORMATION_MESSAGE);
+						//Ferme la fenêtre avec client archivé
+						dispose();
+						//Relance l'écran vierge
+						EcranClients ecranClt = new EcranClients();
+						ecranClt.setSize(new Dimension(1000, 600));
+						ecranClt.setVisible(true);
 					} catch (BLLException e1) {
 						JOptionPane.showConfirmDialog(EcranClients.this,
 								"Une erreur est survenue lors de la suppression");
@@ -232,29 +261,31 @@ public class EcranClients extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					Clients cltAffiche = getPanClt().getClient();
 					String nomPartiel = cltAffiche.getNomClient();
-					System.out.println(nomPartiel);
 					try {
 						mger = ClientsMger.getInstance();
 						List<Clients> filtreClt = mger.rechercherClt(nomPartiel);
 
 						int i = filtreClt.size();
-						System.out.println(i);
 						// Ferme Ecran
 						dispose();
 
 						if (i == 1) {
 							// Relance Ecran avec le client trouvé
-							EcranClients ecranClt = new EcranClients(cltAffiche);
+							JTable tabClt = new JTable(new ModeleTableClient(nomPartiel));
+							int idCltTrouve = (int) tabClt.getValueAt(0, 0);
+							// Récupère le client trouvé
+							mger = new ClientsMger();
+							Clients cltTrouve = mger.selectByCode(idCltTrouve);
+							//Relance l'écran
+							EcranClients ecranClt = new EcranClients(cltTrouve);
 							ecranClt.setSize(new Dimension(1000, 600));
 							ecranClt.setVisible(true);
-							ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 						}
 						if (i > 1) {
 							// Relance Ecran avec le client trouvé
-							EcranRechercheClient ecranRecherche = new EcranRechercheClient();
+							EcranRechercheClient ecranRecherche = new EcranRechercheClient(nomPartiel);
 							ecranRecherche.setSize(new Dimension(700, 300));
 							ecranRecherche.setVisible(true);
-							ecranRecherche.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 						}
 					} catch (BLLException e1) {
 						JOptionPane.showMessageDialog(EcranClients.this,

@@ -70,11 +70,11 @@ public class ClientsMger {
 		}
 	}
 
-	public void removeClient(int numeroLigne) throws BLLException{
+	public void removeClient(int numeroClt) throws BLLException{
 		try{
-			daoClients.delete(getClient(numeroLigne).getCodeClient());
+			daoClients.delete(numeroClt);
 		} catch (DALException e){
-			throw new BLLException("Echec delete client "+ numeroLigne, e);
+			throw new BLLException("Echec delete client "+ numeroClt, e);
 			
 		}
 	}
