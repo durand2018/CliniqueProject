@@ -305,6 +305,11 @@ public class EcranClients extends JFrame {
 		return btnRechercher;
 	}
 
+	
+	public void fermeEcran(){
+		this.dispose();
+	}
+	
 	// public JLabel getLogo() {
 	// if(logo == null){
 	// ImageIcon image = new

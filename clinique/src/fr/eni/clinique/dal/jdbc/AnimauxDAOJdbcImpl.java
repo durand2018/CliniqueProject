@@ -24,8 +24,8 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 	private static final String SQL_SELECT_ALL_NO_ARCHIVE = "select * from Animaux where Archive = 0";
 	private static final String SQL_UPDATE = "update Animaux set NomAnimal=?,Sexe=?,Couleur=?,Race=?,Espece=?,CodeClient=?,"
 			+ "Tatouage=?,Antecedents=?,Archive=? where CodeAnimal = ?";
-	private static final String SQL_DELETE = "delete from Animaux where CodeAnimal=?";
-	private static final String SQL_ANIMAL_BY_CLIENT = "SELECT CodeAnimal, NomAnimal, Sexe, Couleur, Race, Espece, CodeClient, Tatouage, Antecedents, Archive FROM Animaux WHERE CodeClient = ?";
+	private static final String SQL_DELETE = "update Animaux set Archive=1 where CodeAnimal=?";
+	private static final String SQL_ANIMAL_BY_CLIENT = "SELECT CodeAnimal, NomAnimal, Sexe, Couleur, Race, Espece, CodeClient, Tatouage, Antecedents, Archive FROM Animaux WHERE CodeClient = ? AND Archive = 0";
 	private static final String SQL_ESPECE = "SELECT DISTINCT Espece FROM Races ORDER BY Espece";
 	private static final String SQL_RACE = "SELECT DISTINCT Race FROM Races ORDER BY Race";
 	private static final String SQL_SELECT_RACE_BY_ESPECE = "SELECT Race FROM Races WHERE Espece like ? ORDER BY Race;";

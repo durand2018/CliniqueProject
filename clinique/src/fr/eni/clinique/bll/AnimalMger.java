@@ -15,6 +15,7 @@ public class AnimalMger {
 	private List<Animaux> listeAni;
 	private List<Race> listeEscpece;
 	private List<Race> listeRace;
+	private Animaux a;
 
 	public AnimalMger() throws BLLException {
 		super();
@@ -106,7 +107,16 @@ public class AnimalMger {
 		}
 		return listeAni;
 	}
-
+	
+	public Animaux selectAnimalByCode(int codeAnimal) throws BLLException {
+		try {
+			a = daoAnimal.selectByCode(codeAnimal);
+		} catch (DALException e) {
+			throw new BLLException("Erreur dans la sélection par id", e);
+		}
+		return a;
+	}
+	
 	public List<Race> selectEspece() throws BLLException {
 		try {
 			listeEscpece = daoAnimal.selectEspece();
