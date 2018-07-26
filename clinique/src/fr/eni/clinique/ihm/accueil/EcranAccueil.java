@@ -45,8 +45,8 @@ public class EcranAccueil extends JFrame {
 		JPanel panel1 = new JPanel();
 		panel1.setBackground(Color.DARK_GRAY);
 		setTitle("Ecran d'accueil");
-		// setSize(400,300);
-		// setResizable(true);
+		this.setLocation(280,200);
+		
 		System.out.println("Lancement EcranAccueil");
 		menuBar.add(menu);
 		menuBar.add(menu_2);
@@ -125,7 +125,7 @@ public class EcranAccueil extends JFrame {
 
 				EcranRDV ecranRdv = new EcranRDV();
 
-				ecranRdv.setSize(new Dimension(800, 600));
+				ecranRdv.setSize(new Dimension(800, 710));
 
 				ecranRdv.setVisible(true);
 			}

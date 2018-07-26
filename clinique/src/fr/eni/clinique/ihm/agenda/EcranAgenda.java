@@ -29,6 +29,7 @@ public class EcranAgenda extends JFrame {
 	public EcranAgenda() {
 		super("Agenda");
 		MiseEnPage.getMiseEnPage();
+		this.setLocation(280,200);
 
 		initIHM();
 	}
@@ -40,6 +41,10 @@ public class EcranAgenda extends JFrame {
 		panelFinal.setBackground(Color.lightGray);
 		
 		panelFinal.add(getPanelTable(), BorderLayout.CENTER);
+		
+		//Icone fenêtre
+		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ico_veto.png"));
+		this.setIconImage(image.getImage());
 
 		// Lancer la fenêtre
 		 this.setContentPane(panelFinal);

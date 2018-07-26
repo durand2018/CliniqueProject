@@ -95,6 +95,7 @@ public class EcranAnimaux extends JFrame {
 	public EcranAnimaux() throws BLLException {
 		super("Animaux");
 		MiseEnPage.getMiseEnPage();
+		this.setLocation(280,200);
 		try {
 			mgr = AnimalMger.getInstance();
 		} catch (BLLException e) {
@@ -108,6 +109,7 @@ public class EcranAnimaux extends JFrame {
 		super("Animaux");
 		try {
 			mgr = AnimalMger.getInstance();
+			this.setLocation(280,200);
 		} catch (BLLException e) {
 			e.printStackTrace();
 			System.out.println("Aucun animal à afficher !");

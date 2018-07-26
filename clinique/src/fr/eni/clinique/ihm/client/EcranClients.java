@@ -35,12 +35,14 @@ public class EcranClients extends JFrame {
 	public EcranClients() {
 		super("Clients");
 		MiseEnPage.getMiseEnPage();
+		this.setLocation(280,200);
 		initIHM();
 	}
 
 	public EcranClients(Clients c) {
 		super("Clients");
 		MiseEnPage.getMiseEnPage();
+		this.setLocation(280,200);
 		initIHMavecClt(c);
 	}
 

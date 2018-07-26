@@ -29,6 +29,7 @@ public class EcranAjoutClient extends JFrame{
 	public EcranAjoutClient() {
 		super("Ajouter Client");
 		MiseEnPage.getMiseEnPage();
+		this.setLocation(280,200);
 		initIHMAjoutClt();
 	}
 

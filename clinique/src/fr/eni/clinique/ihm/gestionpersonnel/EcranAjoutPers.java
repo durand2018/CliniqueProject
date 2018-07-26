@@ -51,6 +51,7 @@ public class EcranAjoutPers extends JFrame {
 	public EcranAjoutPers() {
 		super("Ajouter Personnel");
 		MiseEnPage.getMiseEnPage();
+		this.setLocation(280,200);
 		setSize(new Dimension(800, 600));
 		try {
 			mgr = LoginMger.getInstance();
@@ -257,7 +258,6 @@ public class EcranAjoutPers extends JFrame {
 					EcranGestion EcranGestion = new EcranGestion();
 					EcranGestion.setSize(new Dimension(800, 600));
 					EcranGestion.setVisible(true);
-					EcranGestion.pack();
 
 					// test console
 					System.out.println("Ajout de personnel");

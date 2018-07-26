@@ -16,6 +16,7 @@ public class AppliTestIHM {
 			public void run() {
 				EcranLogin ecranLogin = new EcranLogin();
 				ecranLogin.setSize(new Dimension(500, 250));
+				//ecranLogin.setLocation(400,320);
 				ecranLogin.setVisible(true);
 
 				ecranLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
