@@ -1,6 +1,7 @@
 package fr.eni.clinique.ihm.gestionpersonnel;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -36,6 +37,7 @@ public class EcranGestion extends JFrame {
 	public EcranGestion() {
 		super();
 		MiseEnPage.getMiseEnPage();
+		this.setLocation(280,200);
 		setTitle("Gestion du personnel");
 		try {
 			mgr = LoginMger.getInstance();
@@ -96,6 +98,7 @@ public class EcranGestion extends JFrame {
 		if (btnAjouter == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ajouter.png"));
 			btnAjouter = new JButton(image);
+			btnAjouter.setBackground(Color.white);
 			btnAjouter.setToolTipText("Valider");
 
 			btnAjouter.addActionListener(new ActionListener() {
@@ -105,7 +108,6 @@ public class EcranGestion extends JFrame {
 
 					EcranAjoutPers EcranAjout = new EcranAjoutPers();
 					EcranAjout.setSize(new Dimension(800, 600));
-					pack();
 					dispose();
 					EcranAjout.setVisible(true);
 				}
@@ -118,6 +120,7 @@ public class EcranGestion extends JFrame {
 		if (btnSupprimer == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("supprimer.png"));
 			btnSupprimer = new JButton(image);
+			btnSupprimer.setBackground(Color.white);
 			btnSupprimer.setToolTipText("Supprimer");
 
 			btnSupprimer.addActionListener(new ActionListener() {
@@ -138,10 +141,9 @@ public class EcranGestion extends JFrame {
 						EcranGestion EcranGestion = new EcranGestion();
 						EcranGestion.setSize(new Dimension(800, 600));
 						EcranGestion.setVisible(true);
-						EcranGestion.pack();
 
 					} catch (BLLException e1) {
-						System.err.println("probleme EcranGestion personnel non supprim� ");
+						System.err.println("probleme EcranGestion personnel non supprimé ");
 						System.err.println("ou probleme errreur  base de donn�e ");
 					}
 				}
@@ -154,6 +156,7 @@ public class EcranGestion extends JFrame {
 		if (btnReinitialiser == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("cadena.png"));
 			btnReinitialiser = new JButton(image);
+			btnReinitialiser.setBackground(Color.white);
 			btnReinitialiser.setToolTipText("Reinitialiser");
 			
 			btnReinitialiser.addActionListener(new ActionListener() {
@@ -190,7 +193,6 @@ public class EcranGestion extends JFrame {
 						EcranGestion EcranGestion = new EcranGestion();
 						EcranGestion.setSize(new Dimension(800, 600));
 						EcranGestion.setVisible(true);
-						EcranGestion.pack();
 
 					} catch (BLLException e1) {
 

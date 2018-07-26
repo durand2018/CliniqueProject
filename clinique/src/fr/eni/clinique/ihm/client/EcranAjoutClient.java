@@ -1,6 +1,7 @@
 package fr.eni.clinique.ihm.client;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -29,6 +30,7 @@ public class EcranAjoutClient extends JFrame{
 	public EcranAjoutClient() {
 		super("Ajouter Client");
 		MiseEnPage.getMiseEnPage();
+		this.setLocation(280,200);
 		initIHMAjoutClt();
 	}
 
@@ -66,6 +68,7 @@ public class EcranAjoutClient extends JFrame{
 		if(btnValider == null){
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("valider.png"));
 			btnValider = new JButton(image);
+			btnValider.setBackground(Color.white);
 			btnValider.setToolTipText("Valider");
 			
 			btnValider.addActionListener(new ActionListener(){
@@ -100,6 +103,7 @@ public class EcranAjoutClient extends JFrame{
 		if(btnAnnuler == null){
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("annuler.png"));
 			btnAnnuler = new JButton(image);
+			btnAnnuler.setBackground(Color.white);
 			btnAnnuler.setToolTipText("Annuler");
 			
 			btnAnnuler.addActionListener(new ActionListener(){

@@ -3,12 +3,7 @@
  */
 package fr.eni.clinique.bll;
 
-import java.util.List;
 
-import fr.eni.clinique.bo.Agenda;
-import fr.eni.clinique.dal.AnimauxDAO;
-import fr.eni.clinique.dal.ClientsDAO;
-import fr.eni.clinique.dal.DAOFactory;
 
 /**
  * Classe en charge de
@@ -18,10 +13,10 @@ import fr.eni.clinique.dal.DAOFactory;
  */
 public class AgendaMger {
 	
-	private static AgendaMger instance = null;
-	private AnimauxDAO daoAnimaux = DAOFactory.getAnimauxDAO();
-	private ClientsDAO daoClients = DAOFactory.getClientsDAO();
-	private List<Agenda> listeRdv;
+//	private static AgendaMger instance = null;
+//	private AnimauxDAO daoAnimaux = DAOFactory.getAnimauxDAO();
+//	private ClientsDAO daoClients = DAOFactory.getClientsDAO();
+//	private List<Agenda> listeRdv;
 
 
 
@@ -41,7 +36,6 @@ private AgendaMger() throws BLLException {
  * @return
  */
 public static AgendaMger getInstance() {
-	// TODO Auto-generated method stub
 	return null;
 }
 }

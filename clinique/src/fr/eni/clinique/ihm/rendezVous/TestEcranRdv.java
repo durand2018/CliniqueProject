@@ -24,7 +24,7 @@ public class TestEcranRdv {
 			public void run() {
 
 				EcranRDV ecranRDV = new EcranRDV();
-				ecranRDV.setSize(new Dimension(1024, 768));
+				ecranRDV.setSize(new Dimension(940, 720));
 				ecranRDV.setVisible(true);
 
 				ecranRDV.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

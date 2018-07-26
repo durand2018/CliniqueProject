@@ -1,5 +1,6 @@
 package fr.eni.clinique.ihm.gestionpersonnel;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -51,6 +52,7 @@ public class EcranAjoutPers extends JFrame {
 	public EcranAjoutPers() {
 		super("Ajouter Personnel");
 		MiseEnPage.getMiseEnPage();
+		this.setLocation(280,200);
 		setSize(new Dimension(800, 600));
 		try {
 			mgr = LoginMger.getInstance();
@@ -219,6 +221,7 @@ public class EcranAjoutPers extends JFrame {
 	public JButton getBtnValider() {
 		if (btnValider == null) {
 			btnValider = new JButton("Valider");
+			btnValider.setBackground(Color.white);
 			btnValider.addActionListener(new ActionListener() {
 
 				@Override
@@ -257,7 +260,6 @@ public class EcranAjoutPers extends JFrame {
 					EcranGestion EcranGestion = new EcranGestion();
 					EcranGestion.setSize(new Dimension(800, 600));
 					EcranGestion.setVisible(true);
-					EcranGestion.pack();
 
 					// test console
 					System.out.println("Ajout de personnel");

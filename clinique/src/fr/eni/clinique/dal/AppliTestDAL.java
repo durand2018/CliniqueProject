@@ -3,7 +3,6 @@ package fr.eni.clinique.dal;
 import java.util.List;
 
 import fr.eni.clinique.bo.Clients;
-import fr.eni.clinique.bo.Race;
 
 public class AppliTestDAL {
 
@@ -92,7 +91,7 @@ public class AppliTestDAL {
 		// //
 		// *******************************************************************************ANIMAL***********
 		// D�claration et instanciation de la DAO animaux)
-		AnimauxDAO AnimauxDAO = DAOFactory.getAnimauxDAO();
+		//AnimauxDAO AnimauxDAO = DAOFactory.getAnimauxDAO();
 
 		// // Instanciation du jeu d'essai
 		// Animaux a1 = new Animaux("MEDA", "F", "Verte", "Levrier", "Chien", 9,
