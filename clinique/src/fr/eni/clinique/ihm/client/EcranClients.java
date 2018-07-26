@@ -6,8 +6,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -74,8 +72,8 @@ public class EcranClients extends JFrame {
 		panelClt.add(panelBas, BorderLayout.CENTER);
 
 		// Changer Icone fenêtre
-		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
-		this.setIconImage(image);
+		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ico_veto.png"));
+		this.setIconImage(image.getImage());
 
 		// Lancer la fenêtre
 		this.setContentPane(panelClt);
@@ -127,8 +125,7 @@ public class EcranClients extends JFrame {
 
 	public JButton getBtnValider() {
 		if (btnValider == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/valider.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("valider.png"));
 			btnValider = new JButton(image);
 			btnValider.setToolTipText("Valider");
 		
@@ -158,8 +155,7 @@ public class EcranClients extends JFrame {
 
 	public JButton getBtnAnnuler() {
 		if (btnAnnuler == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annuler.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("annuler.png"));
 			btnAnnuler = new JButton(image);
 			btnAnnuler.setToolTipText("Annuler");
 
@@ -176,8 +172,7 @@ public class EcranClients extends JFrame {
 
 	public JButton getBtnAjouter() {
 		if (btnAjouter == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ajouter.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ajouter.png"));
 			btnAjouter = new JButton(image);
 			btnAjouter.setToolTipText("Ajouter");
 
@@ -199,8 +194,7 @@ public class EcranClients extends JFrame {
 
 	public JButton getBtnSupprimer() {
 		if (btnSupprimer == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/supprimer.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("supprimer.png"));
 			btnSupprimer = new JButton(image);
 			btnSupprimer.setToolTipText("Supprimer");
 
@@ -225,8 +219,7 @@ public class EcranClients extends JFrame {
 
 	public JButton getBtnRechercher() {
 		if (btnRechercher == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/loupe.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("loupe.png"));
 			btnRechercher = new JButton(image);
 			btnRechercher.setToolTipText("Rechercher");
 
@@ -273,8 +266,7 @@ public class EcranClients extends JFrame {
 
 	// public JLabel getLogo() {
 	// if(logo == null){
-	// ImageIcon image = new ImageIcon(
-	// Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png")));
+	// ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ico_veto.png"));
 	// logo.setIcon(image);
 	// }
 	// return logo;

@@ -3,9 +3,7 @@ package fr.eni.clinique.ihm.gestionpersonnel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -87,8 +85,8 @@ public class EcranGestion extends JFrame {
 		panelFinal.add(panelBtn, BorderLayout.NORTH);
 		panelFinal.add(panelTable, BorderLayout.CENTER);
 
-		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
-		this.setIconImage(image);
+		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ico_veto.png"));
+		this.setIconImage(image.getImage());
 
 		// Lancer la fenêtre
 		this.setContentPane(panelFinal);
@@ -96,8 +94,7 @@ public class EcranGestion extends JFrame {
 
 	public JButton getBtnAjouter() {
 		if (btnAjouter == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ajouter.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ajouter.png"));
 			btnAjouter = new JButton(image);
 			btnAjouter.setToolTipText("Valider");
 
@@ -119,8 +116,7 @@ public class EcranGestion extends JFrame {
 
 	public JButton getBtnSupprimer() {
 		if (btnSupprimer == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/supprimer.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("supprimer.png"));
 			btnSupprimer = new JButton(image);
 			btnSupprimer.setToolTipText("Supprimer");
 
@@ -156,8 +152,7 @@ public class EcranGestion extends JFrame {
 
 	public JButton getBtnReinitialiser() {
 		if (btnReinitialiser == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/cadena.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("cadena.png"));
 			btnReinitialiser = new JButton(image);
 			btnReinitialiser.setToolTipText("Reinitialiser");
 			

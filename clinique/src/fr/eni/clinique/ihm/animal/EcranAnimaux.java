@@ -6,9 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -232,8 +230,8 @@ public class EcranAnimaux extends JFrame {
 		panelFinal.add(panelItermediaire, BorderLayout.CENTER);
 
 		// Changer Icone fenêtre
-		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
-		this.setIconImage(image);
+		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ico_veto.png"));
+		this.setIconImage(image.getImage());
 
 		// Lancer la fenêtre
 		this.setContentPane(panelFinal);
@@ -439,8 +437,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JButton getBtnValider() {
 		if (btnValider == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ajouter.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ajouter.png"));
 			btnValider = new JButton(image);
 			btnValider.setToolTipText("Valider");
 
@@ -493,8 +490,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JButton getBtnAnnuler() {
 		if (btnAnnuler == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annuler.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("annuler.png"));
 			btnAnnuler = new JButton(image);
 			btnAnnuler.setToolTipText("Annuler");
 

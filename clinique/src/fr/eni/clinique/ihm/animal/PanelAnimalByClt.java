@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -97,8 +96,7 @@ public class PanelAnimalByClt extends JFrame {
 
 	public JButton getBtnAjouter() {
 		if (btnAjouter == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ajouter.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ajouter.png"));
 			btnAjouter = new JButton(image);
 			btnAjouter.setToolTipText("Ajouter");
 		}
@@ -107,8 +105,7 @@ public class PanelAnimalByClt extends JFrame {
 
 	public JButton getBtnSupprimer() {
 		if (btnSupprimer == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/supprimer.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("supprimer.png"));
 			btnSupprimer = new JButton(image);
 			btnSupprimer.setToolTipText("Supprimer");
 		}
@@ -117,8 +114,7 @@ public class PanelAnimalByClt extends JFrame {
 
 	public JButton getBtnEditer() {
 		if (btnEditer == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/editer.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("editer.png"));
 			btnEditer = new JButton(image);
 			btnEditer.setToolTipText("Editer");
 		}
