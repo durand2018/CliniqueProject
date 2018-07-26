@@ -125,4 +125,12 @@ public class AnimalMger {
 		return listeRace;
 	}
 
+	public List<Race> selectRace() throws BLLException {
+		try {
+			listeRace = daoAnimal.selectRace();
+		} catch (DALException e) {
+			throw new BLLException("Erreur dans la s�lection.", e);
+		}
+		return listeRace;
+	}
 }
