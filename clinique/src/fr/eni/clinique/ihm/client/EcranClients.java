@@ -99,6 +99,7 @@ public class EcranClients extends JFrame {
 		panelBtn.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		panelBtn.add(getBtnValider());
 		panelBtn.add(getBtnAnnuler());
+		panelBtn.setBackground(Color.gray);
 
 		panelBas.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -107,6 +108,7 @@ public class EcranClients extends JFrame {
 		panelBas.add(getPanClt(c).initIHMavecCode());
 		gbc.gridx = 1;
 		panelBas.add(panAni.initIHM(c.getCodeClient()));
+		panelBas.setBackground(Color.gray);
 
 		panelClt.setBackground(Color.gray);
 		panelClt.add(panelBtn, BorderLayout.NORTH);
