@@ -120,14 +120,14 @@ public class EcranAnimaux extends JFrame {
 		}
 
 		initIHM(codeAnimal);
-		jtCode.setText(Integer.toString(mgr.getAnimal(codeAnimal).getCodeAnimal()));
-		jtNom.setText(mgr.getAnimal(codeAnimal).getNomAnimal());
-		jtCouleur.setText(mgr.getAnimal(codeAnimal).getCouleur());
-		jcombSexe.setToolTipText(mgr.getAnimal(codeAnimal).getSexe());
-		jcombEspece.setToolTipText(mgr.getAnimal(codeAnimal).getEspece());
-		jcombRaces.setToolTipText(mgr.getAnimal(codeAnimal).getRace());
-		jtTatoo.setText(mgr.getAnimal(codeAnimal).getTatouage());
-		mgr.getAnimal(codeAnimal).getCodeClient();
+		jtCode.setText(Integer.toString(mgr.selectAnimalByCode(codeAnimal).getCodeAnimal()));
+		jtNom.setText(mgr.selectAnimalByCode(codeAnimal).getNomAnimal());
+		jtCouleur.setText(mgr.selectAnimalByCode(codeAnimal).getCouleur());
+		jcombSexe.setToolTipText(mgr.selectAnimalByCode(codeAnimal).getSexe());
+		jcombEspece.setToolTipText(mgr.selectAnimalByCode(codeAnimal).getEspece());
+		jcombRaces.setToolTipText(mgr.selectAnimalByCode(codeAnimal).getRace());
+		jtTatoo.setText(mgr.selectAnimalByCode(codeAnimal).getTatouage());
+		jtClient.setText(Integer.toString(mgr.selectAnimalByCode(codeAnimal).getCodeClient()));
 	}
 
 	private void initIHM() throws BLLException {
@@ -589,7 +589,7 @@ public class EcranAnimaux extends JFrame {
 	public JComboBox<String> getJcombEspece(int codeAnimal) throws BLLException{
 		jcombEspece = new JComboBox<String>();
 		jcombEspece.setSize(new Dimension(150, 25));
-		jcombEspece.addItem(mgr.getAnimal(codeAnimal).getEspece());
+		jcombEspece.addItem(mgr.selectAnimalByCode(codeAnimal).getEspece());
 
 		return jcombEspece;
 	}
@@ -599,7 +599,7 @@ public class EcranAnimaux extends JFrame {
 		jcombRaces.setSize(new Dimension(150, 25));
 		Iterator<Race> itR;
 	//                                                                                                   ******
-		//String espece = "chien";		  /*recuperper l'espece*/
+		//String espece = "chien";		  /*recupere l'espece*/
 //		System.out.println("espece dans combo race --->"+espece);
 		try {
 			itR = mgr.selectRace().iterator();
@@ -664,7 +664,12 @@ public class EcranAnimaux extends JFrame {
 	public JComboBox<String> getJcombRaces(int codeAnimal) {
 		jcombRaces = new JComboBox<String>();
 		jcombRaces.setSize(new Dimension(150, 25));
-		jcombRaces.addItem(mgr.getAnimal(codeAnimal).getRace());
+		try {
+			jcombRaces.addItem(mgr.selectAnimalByCode(codeAnimal).getRace());
+		} catch (BLLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return jcombRaces;
 

@@ -193,6 +193,29 @@ public class PanelAnimalByClt extends JFrame {
 			btnEditer = new JButton(image);
 			btnEditer.setBackground(Color.white);
 			btnEditer.setToolTipText("Editer");
+			btnEditer.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// Keep select animal
+					int idAs = tabAni.getSelectedRow();
+					int idAniSelect = (int) tabAni.getValueAt(idAs, 0);
+					System.out.println("ani sélectionné" + idAniSelect);
+					
+					// Ouvre Ecran Animaux
+					try {
+						EcranAnimaux ecranAnimal;
+						ecranAnimal = new EcranAnimaux(idAniSelect);
+						ecranAnimal.setSize(new Dimension(800, 600));
+						ecranAnimal.setVisible(true);
+						
+					} catch (BLLException e1) {
+						JOptionPane.showConfirmDialog(null,	"Une erreur est survenue lors de l'archivage");
+						e1.printStackTrace();
+					}
+				}
+			});
+			
 		}
 		return btnEditer;
 	}
