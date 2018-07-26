@@ -2,7 +2,6 @@ package fr.eni.clinique.ihm.client;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -12,8 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
-import com.sun.istack.internal.NotNull;
 
 import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.ihm.MiseEnPage;
@@ -28,7 +25,6 @@ public class PanelClient extends JFrame {
 	private JScrollPane defil;
 	private JPanel panelClt, panelBas;
 	private int CodeCltAffiche;
-	// private ClientsMger mgr = null;
 
 	public PanelClient() {
 		super();

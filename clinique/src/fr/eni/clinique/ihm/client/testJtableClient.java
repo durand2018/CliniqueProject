@@ -14,7 +14,7 @@ public class testJtableClient extends JFrame {
 	        setTitle("Clients Clinique");
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	 
-	        JTable tableau = new JTable(new ModeleTableClient("Spe"));
+	        JTable tableau = new JTable(new ModeleTableClient(""));
 	        //Permet d'ordrer sur en-tête colonne
 	        tableau.setAutoCreateRowSorter(true);
 	 

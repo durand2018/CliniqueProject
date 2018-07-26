@@ -4,23 +4,35 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 
+import fr.eni.clinique.bll.AnimalMger;
+import fr.eni.clinique.bll.BLLException;
+import fr.eni.clinique.bll.ClientsMger;
+import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.ihm.MiseEnPage;
+import fr.eni.clinique.ihm.client.EcranAjoutClient;
+import fr.eni.clinique.ihm.client.EcranClients;
 
 @SuppressWarnings("serial")
 public class PanelAnimalByClt extends JFrame {
 	private JLabel jlTitre, jlAucunAni;
 	private JButton btnAjouter, btnSupprimer, btnEditer;
 	private JPanel panelBtn, panelAni;
+	private AnimalMger amger;
+	private JTable tabAni;
 
 	public PanelAnimalByClt() {
 		super();
@@ -56,7 +68,7 @@ public class PanelAnimalByClt extends JFrame {
 	public Component initIHM(int CodeClt) {
 		panelAni = new JPanel();
 		panelBtn = new JPanel();
-		JTable tabAni = new JTable(new ModeleTableAnimaux(CodeClt));
+		tabAni = new JTable(new ModeleTableAnimaux(CodeClt));
 
 		panelAni.setOpaque(true);
 		panelAni.setLayout(new BorderLayout());
@@ -99,6 +111,25 @@ public class PanelAnimalByClt extends JFrame {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ajouter.png"));
 			btnAjouter = new JButton(image);
 			btnAjouter.setToolTipText("Ajouter");
+			
+			btnAjouter.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// Ouvre Ecran Animaux
+					try {
+						EcranAnimaux ecranAnimal;
+						ecranAnimal = new EcranAnimaux();
+						ecranAnimal.setSize(new Dimension(800, 600));
+						ecranAnimal.setVisible(true);
+						
+					} catch (BLLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					dispose();
+				}
+			});
 		}
 		return btnAjouter;
 	}
@@ -108,6 +139,30 @@ public class PanelAnimalByClt extends JFrame {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("supprimer.png"));
 			btnSupprimer = new JButton(image);
 			btnSupprimer.setToolTipText("Supprimer");
+			btnSupprimer.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// Keep select animal
+					int idAs = tabAni.getSelectedRow();
+					int idAniSelect = (int) tabAni.getValueAt(idAs, 0);
+					System.out.println("ani sélectionné" + idAniSelect);
+					
+					try {
+						//Crée une instance d'animal
+						amger = new AnimalMger();
+						amger.removeAnimal(idAniSelect);
+						
+//						//Relance l'écran vierge
+//						EcranClients ecranClt = new EcranClients();
+//						ecranClt.setSize(new Dimension(1000, 600));
+//						ecranClt.setVisible(true);
+					} catch (BLLException e1) {
+						JOptionPane.showConfirmDialog(null,	"Une erreur est survenue lors de l'archivage");
+						e1.printStackTrace();
+					}
+				}
+			});
 		}
 		return btnSupprimer;
 	}

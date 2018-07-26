@@ -95,6 +95,7 @@ public class EcranAnimaux extends JFrame {
 	public EcranAnimaux() throws BLLException {
 		super("Animaux");
 		MiseEnPage.getMiseEnPage();
+		this.setLocation(280, 200);
 		try {
 			mgr = AnimalMger.getInstance();
 		} catch (BLLException e) {
@@ -536,8 +537,8 @@ public class EcranAnimaux extends JFrame {
 				ra = itR.next();
 				jcombEspece.addItem(ra.getEspece());
 			}
-		} catch (BLLException e) {
-			e.printStackTrace();
+		} catch (BLLException e1) {
+			e1.printStackTrace();
 		}
 
 		jcombEspece.addItemListener(new ItemListener() {
@@ -562,7 +563,7 @@ public class EcranAnimaux extends JFrame {
 		return jcombEspece;
 	}
 
-	public JComboBox<String> getJcombRaces() {
+	public JComboBox<String> getJcombRaces() throws BLLException {
 		jcombRaces = new JComboBox<String>();
 		jcombRaces.setSize(new Dimension(150, 25));
 		Iterator<Race> itR;
