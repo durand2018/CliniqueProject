@@ -21,7 +21,6 @@ import javax.swing.border.Border;
 
 import fr.eni.clinique.bll.AnimalMger;
 import fr.eni.clinique.bll.BLLException;
-import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.ihm.MiseEnPage;
 import fr.eni.clinique.ihm.client.EcranClients;
 
@@ -62,11 +61,11 @@ public class PanelAnimalByClt extends JFrame {
 		panelAni.add(panelBtn, BorderLayout.SOUTH);
 		panelAni.add(getJlAucunAni(), BorderLayout.CENTER);
 		panelAni.setBackground(Color.gray);
-		//créer une bordure de trait noir et largeur minimale 1
-	    Border lineborder = BorderFactory.createLineBorder(Color.gray, 5); 
-	    //associer à JLabel
-	    panelAni.setBorder(lineborder);
-	    
+		// créer une bordure de trait noir et largeur minimale 1
+		Border lineborder = BorderFactory.createLineBorder(Color.gray, 5);
+		// associer à JLabel
+		panelAni.setBorder(lineborder);
+
 		return panelAni;
 	}
 
@@ -87,10 +86,10 @@ public class PanelAnimalByClt extends JFrame {
 		panelAni.add(getJlTitre(), BorderLayout.NORTH);
 		panelAni.add(panelBtn, BorderLayout.SOUTH);
 		panelAni.setBackground(Color.gray);
-		//créer une bordure de trait noir et largeur minimale 1
-	    Border lineborder = BorderFactory.createLineBorder(Color.gray, 5); 
-	    //associer à JLabel
-	    panelAni.setBorder(lineborder);
+		// créer une bordure de trait noir et largeur minimale 1
+		Border lineborder = BorderFactory.createLineBorder(Color.gray, 5);
+		// associer à JLabel
+		panelAni.setBorder(lineborder);
 		if (tabAni.getRowCount() == 0) {
 			panelAni.add(getJlAucunAni(), BorderLayout.CENTER);
 		} else {
@@ -123,7 +122,7 @@ public class PanelAnimalByClt extends JFrame {
 			btnAjouter = new JButton(image);
 			btnAjouter.setBackground(Color.white);
 			btnAjouter.setToolTipText("Ajouter");
-			
+
 			btnAjouter.addActionListener(new ActionListener() {
 
 				@Override
@@ -134,12 +133,11 @@ public class PanelAnimalByClt extends JFrame {
 						ecranAnimal = new EcranAnimaux();
 						ecranAnimal.setSize(new Dimension(800, 600));
 						ecranAnimal.setVisible(true);
-						
+
 					} catch (BLLException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					
+
 					EcranClients eclt = new EcranClients();
 					eclt.fermeEcran();
 				}
@@ -162,23 +160,27 @@ public class PanelAnimalByClt extends JFrame {
 					int idAs = tabAni.getSelectedRow();
 					int idAniSelect = (int) tabAni.getValueAt(idAs, 0);
 					System.out.println("ani sélectionné" + idAniSelect);
-					
+
 					try {
-						//Crée une instance d'animal
+						// Crée une instance d'animal
 						amger = new AnimalMger();
 						amger.removeAnimal(idAniSelect);
-						
-						//Affiche confirmation utilisateur
-						JOptionPane.showMessageDialog(null, "Animal archivé \n Pour rafraichir l'écran client cliquer sur la loupe", "Suppression d'un animal",JOptionPane.INFORMATION_MESSAGE);
-						
-//						//Relance l'écran client actualisé
-	//					Clients cltAffiche = EcranClients.getPanClt().getClient();
-						//System.out.println("cltdansbuttonSuppr" + cltAffiche);
-//						EcranClients ecranClt = new EcranClients();
-//						ecranClt.setSize(new Dimension(1000, 600));
-//						ecranClt.setVisible(true);
+
+						// Affiche confirmation utilisateur
+						JOptionPane.showMessageDialog(null,
+								"Animal archivé \n Pour rafraichir l'écran client cliquer sur la loupe",
+								"Suppression d'un animal", JOptionPane.INFORMATION_MESSAGE);
+
+						// //Relance l'écran client actualisé
+						// Clients cltAffiche =
+						// EcranClients.getPanClt().getClient();
+						// System.out.println("cltdansbuttonSuppr" +
+						// cltAffiche);
+						// EcranClients ecranClt = new EcranClients();
+						// ecranClt.setSize(new Dimension(1000, 600));
+						// ecranClt.setVisible(true);
 					} catch (BLLException e1) {
-						JOptionPane.showConfirmDialog(null,	"Une erreur est survenue lors de l'archivage");
+						JOptionPane.showConfirmDialog(null, "Une erreur est survenue lors de l'archivage");
 						e1.printStackTrace();
 					}
 				}
@@ -201,21 +203,21 @@ public class PanelAnimalByClt extends JFrame {
 					int idAs = tabAni.getSelectedRow();
 					int idAniSelect = (int) tabAni.getValueAt(idAs, 0);
 					System.out.println("ani sélectionné" + idAniSelect);
-					
+
 					// Ouvre Ecran Animaux
 					try {
 						EcranAnimaux ecranAnimal;
 						ecranAnimal = new EcranAnimaux(idAniSelect);
 						ecranAnimal.setSize(new Dimension(800, 600));
 						ecranAnimal.setVisible(true);
-						
+
 					} catch (BLLException e1) {
-						JOptionPane.showConfirmDialog(null,	"Une erreur est survenue lors de l'archivage");
+						JOptionPane.showConfirmDialog(null, "Une erreur est survenue lors de l'archivage");
 						e1.printStackTrace();
 					}
 				}
 			});
-			
+
 		}
 		return btnEditer;
 	}

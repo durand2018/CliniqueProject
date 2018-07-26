@@ -575,7 +575,7 @@ public class EcranAnimaux extends JFrame {
 	public JComboBox<String> getJcombEspece(int codeAnimal) throws BLLException {
 		jcombEspece = new JComboBox<String>();
 		jcombEspece.setSize(new Dimension(180, 25));
-		jcombEspece.addItem(mgr.getAnimal(codeAnimal).getEspece());
+		jcombEspece.addItem(mgr.selectAnimalByCode(codeAnimal).getEspece());
 
 		return jcombEspece;
 	}

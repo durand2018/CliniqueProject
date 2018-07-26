@@ -206,7 +206,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			// Execution Select
 			int nbRows = rqt.executeUpdate();
 			if (nbRows == 1) {
-				// R�cup�ration identifiant g�n�r� par la BDD
+				// Recuperation identifiant genere par la BDD
 				ResultSet rs = rqt.getGeneratedKeys();
 				if (rs.next()) {
 					int cle = rs.getInt(1);
@@ -332,7 +332,7 @@ public class AnimauxDAOJdbcImpl implements AnimauxDAO {
 			}
 			return lesRaces;
 		} catch (SQLException e) {
-			throw new DALException("Cette race ne peut �tre affefct�e ! - " + espece, e);
+			throw new DALException("Cette race ne peut etre affectee ! - " + espece, e);
 		} finally {
 			JdbcTools.closeConnection();
 		}
