@@ -106,7 +106,8 @@ public class AnimalMger {
 		}
 		return listeAni;
 	}
-
+	
+	
 	public List<Race> selectEspece() throws BLLException {
 		try {
 			listeEscpece = daoAnimal.selectEspece();

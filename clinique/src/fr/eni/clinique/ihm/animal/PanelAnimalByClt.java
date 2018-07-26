@@ -21,7 +21,9 @@ import javax.swing.border.Border;
 
 import fr.eni.clinique.bll.AnimalMger;
 import fr.eni.clinique.bll.BLLException;
+import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.ihm.MiseEnPage;
+import fr.eni.clinique.ihm.client.EcranClients;
 
 @SuppressWarnings("serial")
 public class PanelAnimalByClt extends JFrame {
@@ -137,7 +139,9 @@ public class PanelAnimalByClt extends JFrame {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					dispose();
+					
+					EcranClients eclt = new EcranClients();
+					eclt.fermeEcran();
 				}
 			});
 		}
@@ -164,7 +168,12 @@ public class PanelAnimalByClt extends JFrame {
 						amger = new AnimalMger();
 						amger.removeAnimal(idAniSelect);
 						
-//						//Relance l'écran vierge
+						//Affiche confirmation utilisateur
+						JOptionPane.showMessageDialog(null, "Animal archivé \n Pour rafraichir l'écran client cliquer sur la loupe", "Suppression d'un animal",JOptionPane.INFORMATION_MESSAGE);
+						
+//						//Relance l'écran client actualisé
+	//					Clients cltAffiche = EcranClients.getPanClt().getClient();
+						//System.out.println("cltdansbuttonSuppr" + cltAffiche);
 //						EcranClients ecranClt = new EcranClients();
 //						ecranClt.setSize(new Dimension(1000, 600));
 //						ecranClt.setVisible(true);

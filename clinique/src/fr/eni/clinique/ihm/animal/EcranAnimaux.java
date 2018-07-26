@@ -24,7 +24,9 @@ import javax.swing.JTextField;
 
 import fr.eni.clinique.bll.AnimalMger;
 import fr.eni.clinique.bll.BLLException;
+import fr.eni.clinique.bll.ClientsMger;
 import fr.eni.clinique.bo.Animaux;
+import fr.eni.clinique.bo.Clients;
 import fr.eni.clinique.bo.Race;
 import fr.eni.clinique.ihm.MiseEnPage;
 import fr.eni.clinique.ihm.client.EcranClients;
@@ -38,6 +40,7 @@ public class EcranAnimaux extends JFrame {
 	private JButton btnValider, btnAnnuler;
 	private JComboBox<String> jcombSexe, jcombEspece, jcombRaces;
 	private AnimalMger mgr;
+	private ClientsMger cmgr;
 
 	private int indexSexe;
 	private int indexEspece;
@@ -449,23 +452,24 @@ public class EcranAnimaux extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// Recupere l'animal affiche
 
 					try {
+						// Recupere l'animal affiche
 						Animaux aniAffiche = getAnimal();
 						System.out.println(aniAffiche);
 						// Sauvegarde un nouvel animal dans la BDD
 						mgr = new AnimalMger();
 						mgr.addAnimaux(aniAffiche);
-						//int c = aniAffiche.getCodeAnimal();
+						//Récupère le client correspondant
+						cmgr = new ClientsMger();
+						int idClt = aniAffiche.getCodeClient();
+						Clients c = cmgr.selectByCode(idClt);
 						// Ferme l'ecran
 						dispose();
-						// Ouvre un nouvel ecran client qui affiche le nouveau
-						// animal
-						EcranClients ecranClt = new EcranClients();
-						ecranClt.setSize(new Dimension(800, 600));
+						// Actualisation du client 
+						EcranClients ecranClt = new EcranClients(c);
+						ecranClt.setSize(new Dimension(1000, 600));
 						ecranClt.setVisible(true);
-						ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					} catch (BLLException e1) {
 						JOptionPane.showMessageDialog(EcranAnimaux.this, "Une erreur est survenue lors de l'Ajout");
 						e1.printStackTrace();
