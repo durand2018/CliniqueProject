@@ -4,11 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -39,8 +38,8 @@ public class EcranAccueil extends JFrame {
 	public EcranAccueil(EcranLogin ecranLogin) {
 		MiseEnPage.getMiseEnPage();
 		// Changer Icone fenêtre
-		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
-		this.setIconImage(image);
+		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ico_veto.png"));
+		this.setIconImage(image.getImage());
 
 		CardLayout CardL = new CardLayout();
 		JPanel panel1 = new JPanel();
@@ -78,7 +77,7 @@ public class EcranAccueil extends JFrame {
 
 				EcranAgenda ecranAgenda = new EcranAgenda();
 
-				ecranAgenda.setPreferredSize(new Dimension(800, 600));
+				ecranAgenda.setSize(new Dimension(800, 600));
 
 				ecranAgenda.setVisible(true);
 			}
@@ -90,7 +89,7 @@ public class EcranAccueil extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				EcranGestion ecranGestion = new EcranGestion();
-				ecranGestion.setPreferredSize(new Dimension(800, 600));
+				ecranGestion.setSize(new Dimension(800, 600));
 				ecranGestion.setVisible(true);
 			}
 		});
@@ -102,11 +101,8 @@ public class EcranAccueil extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 				EcranLogin ecranLogin2 = new EcranLogin();
-
 				ecranLogin2.setSize(new Dimension(500, 250));
-
 				dispose();
-
 				ecranLogin2.setVisible(true);
 			}
 		});
@@ -129,7 +125,7 @@ public class EcranAccueil extends JFrame {
 
 				EcranRDV ecranRdv = new EcranRDV();
 
-				ecranRdv.setPreferredSize(new Dimension(800, 600));
+				ecranRdv.setSize(new Dimension(800, 600));
 
 				ecranRdv.setVisible(true);
 			}

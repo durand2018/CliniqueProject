@@ -7,8 +7,7 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
 /**
- * Classe en charge de
- * 
+ * Classe en charge d'appliquer le Look and Feel de l'application
  * @author jdurand2018
  * @date 25 juil. 2018 - 15:28:15 clinique - Version 1.0
  */

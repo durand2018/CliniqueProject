@@ -10,8 +10,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -76,8 +74,8 @@ public class EcranRDV extends JFrame {
 		panelFinal.add(getPanelTable(), BorderLayout.CENTER);
 		panelFinal.add(getPanelBtn(), BorderLayout.SOUTH);
 
-		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
-		this.setIconImage(image);
+		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ico_veto.png"));
+		this.setIconImage(image.getImage());
 
 		// Lancer la fenêtre
 		this.setContentPane(panelFinal);
@@ -93,7 +91,7 @@ public class EcranRDV extends JFrame {
 		panelQuand = new JPanel();
 		panelQuand.setLayout(new GridBagLayout());
 		panelQuand.setBackground(Color.lightGray);
-		panelQuand.setPreferredSize(new Dimension(300, 150));
+		panelQuand.setSize(new Dimension(300, 150));
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		panelQuand.add(getJlDate(), gbc);
@@ -112,7 +110,7 @@ public class EcranRDV extends JFrame {
 		panelPar = new JPanel();
 		panelPar.setLayout(new GridBagLayout());
 		panelPar.setBackground(Color.lightGray);
-		panelPar.setPreferredSize(new Dimension(300, 150));
+		panelPar.setSize(new Dimension(300, 150));
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		panelPar.add(getJlVeto(), gbc);
@@ -132,7 +130,7 @@ public class EcranRDV extends JFrame {
 		panelPour = new JPanel();
 		panelPour.setLayout(new GridBagLayout());
 		panelPour.setBackground(Color.lightGray);
-		panelPour.setPreferredSize(new Dimension(300, 150));
+		panelPour.setSize(new Dimension(300, 150));
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		panelPour.add(getJlClient(), gbc);
@@ -157,9 +155,8 @@ public class EcranRDV extends JFrame {
 	public Component getPanelTable() {
 		panelTable = new JPanel();
 		panelTable.setBackground(Color.lightGray);
-		panelTable.setPreferredSize(new Dimension(300, 150));
-		ImageIcon image = new ImageIcon(
-				Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/travaux_infos.jpg")));
+		panelTable.setSize(new Dimension(300, 150));
+		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("travaux_infos.jpg"));
 		labelTravaux = new JLabel(image);
 		panelTable.add(labelTravaux);
 
@@ -180,20 +177,20 @@ public class EcranRDV extends JFrame {
 	public JComboBox<String> getCombClient() {
 		combClient = new JComboBox<String>();
 		combClient.addItem("Nom");
-		combClient.setPreferredSize(new Dimension(200, 20));
+		combClient.setSize(new Dimension(200, 20));
 		return combClient;
 	}
 
 	public JComboBox<String> getCombAnimal() {
 		combAnimal = new JComboBox<String>();
 		combAnimal.addItem("Animal");
-		combAnimal.setPreferredSize(new Dimension(200, 20));
+		combAnimal.setSize(new Dimension(200, 20));
 		return combAnimal;
 	}
 
 	public JComboBox<String> getCombVeto() {
 		combVeto = new JComboBox<String>();
-		combVeto.setPreferredSize(new Dimension(200, 20));
+		combVeto.setSize(new Dimension(200, 20));
 		combVeto.addItem("Veterinaire");
 		return combVeto;
 	}
@@ -250,8 +247,7 @@ public class EcranRDV extends JFrame {
 
 	public JButton getBtnValider() {
 		if (btnValider == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/valider.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("valider.png"));
 			btnValider = new JButton(image);
 			btnValider.setToolTipText("Valider");
 
@@ -261,8 +257,7 @@ public class EcranRDV extends JFrame {
 
 	public JButton getBtnSupprimer() {
 		if (btnSupprimer == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/sortir.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("sortir.png"));
 			btnSupprimer = new JButton(image);
 			btnSupprimer.setToolTipText("Annuler");
 

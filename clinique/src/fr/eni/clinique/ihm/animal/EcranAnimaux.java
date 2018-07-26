@@ -6,9 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -140,10 +138,10 @@ public class EcranAnimaux extends JFrame {
 		panelItermediaire.setBackground(Color.lightGray);
 		panelBtn.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		panelBtn.setBackground(Color.lightGray);
-		panelBtn.setPreferredSize(new Dimension(500, 70));
+		panelBtn.setSize(new Dimension(500, 70));
 		panelClt.setLayout(new GridBagLayout());
 		panelClt.setBackground(Color.lightGray);
-		panelClt.setPreferredSize(new Dimension(500, 80));
+		panelClt.setSize(new Dimension(500, 80));
 		panelChamps.setLayout(new GridBagLayout());
 		panelChamps.setBackground(Color.GRAY);
 		panelChamps.setMaximumSize(new Dimension(750, 750));
@@ -232,8 +230,8 @@ public class EcranAnimaux extends JFrame {
 		panelFinal.add(panelItermediaire, BorderLayout.CENTER);
 
 		// Changer Icone fenêtre
-		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
-		this.setIconImage(image);
+		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ico_veto.png"));
+		this.setIconImage(image.getImage());
 
 		// Lancer la fenêtre
 		this.setContentPane(panelFinal);
@@ -254,10 +252,10 @@ public class EcranAnimaux extends JFrame {
 		panelItermediaire.setBackground(Color.lightGray);
 		panelBtn.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		panelBtn.setBackground(Color.lightGray);
-		panelBtn.setPreferredSize(new Dimension(500, 70));
+		panelBtn.setSize(new Dimension(500, 70));
 		panelClt.setLayout(new GridBagLayout());
 		panelClt.setBackground(Color.lightGray);
-		panelClt.setPreferredSize(new Dimension(500, 80));
+		panelClt.setSize(new Dimension(500, 80));
 		panelChamps.setLayout(new GridBagLayout());
 		panelChamps.setBackground(Color.GRAY);
 		panelChamps.setMaximumSize(new Dimension(750, 750));
@@ -439,8 +437,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JButton getBtnValider() {
 		if (btnValider == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ajouter.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ajouter.png"));
 			btnValider = new JButton(image);
 			btnValider.setToolTipText("Valider");
 
@@ -462,7 +459,7 @@ public class EcranAnimaux extends JFrame {
 						// Ouvre un nouvel ecran client qui affiche le nouveau
 						// animal
 						EcranClients ecranClt = new EcranClients();
-						ecranClt.setPreferredSize(new Dimension(800, 600));
+						ecranClt.setSize(new Dimension(800, 600));
 						ecranClt.setVisible(true);
 						ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					} catch (BLLException e1) {
@@ -493,8 +490,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JButton getBtnAnnuler() {
 		if (btnAnnuler == null) {
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annuler.png")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("annuler.png"));
 			btnAnnuler = new JButton(image);
 			btnAnnuler.setToolTipText("Annuler");
 
@@ -511,7 +507,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JComboBox<String> getJcombSexe() {
 		jcombSexe = new JComboBox<String>();
-		jcombSexe.setPreferredSize(new Dimension(80, 25));
+		jcombSexe.setSize(new Dimension(80, 25));
 		jcombSexe.addItem("Mâle");
 		jcombSexe.addItem("Femelle");
 		jcombSexe.addItemListener(new ItemListener() {
@@ -530,7 +526,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JComboBox<String> getJcombEspece() throws BLLException {
 		jcombEspece = new JComboBox<String>();
-		jcombEspece.setPreferredSize(new Dimension(150, 25));
+		jcombEspece.setSize(new Dimension(150, 25));
 
 		Iterator<Race> itR;
 		try {
@@ -560,7 +556,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JComboBox<String> getJcombEspece(int codeAnimal) {
 		jcombEspece = new JComboBox<String>();
-		jcombEspece.setPreferredSize(new Dimension(150, 25));
+		jcombEspece.setSize(new Dimension(150, 25));
 		jcombEspece.addItem(mgr.getAnimal(codeAnimal).getEspece());
 
 		return jcombEspece;
@@ -568,7 +564,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JComboBox<String> getJcombRaces() {
 		jcombRaces = new JComboBox<String>();
-		jcombRaces.setPreferredSize(new Dimension(150, 25));
+		jcombRaces.setSize(new Dimension(150, 25));
 		Iterator<Race> itR;
 		String espece = null;
 
@@ -600,7 +596,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JComboBox<String> getJcombRaces(String espece) {
 		jcombRaces = new JComboBox<String>();
-		jcombRaces.setPreferredSize(new Dimension(150, 25));
+		jcombRaces.setSize(new Dimension(150, 25));
 		Iterator<Race> itR;
 
 		try {
@@ -619,7 +615,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JComboBox<String> getJcombRaces(int codeAnimal) {
 		jcombRaces = new JComboBox<String>();
-		jcombRaces.setPreferredSize(new Dimension(150, 25));
+		jcombRaces.setSize(new Dimension(150, 25));
 		jcombRaces.addItem(mgr.getAnimal(codeAnimal).getRace());
 
 		return jcombRaces;

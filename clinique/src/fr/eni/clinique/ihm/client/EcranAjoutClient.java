@@ -3,8 +3,6 @@ package fr.eni.clinique.ihm.client;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -50,8 +48,8 @@ public class EcranAjoutClient extends JFrame{
 		panelAjoutClt.add(getPanClt().initIHM(), BorderLayout.CENTER);
 		
 		//Changer Icone fenêtre
-		Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
-		this.setIconImage(image);
+		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ico_veto.png"));
+		this.setIconImage(image.getImage());
 		
 		//Lancer la fenêtre
 		this.setContentPane(panelAjoutClt);
@@ -66,8 +64,7 @@ public class EcranAjoutClient extends JFrame{
 	
 	public JButton getBtnValider() {
 		if(btnValider == null){
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/valider.jpg")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("valider.jpg"));
 			btnValider = new JButton(image);
 			btnValider.setToolTipText("Valider");
 			
@@ -101,8 +98,7 @@ public class EcranAjoutClient extends JFrame{
 
 	public JButton getBtnAnnuler() {
 		if(btnAnnuler == null){
-			ImageIcon image = new ImageIcon(
-					Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/annuler.jpg")));
+			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("annuler.jpg"));
 			btnAnnuler = new JButton(image);
 			btnAnnuler.setToolTipText("Annuler");
 			
