@@ -85,6 +85,7 @@ public class EcranRechercheClient extends JFrame {
 		jtRecherche.setText(saisie);
 		jtRecherche.getFont().deriveFont(Font.PLAIN);
 		jtRecherche.setForeground(Color.black);
+		
 
 		panelResultat.setLayout(new BorderLayout());
 		panelResultat.add(panelRecherche, BorderLayout.NORTH);
@@ -119,7 +120,6 @@ public class EcranRechercheClient extends JFrame {
 					EcranClients ecranClt = new EcranClients(cltChoisi);
 					ecranClt.setSize(new Dimension(1000, 600));
 					ecranClt.setVisible(true);
-					ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				} catch (BLLException e1) {
 					System.err.println("Probleme Selection Client recherché ");
 				}
@@ -212,7 +212,6 @@ public class EcranRechercheClient extends JFrame {
 					EcranRechercheClient ecranFind = new EcranRechercheClient(nomPartiel);
 					ecranFind.setSize(new Dimension(700, 300));
 					ecranFind.setVisible(true);
-					ecranFind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 				}
 			});

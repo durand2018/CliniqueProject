@@ -55,10 +55,12 @@ public class EcranGestion extends JFrame {
 		JPanel panelTable = new JPanel();
 		panelFinal.setOpaque(true);
 		panelFinal.setLayout(new BorderLayout());
+		panelFinal.setBackground(Color.gray);
 		GridBagConstraints gbc = new GridBagConstraints();
 
 		tableau = new JTable(new ModeleDynamique());
 		panelTable.add(tableau);
+		panelTable.setBackground(Color.gray);
 
 		gbc.gridx = 0;
 		gbc.gridy = 3;
@@ -67,6 +69,8 @@ public class EcranGestion extends JFrame {
 		gbc.insets = new Insets(2, 2, 2, 2);
 		gbc.fill = GridBagConstraints.WEST;
 		panelBtn.add(getBtnAjouter(), gbc);
+		panelBtn.setBackground(Color.gray);
+		panelBtn.setPreferredSize(new Dimension(500, 100));
 
 		gbc.gridx = 0;
 		gbc.gridy = 3;

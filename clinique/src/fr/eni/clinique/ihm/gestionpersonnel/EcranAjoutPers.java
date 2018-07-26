@@ -35,7 +35,7 @@ public class EcranAjoutPers extends JFrame {
 	private JLabel jlRole;
 	private JButton btnValider;
 	private JPanel panel;
-	private JPanel panelbtn;
+	private JPanel panelBtn;
 	// private Personnels p;
 
 	private String Nom;
@@ -67,12 +67,13 @@ public class EcranAjoutPers extends JFrame {
 	private void initIHM() {
 		panel = new JPanel();
 		panel.setOpaque(true);
-
 		panel.setLayout(new GridBagLayout());
+		panel.setBackground(Color.gray);
 
-		panelbtn = new JPanel();
-		panelbtn.setOpaque(true);
-		panelbtn.setLayout(new GridBagLayout());
+		panelBtn = new JPanel();
+		panelBtn.setOpaque(true);
+		panelBtn.setLayout(new GridBagLayout());
+		panelBtn.setBackground(Color.gray);
 		GridBagConstraints gbc = new GridBagConstraints();
 
 		// ligne 1
@@ -100,22 +101,22 @@ public class EcranAjoutPers extends JFrame {
 
 		// bouton VET
 
-		panelbtn.add(getRdbtnVET());
+		panelBtn.add(getRdbtnVET());
 		buttonGroup_1.add(rdbtnVET);
 
 		// bouton SEC
 
-		panelbtn.add(getRdbtnSEC());
+		panelBtn.add(getRdbtnSEC());
 		buttonGroup_1.add(rdbtnSEC);
 
 		// bouton ADM
-		panelbtn.add(getRdbtnADM());
+		panelBtn.add(getRdbtnADM());
 		buttonGroup_1.add(rdbtnADM);
 
 		gbc.gridx = 1;
 		gbc.gridy = 2;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		panel.add(panelbtn, gbc);
+		panel.add(panelBtn, gbc);
 
 		// ligne 4
 		gbc.gridx = 0;

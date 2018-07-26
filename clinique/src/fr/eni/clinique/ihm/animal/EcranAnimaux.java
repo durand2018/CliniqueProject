@@ -75,8 +75,6 @@ public class EcranAnimaux extends JFrame {
 		return mgr;
 	}
 
-
-
 	public int getIndexEspece() {
 		return indexEspece;
 	}
@@ -96,7 +94,7 @@ public class EcranAnimaux extends JFrame {
 	public EcranAnimaux() throws BLLException {
 		super("Animaux");
 		MiseEnPage.getMiseEnPage();
-		this.setLocation(280,200);
+		this.setLocation(280, 200);
 		try {
 			mgr = AnimalMger.getInstance();
 		} catch (BLLException e) {
@@ -110,7 +108,7 @@ public class EcranAnimaux extends JFrame {
 		super("Animaux");
 		try {
 			mgr = AnimalMger.getInstance();
-			this.setLocation(280,200);
+			this.setLocation(280, 200);
 		} catch (BLLException e) {
 			e.printStackTrace();
 			System.out.println("Aucun animal à afficher !");
@@ -135,18 +133,18 @@ public class EcranAnimaux extends JFrame {
 		panelChamps = new JPanel();
 		panelFinal.setOpaque(true);
 		panelFinal.setLayout(new BorderLayout());
-		panelFinal.setBackground(Color.lightGray);
+		panelFinal.setBackground(Color.gray);
 		panelItermediaire.setOpaque(true);
 		panelItermediaire.setLayout(new BorderLayout());
-		panelItermediaire.setBackground(Color.lightGray);
+		panelItermediaire.setBackground(Color.gray);
 		panelBtn.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		panelBtn.setBackground(Color.lightGray);
+		panelBtn.setBackground(Color.gray);
 		panelBtn.setSize(new Dimension(500, 70));
 		panelClt.setLayout(new GridBagLayout());
 		panelClt.setBackground(Color.lightGray);
 		panelClt.setSize(new Dimension(500, 80));
 		panelChamps.setLayout(new GridBagLayout());
-		panelChamps.setBackground(Color.GRAY);
+		panelChamps.setBackground(Color.gray);
 		panelChamps.setMaximumSize(new Dimension(750, 750));
 		GridBagConstraints gbc = new GridBagConstraints();
 
@@ -212,6 +210,7 @@ public class EcranAnimaux extends JFrame {
 		gbc.gridx = 3;
 		gbc.gridwidth = 1;
 		panelChamps.add(getJlRace(), gbc);
+		gbc.anchor = GridBagConstraints.EAST;
 
 		gbc.gridx = 4;
 		panelChamps.add(getJcombRaces(), gbc);
@@ -352,14 +351,14 @@ public class EcranAnimaux extends JFrame {
 
 	public JLabel getJlClient() {
 		if (jlClient == null) {
-			jlClient = new JLabel("Client ");
+			jlClient = new JLabel("Code client ");
 		}
 		return jlClient;
 	}
 
 	public JLabel getJlCode() {
 		if (jlCode == null) {
-			jlCode = new JLabel("Code ");
+			jlCode = new JLabel("Code animal ");
 		}
 		return jlCode;
 	}
@@ -457,7 +456,7 @@ public class EcranAnimaux extends JFrame {
 						// Sauvegarde un nouvel animal dans la BDD
 						mgr = new AnimalMger();
 						mgr.addAnimaux(aniAffiche);
-						//int c = aniAffiche.getCodeAnimal();
+						// int c = aniAffiche.getCodeAnimal();
 						// Ferme l'ecran
 						dispose();
 						// Ouvre un nouvel ecran client qui affiche le nouveau
@@ -465,7 +464,6 @@ public class EcranAnimaux extends JFrame {
 						EcranClients ecranClt = new EcranClients();
 						ecranClt.setSize(new Dimension(800, 600));
 						ecranClt.setVisible(true);
-						ecranClt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					} catch (BLLException e1) {
 						JOptionPane.showMessageDialog(EcranAnimaux.this, "Une erreur est survenue lors de l'Ajout");
 						e1.printStackTrace();
@@ -513,7 +511,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JComboBox<String> getJcombSexe() {
 		jcombSexe = new JComboBox<String>();
-		jcombSexe.setSize(new Dimension(80, 25));
+		jcombSexe.setPreferredSize(new Dimension(50, 25));
 		jcombSexe.addItem("M");
 		jcombSexe.addItem("F");
 		jcombSexe.addItemListener(new ItemListener() {
@@ -532,7 +530,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JComboBox<String> getJcombEspece() throws BLLException {
 		jcombEspece = new JComboBox<String>();
-		jcombEspece.setSize(new Dimension(150, 25));
+		jcombEspece.setPreferredSize(new Dimension(180, 25));
 
 		Iterator<Race> itR;
 		try {
@@ -547,42 +545,28 @@ public class EcranAnimaux extends JFrame {
 		}
 
 		jcombEspece.addActionListener(new ActionListener() {
-			
+
 			@Override
 
 			public void actionPerformed(ActionEvent e) {
-				
 
 				indexEspece = jcombEspece.getSelectedIndex();
 				setIndexEspece(indexEspece);
-				System.out.println("index choisie dans la comboEspece----"+getIndexEspece());
-				
+				System.out.println("index choisie dans la comboEspece----" + getIndexEspece());
+
 				try {
-					System.out.println("recuperer l'espece choisie----"+getJcombEspece().getItemAt(getIndexEspece()));
+					System.out.println("recuperer l'espece choisie----" + getJcombEspece().getItemAt(getIndexEspece()));
 				} catch (BLLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
-				
-				//actualiser la combo race 
-//				try {
-//					
-//					getJcombRaces().removeAllItems();
-//					getJcombRaces(getJcombEspece().getItemAt(getIndexEspece()));
-//				} catch (BLLException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-
 			}
 		});
 		return jcombEspece;
 	}
 
-	public JComboBox<String> getJcombEspece(int codeAnimal) throws BLLException{
+	public JComboBox<String> getJcombEspece(int codeAnimal) throws BLLException {
 		jcombEspece = new JComboBox<String>();
-		jcombEspece.setSize(new Dimension(150, 25));
+		jcombEspece.setSize(new Dimension(180, 25));
 		jcombEspece.addItem(mgr.getAnimal(codeAnimal).getEspece());
 
 		return jcombEspece;
@@ -590,11 +574,8 @@ public class EcranAnimaux extends JFrame {
 
 	public JComboBox<String> getJcombRaces() throws BLLException {
 		jcombRaces = new JComboBox<String>();
-		jcombRaces.setSize(new Dimension(150, 25));
+		jcombRaces.setPreferredSize(new Dimension(180, 25));
 		Iterator<Race> itR;
-	//                                                                                                   ******
-		//String espece = "chien";		  /*recuperper l'espece*/
-//		System.out.println("espece dans combo race --->"+espece);
 		try {
 			itR = mgr.selectRace().iterator();
 			Race ra;
@@ -602,20 +583,15 @@ public class EcranAnimaux extends JFrame {
 				ra = itR.next();
 				jcombRaces.addItem(ra.getRace());
 			}
-				jcombRaces.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
+			jcombRaces.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					indexRace = jcombRaces.getSelectedIndex();
+					setIndexRace(indexRace);
+					System.out.println("index race " + indexRace);
+				}
+			});
 
-						// jcombRaces =
-					    indexRace=jcombRaces.getSelectedIndex();
-						setIndexRace(indexRace);
-					System.out.println("index race "+indexRace);
-						//System.out.println("index race "+indexRace);
-					}
-				});
-
-	
-			
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
@@ -625,10 +601,10 @@ public class EcranAnimaux extends JFrame {
 
 	public JComboBox<String> getJcombRaces(String espece) {
 		jcombRaces = new JComboBox<String>();
-		jcombRaces.setSize(new Dimension(150, 25));
-		
+		jcombRaces.setSize(new Dimension(180, 25));
+
 		Iterator<Race> itR;
-		
+
 		try {
 			itR = mgr.selectRaceByEspece(espece).iterator();
 			Race ra;
@@ -638,12 +614,8 @@ public class EcranAnimaux extends JFrame {
 				jcombRaces.addItemListener(new ItemListener() {
 					@Override
 					public void itemStateChanged(ItemEvent e) {
-						// TODO Auto-generated method stub
-						// jcombRaces =
-						// jcombRaces.getSelectedIndex();*****************
 						setIndexEspece(indexRace);
-//						System.out.println("index espece "+getIndexEspece());
-						System.out.println("index race "+getIndexRace());
+						System.out.println("index race " + getIndexRace());
 					}
 				});
 
@@ -657,7 +629,7 @@ public class EcranAnimaux extends JFrame {
 
 	public JComboBox<String> getJcombRaces(int codeAnimal) {
 		jcombRaces = new JComboBox<String>();
-		jcombRaces.setSize(new Dimension(150, 25));
+		jcombRaces.setSize(new Dimension(180, 25));
 		jcombRaces.addItem(mgr.getAnimal(codeAnimal).getRace());
 
 		return jcombRaces;

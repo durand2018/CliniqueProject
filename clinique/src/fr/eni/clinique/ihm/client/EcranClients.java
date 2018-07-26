@@ -18,7 +18,6 @@ import javax.swing.JOptionPane;
 //import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.WindowConstants;
 
 import fr.eni.clinique.bll.BLLException;
 import fr.eni.clinique.bll.ClientsMger;
@@ -292,7 +291,7 @@ public class EcranClients extends JFrame {
 						if (i > 1) {
 							// Relance Ecran avec le client trouvé
 							EcranRechercheClient ecranRecherche = new EcranRechercheClient(nomPartiel);
-							ecranRecherche.setSize(new Dimension(700, 300));
+							ecranRecherche.setSize(new Dimension(700, 600));
 							ecranRecherche.setVisible(true);
 						}
 					} catch (BLLException e1) {

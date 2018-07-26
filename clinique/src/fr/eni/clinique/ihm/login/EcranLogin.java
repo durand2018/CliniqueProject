@@ -1,5 +1,6 @@
 package fr.eni.clinique.ihm.login;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -40,7 +41,7 @@ public class EcranLogin extends JFrame {
 		super("Connexion");
 		MiseEnPage.getMiseEnPage();
 		setSize(new Dimension(500, 250));
-		
+
 		try {
 			mger = LoginMger.getInstance();
 		} catch (BLLException e) {
@@ -54,9 +55,9 @@ public class EcranLogin extends JFrame {
 		panel = new JPanel();
 		panel.setOpaque(true);
 		panel.setLayout(new GridBagLayout());
-		this.setLocation(280,200);
-		
-		
+		panel.setBackground(Color.gray);
+		this.setLocation(280, 200);
+
 		GridBagConstraints gbc = new GridBagConstraints();
 
 		// ligne 1
@@ -105,8 +106,6 @@ public class EcranLogin extends JFrame {
 
 		// Lancer la fenêtre
 		this.setContentPane(panel);
-		
-		
 
 	}
 
@@ -148,6 +147,7 @@ public class EcranLogin extends JFrame {
 	public JTextField getJpMdp() {
 		if (jpMdp == null) {
 			jpMdp = new JPasswordField(25);
+
 		}
 		return jpMdp;
 	}

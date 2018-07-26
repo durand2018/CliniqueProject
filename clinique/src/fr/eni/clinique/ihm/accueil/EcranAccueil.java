@@ -37,14 +37,16 @@ public class EcranAccueil extends JFrame {
 
 	public EcranAccueil(EcranLogin ecranLogin) {
 		MiseEnPage.getMiseEnPage();
+		
 		// Changer Icone fenêtre
 		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ico_veto.png"));
 		this.setIconImage(image.getImage());
 
 		CardLayout CardL = new CardLayout();
 		JPanel panel1 = new JPanel();
-		panel1.setBackground(Color.DARK_GRAY);
+		panel1.setBackground(Color.gray);
 		setTitle("Ecran d'accueil");
+		getContentPane().setBackground(Color.gray);
 		this.setLocation(280,200);
 		
 		System.out.println("Lancement EcranAccueil");
