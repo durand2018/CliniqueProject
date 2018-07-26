@@ -100,7 +100,6 @@ public class EcranLogin extends JFrame {
 		panel.add(getBtnValider(), gbc);
 
 		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ico_veto.png"));
-				//Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/ico_veto.png"));
 		this.setIconImage(image.getImage());
 
 		// Lancer la fenêtre
