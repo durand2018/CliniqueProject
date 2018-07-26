@@ -347,6 +347,7 @@ public class EcranAnimaux extends JFrame {
 		panelFinal.add(panelItermediaire, BorderLayout.CENTER);
 
 		this.setContentPane(panelFinal);
+		
 
 	}
 
@@ -413,6 +414,7 @@ public class EcranAnimaux extends JFrame {
 	public JTextField getJtCode() {
 		if (jtCode == null) {
 			jtCode = new JTextField(20);
+			jtCode.setEnabled(false);
 		}
 		return jtCode;
 	}
