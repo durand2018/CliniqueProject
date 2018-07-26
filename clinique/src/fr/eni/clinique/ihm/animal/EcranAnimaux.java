@@ -542,8 +542,8 @@ public class EcranAnimaux extends JFrame {
 				ra = itR.next();
 				jcombEspece.addItem(ra.getEspece());
 			}
-		} catch (BLLException e) {
-			e.printStackTrace();
+		} catch (BLLException e1) {
+			e1.printStackTrace();
 		}
 
 		jcombEspece.addActionListener(new ActionListener() {

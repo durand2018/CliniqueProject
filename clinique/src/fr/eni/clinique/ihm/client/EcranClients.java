@@ -215,7 +215,6 @@ public class EcranClients extends JFrame {
 					ecranAjclt.setSize(new Dimension(500, 600));
 					ecranAjclt.setVisible(true);
 					dispose();
-					ecranAjclt.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				}
 			});
 		}

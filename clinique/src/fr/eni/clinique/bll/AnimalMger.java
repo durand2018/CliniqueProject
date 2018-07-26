@@ -64,7 +64,7 @@ public class AnimalMger {
 
 	public void removeAnimal(int codeAnimal) throws BLLException {
 		try {
-			daoAnimal.delete(listeAni.get(codeAnimal).getCodeAnimal());
+			daoAnimal.delete(codeAnimal);
 		} catch (DALException e) {
 			throw new BLLException("Echec suppression animal " + codeAnimal, e);
 		}

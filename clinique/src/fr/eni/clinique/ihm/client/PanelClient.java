@@ -25,7 +25,6 @@ public class PanelClient extends JFrame {
 	private JScrollPane defil;
 	private JPanel panelClt, panelBas;
 	private int CodeCltAffiche;
-	// private ClientsMger mgr = null;
 
 	public PanelClient() {
 		super();
