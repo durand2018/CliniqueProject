@@ -1,6 +1,7 @@
 package fr.eni.clinique.ihm.animal;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -13,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 
 import fr.eni.clinique.ihm.MiseEnPage;
 
@@ -45,11 +47,17 @@ public class PanelAnimalByClt extends JFrame {
 		panelBtn.add(getBtnAjouter());
 		panelBtn.add(getBtnSupprimer());
 		panelBtn.add(getBtnEditer());
+		panelBtn.setBackground(Color.gray);
 
 		panelAni.add(getJlTitre(), BorderLayout.NORTH);
 		panelAni.add(panelBtn, BorderLayout.SOUTH);
 		panelAni.add(getJlAucunAni(), BorderLayout.CENTER);
-
+		panelAni.setBackground(Color.gray);
+		//créer une bordure de trait noir et largeur minimale 1
+	    Border lineborder = BorderFactory.createLineBorder(Color.gray, 5); 
+	    //associer à JLabel
+	    panelAni.setBorder(lineborder);
+	    
 		return panelAni;
 	}
 
@@ -57,6 +65,7 @@ public class PanelAnimalByClt extends JFrame {
 		panelAni = new JPanel();
 		panelBtn = new JPanel();
 		JTable tabAni = new JTable(new ModeleTableAnimaux(CodeClt));
+		
 
 		panelAni.setOpaque(true);
 		panelAni.setLayout(new BorderLayout());
@@ -65,9 +74,15 @@ public class PanelAnimalByClt extends JFrame {
 		panelBtn.add(getBtnAjouter());
 		panelBtn.add(getBtnSupprimer());
 		panelBtn.add(getBtnEditer());
+		panelBtn.setBackground(Color.gray);
 
 		panelAni.add(getJlTitre(), BorderLayout.NORTH);
 		panelAni.add(panelBtn, BorderLayout.SOUTH);
+		panelAni.setBackground(Color.gray);
+		//créer une bordure de trait noir et largeur minimale 1
+	    Border lineborder = BorderFactory.createLineBorder(Color.gray, 5); 
+	    //associer à JLabel
+	    panelAni.setBorder(lineborder);
 		if (tabAni.getRowCount() == 0) {
 			panelAni.add(getJlAucunAni(), BorderLayout.CENTER);
 		} else {
@@ -98,6 +113,7 @@ public class PanelAnimalByClt extends JFrame {
 		if (btnAjouter == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ajouter.png"));
 			btnAjouter = new JButton(image);
+			btnAjouter.setBackground(Color.white);
 			btnAjouter.setToolTipText("Ajouter");
 		}
 		return btnAjouter;
@@ -107,6 +123,7 @@ public class PanelAnimalByClt extends JFrame {
 		if (btnSupprimer == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("supprimer.png"));
 			btnSupprimer = new JButton(image);
+			btnSupprimer.setBackground(Color.white);
 			btnSupprimer.setToolTipText("Supprimer");
 		}
 		return btnSupprimer;
@@ -116,6 +133,7 @@ public class PanelAnimalByClt extends JFrame {
 		if (btnEditer == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("editer.png"));
 			btnEditer = new JButton(image);
+			btnEditer.setBackground(Color.white);
 			btnEditer.setToolTipText("Editer");
 		}
 		return btnEditer;

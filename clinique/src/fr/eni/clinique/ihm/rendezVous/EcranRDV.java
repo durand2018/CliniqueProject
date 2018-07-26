@@ -155,7 +155,7 @@ public class EcranRDV extends JFrame {
 
 	public Component getPanelTable() {
 		panelTable = new JPanel();
-		panelTable.setBackground(Color.lightGray);
+		panelTable.setBackground(Color.white);
 		panelTable.setSize(new Dimension(300, 150));
 		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("travaux_infos.jpg"));
 		labelTravaux = new JLabel(image);
@@ -250,6 +250,7 @@ public class EcranRDV extends JFrame {
 		if (btnValider == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("valider.png"));
 			btnValider = new JButton(image);
+			btnValider.setBackground(Color.white);
 			btnValider.setToolTipText("Valider");
 
 		}
@@ -260,6 +261,7 @@ public class EcranRDV extends JFrame {
 		if (btnSupprimer == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("sortir.png"));
 			btnSupprimer = new JButton(image);
+			btnSupprimer.setBackground(Color.white);
 			btnSupprimer.setToolTipText("Annuler");
 
 			btnSupprimer.addActionListener(new ActionListener() {

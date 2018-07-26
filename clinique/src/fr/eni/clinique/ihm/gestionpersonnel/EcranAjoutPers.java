@@ -1,5 +1,6 @@
 package fr.eni.clinique.ihm.gestionpersonnel;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -220,6 +221,7 @@ public class EcranAjoutPers extends JFrame {
 	public JButton getBtnValider() {
 		if (btnValider == null) {
 			btnValider = new JButton("Valider");
+			btnValider.setBackground(Color.white);
 			btnValider.addActionListener(new ActionListener() {
 
 				@Override

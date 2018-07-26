@@ -62,6 +62,7 @@ public class EcranClients extends JFrame {
 		panelBtn.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		panelBtn.add(getBtnValider());
 		panelBtn.add(getBtnAnnuler());
+		panelBtn.setBackground(Color.gray);
 
 		panelBas.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -70,6 +71,7 @@ public class EcranClients extends JFrame {
 		panelBas.add(getPanClt().initIHM());
 		gbc.gridx = 1;
 		panelBas.add(panAni.initIHM());
+		panelBas.setBackground(Color.gray);
 
 		panelClt.setBackground(Color.gray);
 		panelClt.add(panelBtn, BorderLayout.NORTH);
@@ -136,6 +138,7 @@ public class EcranClients extends JFrame {
 		if (btnValider == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("valider.png"));
 			btnValider = new JButton(image);
+			btnValider.setBackground(Color.white);
 			btnValider.setToolTipText("Valider");
 
 			btnValider.addActionListener(new ActionListener() {
@@ -165,6 +168,7 @@ public class EcranClients extends JFrame {
 		if (btnAnnuler == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("annuler.png"));
 			btnAnnuler = new JButton(image);
+			btnAnnuler.setBackground(Color.white);
 			btnAnnuler.setToolTipText("Annuler");
 
 			btnAnnuler.addActionListener(new ActionListener() {
@@ -197,6 +201,7 @@ public class EcranClients extends JFrame {
 		if (btnAjouter == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ajouter.png"));
 			btnAjouter = new JButton(image);
+			btnAjouter.setBackground(Color.white);
 			btnAjouter.setToolTipText("Ajouter");
 
 			btnAjouter.addActionListener(new ActionListener() {
@@ -219,6 +224,7 @@ public class EcranClients extends JFrame {
 		if (btnSupprimer == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("supprimer.png"));
 			btnSupprimer = new JButton(image);
+			btnSupprimer.setBackground(Color.white);
 			btnSupprimer.setToolTipText("Supprimer");
 
 			btnSupprimer.addActionListener(new ActionListener() {
@@ -253,6 +259,7 @@ public class EcranClients extends JFrame {
 		if (btnRechercher == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("loupe.png"));
 			btnRechercher = new JButton(image);
+			btnRechercher.setBackground(Color.white);
 			btnRechercher.setToolTipText("Rechercher");
 
 			btnRechercher.addActionListener(new ActionListener() {

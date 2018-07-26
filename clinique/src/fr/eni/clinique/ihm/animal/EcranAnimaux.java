@@ -441,6 +441,7 @@ public class EcranAnimaux extends JFrame {
 		if (btnValider == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("ajouter.png"));
 			btnValider = new JButton(image);
+			btnValider.setBackground(Color.white);
 			btnValider.setToolTipText("Valider");
 
 			btnValider.addActionListener(new ActionListener() {
@@ -455,7 +456,7 @@ public class EcranAnimaux extends JFrame {
 						// Sauvegarde un nouvel animal dans la BDD
 						mgr = new AnimalMger();
 						mgr.addAnimaux(aniAffiche);
-						int c = aniAffiche.getCodeAnimal();
+						//int c = aniAffiche.getCodeAnimal();
 						// Ferme l'ecran
 						dispose();
 						// Ouvre un nouvel ecran client qui affiche le nouveau
@@ -494,6 +495,7 @@ public class EcranAnimaux extends JFrame {
 		if (btnAnnuler == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("annuler.png"));
 			btnAnnuler = new JButton(image);
+			btnAnnuler.setBackground(Color.white);
 			btnAnnuler.setToolTipText("Annuler");
 
 			btnAnnuler.addActionListener(new ActionListener() {
@@ -546,7 +548,6 @@ public class EcranAnimaux extends JFrame {
 
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
 				indexEspece = jcombEspece.getSelectedIndex();
 				setIndexEspece(indexEspece);
 				System.out.println(getIndexEspece());
@@ -580,7 +581,6 @@ public class EcranAnimaux extends JFrame {
 
 					@Override
 					public void itemStateChanged(ItemEvent e) {
-						// TODO Auto-generated method stub
 						// jcombRaces =
 						// jcombRaces.getSelectedIndex();*****************
 						setIndexEspece(indexRace);

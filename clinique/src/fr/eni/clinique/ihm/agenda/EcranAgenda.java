@@ -52,7 +52,7 @@ public class EcranAgenda extends JFrame {
 
 	public Component getPanelTable() {
 		panelTable = new JPanel();
-		panelTable.setBackground(Color.lightGray);
+		panelTable.setBackground(Color.white);
 		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("travaux_infos.jpg"));
 		labelTravaux = new JLabel(image);
 		panelTable.add(labelTravaux);

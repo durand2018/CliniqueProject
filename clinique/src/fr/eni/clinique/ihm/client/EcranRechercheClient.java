@@ -197,6 +197,7 @@ public class EcranRechercheClient extends JFrame {
 		if (btnRechercher == null) {
 			ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("loupe.png"));
 			btnRechercher = new JButton(image);
+			btnRechercher.setBackground(Color.white);
 			btnRechercher.setToolTipText("Rechercher");
 
 			btnRechercher.addActionListener(new ActionListener() {
