@@ -147,7 +147,7 @@ public class EcranRechercheClient extends JFrame {
 		if (jtRecherche == null) {
 			// jtRecherche = new JTextField(50);
 			jtRecherche = new JTextField("nom du client");
-			jtRecherche.setPreferredSize(new Dimension(300, 25));
+			jtRecherche.setSize(new Dimension(300, 25));
 			jtRecherche.getFont().deriveFont(Font.ITALIC);
 			jtRecherche.setForeground(Color.gray);
 
@@ -186,7 +186,7 @@ public class EcranRechercheClient extends JFrame {
 	public JLabel getJlAucuneSelection() {
 		if (jlAucuneSelection == null) {
 			jlAucuneSelection = new JLabel("Aucun client sélectionné");
-			jlAucuneSelection.setPreferredSize(new Dimension(100, 200));
+			jlAucuneSelection.setSize(new Dimension(100, 200));
 			jlAucuneSelection.setHorizontalAlignment(SwingConstants.CENTER);
 			jlAucuneSelection.setBorder(BorderFactory.createEtchedBorder());
 		}

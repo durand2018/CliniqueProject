@@ -107,7 +107,7 @@ public class EcranGestion extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 
 					EcranAjoutPers EcranAjout = new EcranAjoutPers();
-					EcranAjout.setPreferredSize(new Dimension(800, 600));
+					EcranAjout.setSize(new Dimension(800, 600));
 					pack();
 					dispose();
 					EcranAjout.setVisible(true);
@@ -140,7 +140,7 @@ public class EcranGestion extends JFrame {
 
 						dispose();
 						EcranGestion EcranGestion = new EcranGestion();
-						EcranGestion.setPreferredSize(new Dimension(800, 600));
+						EcranGestion.setSize(new Dimension(800, 600));
 						EcranGestion.setVisible(true);
 						EcranGestion.pack();
 
@@ -193,7 +193,7 @@ public class EcranGestion extends JFrame {
 						dispose();
 
 						EcranGestion EcranGestion = new EcranGestion();
-						EcranGestion.setPreferredSize(new Dimension(800, 600));
+						EcranGestion.setSize(new Dimension(800, 600));
 						EcranGestion.setVisible(true);
 						EcranGestion.pack();
 

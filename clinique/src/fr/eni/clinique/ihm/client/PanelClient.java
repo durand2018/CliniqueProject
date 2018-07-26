@@ -47,7 +47,7 @@ public class PanelClient extends JFrame {
 		// creation panel
 		panelClt = new JPanel();
 		panelClt.setOpaque(true);
-		// panelClt.setPreferredSize(new Dimension(500,600));
+		// panelClt.setSize(new Dimension(500,600));
 		panelClt.setBackground(Color.gray);
 		panelClt.setLayout(new GridBagLayout());
 
@@ -61,8 +61,9 @@ public class PanelClient extends JFrame {
 		 panelClt.add(getJlCodeClt(), gbc);
 		 gbc.gridx = 1;
 		 panelClt.add(getJtCodeClt(), gbc);
+		 //Case non accessible à l'utilisateur
 		 jtCodeClt.setEnabled(false);
-//		 jtCodeClt.setText("Renseigné par la base");
+		 jtCodeClt.setText("Renseigné par la base");
 		 jtCodeClt.getFont().deriveFont(Font.PLAIN);
 		 jtCodeClt.setForeground(Color.black);
 
@@ -147,7 +148,6 @@ public class PanelClient extends JFrame {
 	 *            un client
 	 */
 	public void RemplirPanelClt(Clients c) {
-		System.out.println(c);
 		jtNomClt.setText(c.getNomClient());
 		jtPrenomClt.setText(c.getPrenomClient());
 		jtAdresse1.setText(c.getAdresse1());

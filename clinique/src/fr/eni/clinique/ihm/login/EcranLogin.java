@@ -40,7 +40,7 @@ public class EcranLogin extends JFrame {
 	public EcranLogin() {
 		super("Connexion");
 		MiseEnPage.getMiseEnPage();
-		setPreferredSize(new Dimension(500, 250));
+		setSize(new Dimension(500, 250));
 		try {
 			mger = LoginMger.getInstance();
 		} catch (BLLException e) {
@@ -190,7 +190,7 @@ public class EcranLogin extends JFrame {
 						}
 						if (userMdp.equals(sb.toString())) {
 							EcranAccueil ecranAccueil = new EcranAccueil(EcranLogin.this);
-							ecranAccueil.setPreferredSize(new Dimension(500, 250));
+							ecranAccueil.setSize(new Dimension(500, 250));
 
 							dispose();
 

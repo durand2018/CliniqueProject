@@ -52,7 +52,7 @@ public class EcranAjoutPers extends JFrame {
 	public EcranAjoutPers() {
 		super("Ajouter Personnel");
 		MiseEnPage.getMiseEnPage();
-		setPreferredSize(new Dimension(800, 600));
+		setSize(new Dimension(800, 600));
 		try {
 			mgr = LoginMger.getInstance();
 		} catch (BLLException e) {
@@ -256,7 +256,7 @@ public class EcranAjoutPers extends JFrame {
 
 					// afficher ecran de gestion a jour apres validation
 					EcranGestion EcranGestion = new EcranGestion();
-					EcranGestion.setPreferredSize(new Dimension(800, 600));
+					EcranGestion.setSize(new Dimension(800, 600));
 					EcranGestion.setVisible(true);
 					EcranGestion.pack();
 

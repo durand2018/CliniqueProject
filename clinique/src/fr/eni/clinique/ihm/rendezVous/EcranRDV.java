@@ -93,7 +93,7 @@ public class EcranRDV extends JFrame {
 		panelQuand = new JPanel();
 		panelQuand.setLayout(new GridBagLayout());
 		panelQuand.setBackground(Color.lightGray);
-		panelQuand.setPreferredSize(new Dimension(300, 150));
+		panelQuand.setSize(new Dimension(300, 150));
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		panelQuand.add(getJlDate(), gbc);
@@ -112,7 +112,7 @@ public class EcranRDV extends JFrame {
 		panelPar = new JPanel();
 		panelPar.setLayout(new GridBagLayout());
 		panelPar.setBackground(Color.lightGray);
-		panelPar.setPreferredSize(new Dimension(300, 150));
+		panelPar.setSize(new Dimension(300, 150));
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		panelPar.add(getJlVeto(), gbc);
@@ -132,7 +132,7 @@ public class EcranRDV extends JFrame {
 		panelPour = new JPanel();
 		panelPour.setLayout(new GridBagLayout());
 		panelPour.setBackground(Color.lightGray);
-		panelPour.setPreferredSize(new Dimension(300, 150));
+		panelPour.setSize(new Dimension(300, 150));
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		panelPour.add(getJlClient(), gbc);
@@ -157,7 +157,7 @@ public class EcranRDV extends JFrame {
 	public Component getPanelTable() {
 		panelTable = new JPanel();
 		panelTable.setBackground(Color.lightGray);
-		panelTable.setPreferredSize(new Dimension(300, 150));
+		panelTable.setSize(new Dimension(300, 150));
 		ImageIcon image = new ImageIcon(
 				Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../images/travaux_infos.jpg")));
 		labelTravaux = new JLabel(image);
@@ -180,20 +180,20 @@ public class EcranRDV extends JFrame {
 	public JComboBox<String> getCombClient() {
 		combClient = new JComboBox<String>();
 		combClient.addItem("Nom");
-		combClient.setPreferredSize(new Dimension(200, 20));
+		combClient.setSize(new Dimension(200, 20));
 		return combClient;
 	}
 
 	public JComboBox<String> getCombAnimal() {
 		combAnimal = new JComboBox<String>();
 		combAnimal.addItem("Animal");
-		combAnimal.setPreferredSize(new Dimension(200, 20));
+		combAnimal.setSize(new Dimension(200, 20));
 		return combAnimal;
 	}
 
 	public JComboBox<String> getCombVeto() {
 		combVeto = new JComboBox<String>();
-		combVeto.setPreferredSize(new Dimension(200, 20));
+		combVeto.setSize(new Dimension(200, 20));
 		combVeto.addItem("Veterinaire");
 		return combVeto;
 	}

@@ -78,7 +78,7 @@ public class EcranAccueil extends JFrame {
 
 				EcranAgenda ecranAgenda = new EcranAgenda();
 
-				ecranAgenda.setPreferredSize(new Dimension(800, 600));
+				ecranAgenda.setSize(new Dimension(800, 600));
 
 				ecranAgenda.setVisible(true);
 			}
@@ -90,7 +90,7 @@ public class EcranAccueil extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				EcranGestion ecranGestion = new EcranGestion();
-				ecranGestion.setPreferredSize(new Dimension(800, 600));
+				ecranGestion.setSize(new Dimension(800, 600));
 				ecranGestion.setVisible(true);
 			}
 		});
@@ -102,11 +102,8 @@ public class EcranAccueil extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 				EcranLogin ecranLogin2 = new EcranLogin();
-
 				ecranLogin2.setSize(new Dimension(500, 250));
-
 				dispose();
-
 				ecranLogin2.setVisible(true);
 			}
 		});
@@ -129,7 +126,7 @@ public class EcranAccueil extends JFrame {
 
 				EcranRDV ecranRdv = new EcranRDV();
 
-				ecranRdv.setPreferredSize(new Dimension(800, 600));
+				ecranRdv.setSize(new Dimension(800, 600));
 
 				ecranRdv.setVisible(true);
 			}
